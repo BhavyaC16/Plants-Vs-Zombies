@@ -1,0 +1,100 @@
+abstract public class gameElements implements Serializable
+{
+	
+}
+
+
+abstract public class character extends gameElements implements Serializable
+{
+	protected int hp
+}
+
+________________________________________________________________________________________________
+
+public abstract class zombie extends character implements Serializable
+{
+	protected final int speed
+	protected int hp
+	protected int[] position
+	protected final int attackPower
+
+	zombie() //remove if not reqd
+
+	protected abstract eatPlant(Plant p) //returns damage to plantHP
+	//protected int getAttackPower()
+	protected void abstract attackHome() // attack home, use when lawnmover==false and zombie reaches end
+	protected void moveZombie() //updates position as per speed
+	protected void setHP(int hp) //set zombie HP after it is attacked
+	protected void killed() //kill zombie if hp==0
+	protected int[] getPosition() //returns coordinates of zombie on lawn
+}
+
+public final class normalZombie extends zombie implements Serializable //Has normal HP
+{
+	normalZombie()
+}
+
+public final class coneHeadZombie extends zombie implements Serializable //Has 1.5times the maxHP of normalZombie
+{
+	coneHeadZombie()
+
+	private void destroyCone() //destroy cone if hp<=MaxHP ofnormalZombie
+}
+
+public final class bucketHeadZombie extends zombie implements Serializable //Has 2.5 times the maxHP of normalZombie
+{
+	bucketHeadZombie() 
+
+	private void destroyBucket() //damageBucket if hp<=normalZombie maxHP
+}
+
+_____________________________________________________________________________
+
+public final class lawnmower extends gameElements implements Serializable
+{
+	private int speed
+	private int[] position
+	//private int zombiesKilled
+
+	lawnmower()
+
+	private void move() //move lawnmower when zomie arrives
+	private void killZombie(zombie z)//add to zombiesKilled, reduce z.HP to 0
+	private int[] getPosition()
+	private void moveOutOfLawn() //disappear lawnMower
+}
+
+_____________________________________________________________________________
+
+public class Main implements Serializable
+{
+	private ArrayList<int> levelsUnlocked
+	private ArrayList<game> gameStates
+
+	private void exitGame()
+
+	private void SaveGame(game g) throws IOException
+	private game ReloadGame() throws IOException, ClassNotFoundException
+	
+	//private void SaveLevel(level l) throws IOException
+	//private level ReloadLevel() throws IOException, ClassNotFoundException
+
+	private void StartGame()
+	private void StartLevel()
+}
+
+_____________________________________________________________________________
+
+public final class player implements Serializable
+{
+	private final String playerName
+	private int levelNumber
+	private ArrayList<Plant> unlockedPlants
+
+	private ArrayList<Plant> getUnlockedPlants()
+	private void unlockPlant(Plant p) //Add plant to unlockedPlants
+	private void collectSun()
+	private void selectPlant()
+	private int[] placePlant()
+	private int getLevel()
+}
