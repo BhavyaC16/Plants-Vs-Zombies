@@ -1,0 +1,12 @@
+The Class Relationship UML has been independently created by Sonali Singhal and Bhavya Chopra and can be viewed at the following URL:
+https://app.creately.com/diagram/HppD1rkQijy/view
+
+
+References:
+https://creately.com/blog/diagrams/use-case-diagram-relationships/
+https://stackoverflow.com/questions/1696927/whats-is-the-difference-between-include-and-extend-in-use-case-diagram
+https://github.com/rohangoel96/PlantsVsZombies-Game
+https://www.ibm.com/support/knowledgecenter/SS8PJ7_9.6.1/com.ibm.xtools.modeler.doc/topics/cextend.html
+CSE201 Monsoon 2019 Lecture 15: https://drive.google.com/file/d/1ue7jTWkgNW6ERL8ObxduHzS-Asj9S_i5/view
+https://creately.com/blog/diagrams/class-diagram-relationships/
+https://en.wikipedia.org/wiki/Class_diagram
