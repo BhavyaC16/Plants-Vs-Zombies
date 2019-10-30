@@ -15,9 +15,15 @@
       </ImageView>
       <Button layoutX="208.0" layoutY="499.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="177.0" text="New Player">
          <font>
-            <Font name="Chandas" size="13.0" />
+            <Font name="Dyuthi" size="20.0" />
          </font></Button>
-      <Button layoutX="448.0" layoutY="499.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="177.0" text="Existing Player" />
-      <Button layoutX="687.0" layoutY="499.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="177.0" text="Exit Game" />
+      <Button layoutX="448.0" layoutY="499.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="177.0" text="Existing Player">
+         <font>
+            <Font name="Dyuthi" size="20.0" />
+         </font></Button>
+      <Button layoutX="687.0" layoutY="499.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="177.0" text="Exit Game">
+         <font>
+            <Font name="Dyuthi" size="20.0" />
+         </font></Button>
    </children>
 </AnchorPane>

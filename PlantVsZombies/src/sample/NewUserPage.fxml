@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.NewUserPage">
    <children>
@@ -14,8 +15,14 @@
             <Image url="@assets/menu3-01.png" />
          </image>
       </ImageView>
-      <Label layoutX="437.0" layoutY="24.0" prefHeight="107.0" prefWidth="330.0" text="New Player" textAlignment="RIGHT" />
-      <TextField layoutX="552.0" layoutY="185.0" promptText="Enter Name" />
-      <Button layoutX="589.0" layoutY="274.0" mnemonicParsing="false" text="Start Game!" />
+      <Label layoutX="437.0" layoutY="28.0" prefHeight="107.0" prefWidth="330.0" text="New Player" textAlignment="RIGHT" textFill="#00863cf5">
+         <font>
+            <Font name="Dyuthi" size="48.0" />
+         </font></Label>
+      <TextField alignment="CENTER" layoutX="438.0" layoutY="189.0" prefHeight="44.0" prefWidth="232.0" promptText="Enter Name" />
+      <Button layoutX="491.0" layoutY="276.0" mnemonicParsing="false" text="Start Game!">
+         <font>
+            <Font name="Dyuthi" size="20.0" />
+         </font></Button>
    </children>
 </AnchorPane>
