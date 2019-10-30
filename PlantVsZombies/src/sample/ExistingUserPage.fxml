@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ExistingUserPage">
    <children>
@@ -15,6 +14,6 @@
          </image>
       </ImageView>
       <Label layoutX="494.0" layoutY="64.0" text="Existing Players" />
-      <ListView layoutX="497.0" layoutY="100.0" prefHeight="283.0" prefWidth="282.0" />
+      <TextField layoutX="460.0" layoutY="155.0" />
    </children>
 </AnchorPane>
