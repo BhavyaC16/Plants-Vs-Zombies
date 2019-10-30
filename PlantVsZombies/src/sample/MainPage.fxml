@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPage">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="133.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@assets/mainmenu-01.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="208.0" layoutY="499.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="177.0" text="New Player">
+         <font>
+            <Font name="Chandas" size="13.0" />
+         </font></Button>
+      <Button layoutX="448.0" layoutY="499.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="177.0" text="Existing Player" />
+      <Button layoutX="687.0" layoutY="499.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="177.0" text="Exit Game" />
+   </children>
+</AnchorPane>

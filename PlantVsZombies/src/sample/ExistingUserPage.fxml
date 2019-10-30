@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ExistingUserPage">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="55.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@assets/menu3-01.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="494.0" layoutY="64.0" text="Existing Players" />
+      <ListView layoutX="497.0" layoutY="100.0" prefHeight="283.0" prefWidth="282.0" />
+   </children>
+</AnchorPane>
