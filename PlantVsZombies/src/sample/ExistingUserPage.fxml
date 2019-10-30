@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ExistingUserPage">
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ExistingUserPage">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="55.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -29,7 +29,5 @@
             <Font name="Dyuthi" size="26.0" />
          </font>
       </Label>
-
-      <TextField layoutX="460.0" layoutY="176.0" prefHeight="33.0" prefWidth="198.0" promptText="Enter Player name" />
    </children>
 </AnchorPane>
