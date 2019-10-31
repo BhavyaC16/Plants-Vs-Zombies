@@ -36,5 +36,20 @@
             <Image url="@assets/L5.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="158.0" layoutX="60.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/play.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="103.0" fitWidth="188.0" layoutX="219.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/resume.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="103.0" fitWidth="188.0" layoutX="391.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/resume.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

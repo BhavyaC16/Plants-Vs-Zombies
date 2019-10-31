@@ -14,12 +14,12 @@
             <Image url="@assets/menu3-01.png" />
          </image>
       </ImageView>
-       <Label layoutX="437.0" layoutY="28.0" prefHeight="107.0" prefWidth="330.0" text="Existing Player" textAlignment="RIGHT" textFill="#00863cf5">
+       <Label alignment="CENTER" layoutX="389.0" layoutY="28.0" prefHeight="107.0" prefWidth="330.0" text="Existing Player" textAlignment="RIGHT" textFill="#00863cf5">
            <font>
                <Font name="Dyuthi" size="48.0" />
            </font></Label>
        <TextField alignment="CENTER" layoutX="438.0" layoutY="189.0" prefHeight="44.0" prefWidth="232.0" promptText="Enter Name" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="361.0" prefHeight="58.0" prefWidth="420.0" text="Player not found! Starting new game..." textAlignment="CENTER" textFill="#00863c">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="361.0" prefHeight="58.0" prefWidth="420.0" text="Player not found! Starting new game..." textAlignment="CENTER" textFill="#00863c" visible="false">
          <font>
             <Font name="Dyuthi" size="26.0" />
          </font>
