@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="GameMenuRoot" prefHeight="278.0" prefWidth="386.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameMenuController">
+   <children>
+      <ImageView fitHeight="296.0" fitWidth="386.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/GameMenu.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="returnToMainMenuButton" fitHeight="92.0" fitWidth="175.0" layoutX="195.0" layoutY="52.0" onMouseClicked="#showMainMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/returnTomainMenu.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="saveGameButton" fitHeight="92.0" fitWidth="175.0" layoutX="14.0" layoutY="52.0" onMouseClicked="#saveGame" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/saveGame.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="restartGameButton" fitHeight="92.0" fitWidth="175.0" layoutX="14.0" layoutY="144.0" onMouseClicked="#restartGame" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/restartGame.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
