@@ -23,6 +23,8 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+
     public void addMusic() {
         String musicFile = "src/sample/assets/background.wav";
         Media sound = new Media(new File(musicFile).toURI().toString());
