@@ -128,6 +128,6 @@
             <Image url="@assets/gamemenuLoader.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="progressBar" layoutX="176.0" layoutY="21.0" prefHeight="20.0" prefWidth="228.0" progress="0.0" />
+      <ProgressBar fx:id="progressBar" layoutX="176.0" layoutY="21.0" prefHeight="20.0" prefWidth="228.0" progress="0.38" />
    </children>
 </AnchorPane>
