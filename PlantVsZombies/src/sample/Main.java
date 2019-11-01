@@ -8,6 +8,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.scene.media.AudioClip;
+import javafx.util.Duration;
 import sample.view.viewManager;
 
 import java.io.File;
@@ -29,6 +30,10 @@ public class Main extends Application {
         String musicFile = "src/sample/assets/background.wav";
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setStartTime(Duration.seconds(0));
+        mediaPlayer.setStopTime(Duration.seconds(50));
         mediaPlayer.play();
     }
 
