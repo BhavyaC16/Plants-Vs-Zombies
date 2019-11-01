@@ -137,7 +137,7 @@ public class GamePlayController {
         translate.setCycleCount(1);
         translate.setFromY(40);
         translate.setFromX(1024);
-        translate.setToX(100);
+        translate.setToX(270);
         translate.setNode(zombie);
         translate.play();
         GamePlayRoot.getChildren().addAll(zombie);
@@ -154,7 +154,7 @@ public class GamePlayController {
         translate.setCycleCount(1);
         translate.setFromY(420);
         translate.setFromX(1024);
-        translate.setToX(100);
+        translate.setToX(270);
         translate.setNode(zombie);
         translate.play();
         GamePlayRoot.getChildren().addAll(zombie);
@@ -171,7 +171,7 @@ public class GamePlayController {
         translate.setCycleCount(1);
         translate.setFromY(240);
         translate.setFromX(1024);
-        translate.setToX(100);
+        translate.setToX(250);
         translate.setNode(zombie);
         translate.play();
         GamePlayRoot.getChildren().addAll(zombie);
