@@ -10,41 +10,41 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="GamePlayRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GamePlayController">
+<AnchorPane fx:id="GamePlayRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GamePlayController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@assets/lawn.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="peaShooterBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="peaShooterBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/peashooterCard.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="repeaterBuy" fitHeight="58.0" fitWidth="97.0" layoutX="23.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="repeaterBuy" fitHeight="58.0" fitWidth="97.0" layoutX="23.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/repeaterCard.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cherryBombBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cherryBombBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/cherrybombCard.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="jalapenoBuy" fitHeight="58.0" fitWidth="97.0" layoutX="24.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="jalapenoBuy" fitHeight="58.0" fitWidth="97.0" layoutX="24.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/jalapenoCard.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="wallnutBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="wallnutBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/wallnutCard.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="sunBuy" fitHeight="58.0" fitWidth="96.0" layoutX="24.0" layoutY="76.0">
+      <ImageView fx:id="sunBuy" fitHeight="58.0" fitWidth="96.0" layoutX="24.0" layoutY="79.0">
          <image>
-            <Image url="@../../../Assets/images/Cards/sunflowerCard.png" />
+            <Image url="@assets/sunflowerCard.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lawnMower1" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">

@@ -33,35 +33,50 @@ public class LevelMenuController {
 
     @FXML
     void launchLevel1(MouseEvent event) throws IOException {
-    	AnchorPane pane= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
+        controller.initData(1);
         levelRoot.getChildren().setAll(pane);
 
     }
 
     @FXML
     void launchLevel2(MouseEvent event) throws IOException{
-    	AnchorPane pane= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
+        controller.initData(2);
         levelRoot.getChildren().setAll(pane);
 
     }
 
     @FXML
     void launchLevel3(MouseEvent event) throws IOException{
-    	AnchorPane pane= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
+        controller.initData(3);
         levelRoot.getChildren().setAll(pane);
 
     }
 
     @FXML
     void launchLevel4(MouseEvent event) throws IOException{
-    	AnchorPane pane= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
+        controller.initData(4);
         levelRoot.getChildren().setAll(pane);
 
     }
 
     @FXML
     void launchLevel5(MouseEvent event) throws IOException{
-    	AnchorPane pane= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
+        controller.initData(5);
         levelRoot.getChildren().setAll(pane);
     }
 

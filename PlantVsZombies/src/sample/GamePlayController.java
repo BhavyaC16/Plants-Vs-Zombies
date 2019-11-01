@@ -60,14 +60,58 @@ public class GamePlayController {
     private ProgressBar progressBar;
 
     @FXML
+    private int levelNumber;
+
+    @FXML
+    public void initData(int levelNumber){
+        sunBuy.setDisable(false);
+        sunBuy.setVisible(true);
+        peaShooterBuy.setDisable(false);
+        peaShooterBuy.setVisible(true);
+        if (levelNumber==1){
+            this.levelNumber=1;
+            cherryBombBuy.setDisable(true);
+            cherryBombBuy.setVisible(false);
+            repeaterBuy.setDisable(true);
+            repeaterBuy.setVisible(false);
+            jalapenoBuy.setDisable(true);
+            jalapenoBuy.setVisible(false);
+            wallnutBuy.setDisable(true);
+            wallnutBuy.setVisible(false);
+        }
+        else if (levelNumber==2){
+            this.levelNumber=2;
+            cherryBombBuy.setDisable(true);
+            cherryBombBuy.setVisible(false);
+            repeaterBuy.setDisable(true);
+            repeaterBuy.setVisible(false);
+            jalapenoBuy.setDisable(true);
+            jalapenoBuy.setVisible(false);
+        }
+        else if (levelNumber==3){
+            this.levelNumber=3;
+            repeaterBuy.setDisable(true);
+            repeaterBuy.setVisible(false);
+            jalapenoBuy.setDisable(true);
+            jalapenoBuy.setVisible(false);
+        }
+        else if (levelNumber==4) {
+            this.levelNumber=4;
+            jalapenoBuy.setDisable(true);
+            jalapenoBuy.setVisible(false);
+        }
+        else{
+            this.levelNumber=5;
+        }
+    }
+    @FXML
     void loadGameMenu(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameMenu.fxml"));
         Parent gameMenu = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(gameMenu));
-        GameMenuController controller =
-                fxmlLoader.<GameMenuController>getController();
-        controller.initData(GamePlayRoot);
+        GameMenuController controller = fxmlLoader.<GameMenuController>getController();
+        controller.initData(GamePlayRoot,levelNumber);
         stage.show();
     }
 

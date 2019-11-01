@@ -30,14 +30,20 @@ public class GameMenuController {
     private Label GameMenuMessage;
 
     @FXML
-    public void initData(AnchorPane gamePlayRoot){
+    private int levelNumber;
+
+    @FXML
+    public void initData(AnchorPane gamePlayRoot,int levelNumber){
         this.GamePlayRoot=gamePlayRoot;
+        this.levelNumber=levelNumber;
     }
 
     @FXML
     void restartGame(MouseEvent event) throws IOException {
-        AnchorPane pane= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
-        this.GamePlayRoot.getChildren().setAll(pane);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
+        controller.initData(levelNumber);
         Stage stage = (Stage) restartGameButton.getScene().getWindow();
         stage.close();
     }
