@@ -1,19 +1,23 @@
 package sample;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class GamePlayController {
+
     @FXML
     private AnchorPane GamePlayRoot;
 
@@ -61,6 +65,13 @@ public class GamePlayController {
 
     @FXML
     private int levelNumber;
+
+    public void initialize(){
+        normalZombieWalk();
+        coneheadZombieWalk();
+        bucketheadZombieWalk();
+        dropSun();
+    }
 
     @FXML
     public void initData(int levelNumber){
@@ -113,6 +124,75 @@ public class GamePlayController {
         GameMenuController controller = fxmlLoader.<GameMenuController>getController();
         controller.initData(GamePlayRoot,levelNumber);
         stage.show();
+    }
+
+    @FXML
+    private void normalZombieWalk(){
+        ImageView zombie = new ImageView();
+        Image normalZombie = new Image("file:src/sample/assets/normalzombie.gif",68,118,false,false);
+        zombie.setImage(normalZombie);
+        TranslateTransition translate = new TranslateTransition();
+        translate.setByX(1024);
+        translate.setDuration(Duration.millis(25000));
+        translate.setCycleCount(1);
+        translate.setFromY(40);
+        translate.setFromX(1024);
+        translate.setToX(100);
+        translate.setNode(zombie);
+        translate.play();
+        GamePlayRoot.getChildren().addAll(zombie);
+    }
+
+    @FXML
+    public void bucketheadZombieWalk(){
+        ImageView zombie = new ImageView();
+        Image bucketheadZombie = new Image("file:src/sample/assets/bucketheadzombie.gif",68,118,false,false);
+        zombie.setImage(bucketheadZombie);
+        TranslateTransition translate = new TranslateTransition();
+        translate.setByX(1024);
+        translate.setDuration(Duration.millis(25000));
+        translate.setCycleCount(1);
+        translate.setFromY(420);
+        translate.setFromX(1024);
+        translate.setToX(100);
+        translate.setNode(zombie);
+        translate.play();
+        GamePlayRoot.getChildren().addAll(zombie);
+    }
+
+    @FXML
+    public void coneheadZombieWalk(){
+        ImageView zombie = new ImageView();
+        Image coneheadZombie = new Image("file:src/sample/assets/coneheadzombie.gif",133,122,false,false);
+        zombie.setImage(coneheadZombie);
+        TranslateTransition translate = new TranslateTransition();
+        translate.setByX(1024);
+        translate.setDuration(Duration.millis(25000));
+        translate.setCycleCount(1);
+        translate.setFromY(240);
+        translate.setFromX(1024);
+        translate.setToX(100);
+        translate.setNode(zombie);
+        translate.play();
+        GamePlayRoot.getChildren().addAll(zombie);
+    }
+
+    @FXML
+    public void dropSun()
+    {
+        ImageView sunToken = new ImageView();
+        Image sun = new Image("file:src/sample/assets/sun.png",50,50,false,false);
+        sunToken.setImage(sun);
+        TranslateTransition translate = new TranslateTransition();
+        translate.setByY(600);
+        translate.setDuration(Duration.millis(15000));
+        translate.setCycleCount(1);
+        translate.setFromY(0);
+        translate.setFromX(500);
+        translate.setToY(700);
+        translate.setNode(sunToken);
+        translate.play();
+        GamePlayRoot.getChildren().addAll(sunToken);
     }
 
 }

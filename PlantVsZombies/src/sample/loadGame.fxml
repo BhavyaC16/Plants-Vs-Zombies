@@ -4,14 +4,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="loadGameRoot" prefHeight="400.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoadGameController">
+<AnchorPane fx:id="loadGameRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoadGameController">
    <children>
-      <ImageView fitHeight="414.0" fitWidth="686.0" layoutX="-11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="-11.0" AnchorPane.rightAnchor="-75.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="-11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@assets/menu3-01.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="backButton" fitHeight="51.0" fitWidth="48.0" layoutX="605.0" layoutY="14.0" onMouseClicked="#loadPrevMenu" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="51.0" fitWidth="48.0" layoutX="925.0" layoutY="29.0" onMouseClicked="#loadPrevMenu" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/backbutton.png" />
          </image>
