@@ -19,7 +19,7 @@ public class viewManager {
         mainScene = new Scene(mainPane, width, height);
         mainStage = new Stage();
         mainStage.setScene(mainScene);
-        createButtons();
+//        createButtons();
     }
 
     public Stage getMainStage()
@@ -27,9 +27,9 @@ public class viewManager {
         return mainStage;
     }
 
-    private void createButtons()
-    {
-        Button button = new Button("Click me!");
-        mainPane.getChildren().add(button);
-    }
+//    private void createButtons()
+//    {
+//        Button button = new Button("Click me!");
+//        mainPane.getChildren().add(button);
+//    }
 }
