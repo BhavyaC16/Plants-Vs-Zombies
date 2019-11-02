@@ -46,6 +46,8 @@ public class GameMenuController {
         controller.initData(levelNumber);
         Stage stage = (Stage) restartGameButton.getScene().getWindow();
         stage.close();
+        AnchorPane game= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
+        GamePlayRoot.getChildren().setAll(game);
     }
 
     @FXML
