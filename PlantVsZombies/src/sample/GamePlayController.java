@@ -3,6 +3,7 @@ package sample;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class GamePlayController {
 
@@ -67,10 +69,27 @@ public class GamePlayController {
     private int levelNumber;
 
     public void initialize(){
-        normalZombieWalk();
-        coneheadZombieWalk();
-        bucketheadZombieWalk();
+        placeSunflower();
+        placePeashooter();
+        ImageView z1 = new ImageView();
+        ImageView z2 = new ImageView();
+        ImageView z3 = new ImageView();
+        ImageView z4 = new ImageView();
+        z1 = normalZombieWalk();
+        z2 = coneheadZombieWalk();
+        z3 = bucketheadZombieWalk();
+        z4 = normalZombie2();
         dropSun();
+        System.out.println(z1.getX());
+        //checkConditions();
+        while(z1.getX()>=600)
+        {
+            System.out.println();
+            if(z1.getX()<600)
+            {
+                z1.setVisible(true);
+            }
+        }
     }
 
     @FXML
@@ -127,72 +146,94 @@ public class GamePlayController {
     }
 
     @FXML
-    private void normalZombieWalk(){
-        ImageView zombie = new ImageView();
-        Image normalZombie = new Image("file:src/sample/assets/normalzombie.gif",68,118,false,false);
-        zombie.setImage(normalZombie);
-        TranslateTransition translate = new TranslateTransition();
-        translate.setByX(1024);
-        translate.setDuration(Duration.millis(25000));
-        translate.setCycleCount(1);
-        translate.setFromY(40);
-        translate.setFromX(1024);
-        translate.setToX(270);
-        translate.setNode(zombie);
-        translate.play();
-        GamePlayRoot.getChildren().addAll(zombie);
+    private void placeSunflower()
+    {
+        ImageView plant = new ImageView();
+        Image Sunflower = new Image("file:src/sample/assets/sunflower.gif", 60, 60, false, false);
+        plant.setImage(Sunflower);
+        plant.setX(330);
+        plant.setY(180);
+        GamePlayRoot.getChildren().addAll(plant);
     }
 
     @FXML
-    public void bucketheadZombieWalk(){
+    private void placePeashooter()
+    {
+        ImageView plant = new ImageView();
+        Image peashooter = new Image("file:src/sample/assets/peashooter.gif", 60, 60, false, false);
+        plant.setImage(peashooter);
+        plant.setX(330);
+        plant.setY(80);
+        GamePlayRoot.getChildren().addAll(plant);
+    }
+
+    @FXML
+    private ImageView normalZombieWalk(){
+        ImageView zombie = new ImageView();
+        ImageView img = new ImageView();
+        Image normalZombie = new Image("file:src/sample/assets/normalzombie.gif",68,118,false,false);
+        zombie.setImage(normalZombie);
+        img = addTransition(25000, 1, 1024, 40, 270, 40, zombie);
+        return(img);
+    }
+
+    @FXML
+    private ImageView normalZombie2()
+    {
+        ImageView zombie = new ImageView();
+        ImageView img = new ImageView();
+        Image normalZombie = new Image("file:src/sample/assets/normalzombie.gif",68,118,false,false);
+        zombie.setImage(normalZombie);
+        img = addTransition(50000, 1, 2048, 420, 270, 420, zombie);
+        return(img);
+    }
+
+    @FXML
+    private ImageView bucketheadZombieWalk(){
+        ImageView img = new ImageView();
         ImageView zombie = new ImageView();
         Image bucketheadZombie = new Image("file:src/sample/assets/bucketheadzombie.gif",68,118,false,false);
         zombie.setImage(bucketheadZombie);
-        TranslateTransition translate = new TranslateTransition();
-        translate.setByX(1024);
-        translate.setDuration(Duration.millis(25000));
-        translate.setCycleCount(1);
-        translate.setFromY(420);
-        translate.setFromX(1024);
-        translate.setToX(270);
-        translate.setNode(zombie);
-        translate.play();
-        GamePlayRoot.getChildren().addAll(zombie);
+        img = addTransition(25000, 1, 1024, 420, 270, 420, zombie);
+        return(img);
     }
 
     @FXML
-    public void coneheadZombieWalk(){
+    private ImageView coneheadZombieWalk(){
+        ImageView img = new ImageView();
         ImageView zombie = new ImageView();
         Image coneheadZombie = new Image("file:src/sample/assets/coneheadzombie.gif",133,122,false,false);
         zombie.setImage(coneheadZombie);
-        TranslateTransition translate = new TranslateTransition();
-        translate.setByX(1024);
-        translate.setDuration(Duration.millis(25000));
-        translate.setCycleCount(1);
-        translate.setFromY(240);
-        translate.setFromX(1024);
-        translate.setToX(250);
-        translate.setNode(zombie);
-        translate.play();
-        GamePlayRoot.getChildren().addAll(zombie);
+        img = addTransition(25000, 1, 1024, 220, 250, 220, zombie);
+        return(img);
     }
 
     @FXML
-    public void dropSun()
+    private void dropSun()
     {
         ImageView sunToken = new ImageView();
         Image sun = new Image("file:src/sample/assets/sun.png",50,50,false,false);
         sunToken.setImage(sun);
+        Random rand = new Random();
+        int startX = rand.nextInt(850) + 270;
+        int stopX = startX;
+        addTransition(15000, 1, startX, 0, stopX, 700, sunToken);
+    }
+
+    private ImageView addTransition(double duration, int count, double startX, double startY, double stopX, double stopY, ImageView img)
+    {
         TranslateTransition translate = new TranslateTransition();
-        translate.setByY(600);
-        translate.setDuration(Duration.millis(15000));
-        translate.setCycleCount(1);
-        translate.setFromY(0);
-        translate.setFromX(500);
-        translate.setToY(700);
-        translate.setNode(sunToken);
+        translate.setDuration(Duration.millis(duration));
+        translate.setCycleCount(count);
+        translate.setFromY(startY);
+        translate.setFromX(startX);
+        translate.setToX(stopX);
+        translate.setToY(stopY);
+        translate.setNode(img);
         translate.play();
-        GamePlayRoot.getChildren().addAll(sunToken);
+        System.out.println(img.getLayoutX());
+        GamePlayRoot.getChildren().addAll(img);
+        return(img);
     }
 
 }

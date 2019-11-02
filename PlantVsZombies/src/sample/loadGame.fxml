@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="loadGameRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoadGameController">
    <children>
@@ -16,5 +19,11 @@
             <Image url="@assets/backbutton.png" />
          </image>
       </ImageView>
+      <Label alignment="CENTER" layoutX="399.0" layoutY="38.0" prefHeight="107.0" prefWidth="330.0" text="Load Game" textAlignment="RIGHT" textFill="#00863cf5">
+         <font>
+            <Font name="Dyuthi" size="48.0" />
+         </font>
+      </Label>
+      <ListView fx:id="gameStateList" layoutX="363.0" layoutY="145.0" onMouseClicked="#handleMouseClick" prefHeight="244.0" prefWidth="402.0" />
    </children>
 </AnchorPane>
