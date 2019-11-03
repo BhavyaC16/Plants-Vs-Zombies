@@ -308,7 +308,7 @@ public class GamePlayController {
         Random rand = new Random();
         int startX = rand.nextInt(850) + 270;
         int stopX = startX;
-        addTransition(15000, 1, startX, 0, stopX, 600, sunToken);
+        addTransition(15000, 1, startX, 0, stopX, 550, sunToken);
     }
 
     private ImageView addTransition(double duration, int count, double startX, double startY, double stopX, double stopY, ImageView img)
