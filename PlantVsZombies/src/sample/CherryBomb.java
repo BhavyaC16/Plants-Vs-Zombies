@@ -1,5 +1,5 @@
 package sample;
 
-public class CherryBomb extends Bomb{
+public abstract class CherryBomb extends Bomb{
     String path="./assets/cherryBomb.gif";
 }

@@ -1,6 +1,6 @@
 package sample;
 
-import javafx.animation.TranslateTransition;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

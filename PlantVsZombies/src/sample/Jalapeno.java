@@ -1,4 +1,4 @@
 package sample;
 
-public class Jalapeno extends Bomb {
+public abstract class Jalapeno extends Bomb {
 }
