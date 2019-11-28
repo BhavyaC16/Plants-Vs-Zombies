@@ -87,22 +87,22 @@ public class GamePlay {
         System.out.println("Placing Plant");
         switch (val) {
             case 1:
-                allPlants.add(new Sunflower(x, y, GamePlayRoot));
+                allPlants.add(new Sunflower(x, y, main_pane));
                 break;
             case 2:
-                allPlants.add(new PeaShooter(x, y, GamePlayRoot));
+                allPlants.add(new PeaShooter(x, y, main_pane));
                 break;
             case 3:
-                allPlants.add(new Wallnut(x, y, GamePlayRoot));
+                allPlants.add(new Wallnut(x, y, main_pane));
                 break;
             case 4:
-                allPlants.add(new CherryBomb(x, y, GamePlayRoot));
+                allPlants.add(new CherryBomb(x, y, main_pane));
                 break;
             case 5:
-                allPlants.add(new Repeater(x, y, GamePlayRoot));
+                allPlants.add(new Repeater(x, y, main_pane));
                 break;
             case 6:
-                allPlants.add(new Jalapeno(x, y, GamePlayRoot));
+                allPlants.add(new Jalapeno(x, y, main_pane));
                 break;
             default:
                 System.out.println("No case match" + val);

@@ -88,11 +88,8 @@ public class GamePlayController {
 
     @FXML
     void getGridPosition(MouseEvent event) throws IOException {
-        g.getGridPosition();
+        g.getGridPosition(event);
         }
-
-
-    }
 
     @FXML
     void loadGameMenu(MouseEvent event) throws IOException {
