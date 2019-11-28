@@ -72,8 +72,11 @@ public class GamePlayController {
     public void initialize() throws Exception{
 
         NormalZombie nz = new NormalZombie(1024, 50);
+        Sun s = new Sun(100, 0);
+        Thread t1 = new Thread(s);
         Thread t = new Thread(nz);
         t.start();
+        t1.start();
         /*
         placeSunflower();
         placePeashooter();

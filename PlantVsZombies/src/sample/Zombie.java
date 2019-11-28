@@ -81,7 +81,7 @@ public class Zombie implements Runnable{
             }
         };
     }
-
+    @Override
     public void run(){
         while(this.hp>0) {
             try {
