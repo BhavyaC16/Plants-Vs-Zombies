@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -67,18 +68,28 @@ public class GamePlayController {
     private ArrayList<Plant> allPlants;
     private ArrayList<Zombie> allZombies;
     private int sunCount;
+    private final int LANE1;
+    private final int LANE2;
+    private final int LANE3;
+    private final int LANE4;
+    private final int LANE5;
 
 
     public GamePlayController() {
         allPlants = new ArrayList<Plant>();
         allZombies = new ArrayList<Zombie>();
+        LANE1 = 50;
+        LANE2 = 150;
+        LANE3 = 250;
+        LANE4 = 350;
+        LANE5 = 450;
     }
 
 
     public void initialize() throws Exception {
         //System.out.println("initialize");
         Random rand = new Random();
-        NormalZombie n = new NormalZombie(1024, 200, GamePlayRoot);
+        NormalZombie n = new NormalZombie(1024, 450, GamePlayRoot);
         n.moveZombie();
         this.sunCountLabel.setText("50");
         fallingSuns(rand);
