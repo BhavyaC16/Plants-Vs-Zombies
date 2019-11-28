@@ -62,16 +62,23 @@ public class GamePlayController {
     private GridPane lawn_grid;
     private ArrayList<Plant> allPlants;
     private ArrayList<Zombie> allZombies;
+    private int sunCount;
 
     public GamePlayController() {
-        allPlants = new ArrayList<Plant>();
-        allZombies = new ArrayList<Zombie>();
+        this.allPlants = new ArrayList<Plant>();
+        this.allZombies = new ArrayList<Zombie>();
+        this.sunCount = 0;
+        this.sunCountLabel = new Label();
+
     }
 
 
     public void initialize() throws Exception {
         NormalZombie n = new NormalZombie(1024, 200, GamePlayRoot);
         n.moveZombie();
+        Sun s = new Sun(400, 0, GamePlayRoot);
+        s.dropSun();
+        this.sunCountLabel.setText("0");
     }
 
     @FXML

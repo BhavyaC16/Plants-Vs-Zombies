@@ -152,9 +152,8 @@ public abstract class Zombie extends GameElements {
         Thread t = new Thread(() -> {
             while (this.hp > 0) {
                 try {
-                    System.out.println("running");
+                    //System.out.println("running");
                     setX(getX()-1);
-                    System.out.println(getX());
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
