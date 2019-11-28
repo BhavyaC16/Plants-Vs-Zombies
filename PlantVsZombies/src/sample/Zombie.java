@@ -149,6 +149,7 @@ public abstract class Zombie extends GameElements {
 //    }
 
     public void moveZombie() {
+<<<<<<< HEAD
         Thread t = new Thread(() -> {
             while (this.hp > 0) {
                 try {
@@ -161,6 +162,21 @@ public abstract class Zombie extends GameElements {
             }
         });
         t.start();
+=======
+//        Thread t = new Thread(() -> {
+//            while (this.hp > 0) {
+//                try {
+//                    System.out.println("running");
+//                    setX(getX()-1);
+//                    System.out.println(getX());
+//                    Thread.sleep(50);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//        t.start();
+>>>>>>> 92779a6d2b34f78fdcef1c7674a8b916bc797c4e
         //if(this.hp<=5)
         //Plant p=checkCollisionWithPlant();
         //if(p!=null){

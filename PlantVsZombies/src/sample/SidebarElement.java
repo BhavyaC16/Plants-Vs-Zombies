@@ -12,18 +12,20 @@ public class SidebarElement extends GameElements{
     private boolean isDisabled=false;
     private static ImageView selectedBorder;
     private static HashMap<Integer,SidebarElement> allElements;
-    public SidebarElement(int x,int y,String path,Pane pane, int width,int height){
+    private final int cost;
+    public SidebarElement(int x,int y,String path,Pane pane, int width,int height,int cost){
         super(x,y,path,pane,width,height);
+        this.cost=cost;
+    }
+
+    public int getCost(){
+        return this.cost;
     }
 
     public static void getSideBarElements(int level,Pane pane){
         String path;
         int x;
         int y;
-        selectedBorder =new ImageView(new Image("file:src/sample/assets/selectedCardBorder.png",100.0,64.0,false,false));
-        pane.getChildren().add(selectedBorder);
-        selectedBorder.setVisible(false);
-        selectedBorder.setDisable(true);
         int width=97;
         int height=58;
         allElements=new HashMap<Integer, SidebarElement>();
@@ -31,11 +33,9 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/sunflowerCard.png";
             x=24;
             y=79;
-            SidebarElement sunflowerCard=new SidebarElement(x,y,path,pane,width,height);
+            SidebarElement sunflowerCard=new SidebarElement(x,y,path,pane,width,height,50);
             sunflowerCard.timeoutTime=5000;
-//            Image sunflowerImage = new Image(path, 97, 58, false, false);
             allElements.put(1,sunflowerCard);
-//            sunflowerCard.img.setImage(sunflowerImage);
             sunflowerCard.img.setOnMouseClicked(e->{
                 if (!sunflowerCard.isDisabled){
                     System.out.println("SUnflowerclcked");
@@ -47,11 +47,9 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/peashooterCard.png";
             x=22;
             y=147;
-            SidebarElement peashooterCard=new SidebarElement(x,y,path,pane,width,height);
+            SidebarElement peashooterCard=new SidebarElement(x,y,path,pane,width,height,100);
             peashooterCard.timeoutTime=6000;
             allElements.put(2,peashooterCard);
-//            Image peashooterImage = new Image(path, 97, 58, false, false);
-//            peashooterCard.img.setImage(peashooterImage);
             peashooterCard.img.setOnMouseClicked(e->{
                 if (!peashooterCard.isDisabled){
                     System.out.println("pealcked");
@@ -63,11 +61,9 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/wallnutCard.png";
             x=22;
             y=217;
-            SidebarElement wallnutCard=new SidebarElement(x,y,path,pane,width,height);
+            SidebarElement wallnutCard=new SidebarElement(x,y,path,pane,width,height,50);
             wallnutCard.timeoutTime=7000;
             allElements.put(3,wallnutCard);
-//            Image wallnutImage = new Image(path, 97, 58, false, false);
-//            wallnutCard.img.setImage(wallnutImage);
             wallnutCard.img.setOnMouseClicked(e->{
                 if (!wallnutCard.isDisabled) {
                     setCardSelected(3);
@@ -78,11 +74,9 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/cherrybombCard.png";
             x=22;
             y=284;
-            SidebarElement cherrybombCard=new SidebarElement(x,y,path,pane,width,height);
+            SidebarElement cherrybombCard=new SidebarElement(x,y,path,pane,width,height,150);
             cherrybombCard.timeoutTime=8000;
             allElements.put(4,cherrybombCard);
-//            Image cherrybombImage = new Image(path, 97, 58, false, false);
-//            cherrybombCard.img.setImage(cherrybombImage);
             cherrybombCard.img.setOnMouseClicked(e->{
                 if (!cherrybombCard.isDisabled) {
                     System.out.println("CherryBomb clicked");
@@ -94,11 +88,9 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/repeaterCard.png";
             x=23;
             y=352;
-            SidebarElement repeaterCard=new SidebarElement(x,y,path,pane,width,height);
+            SidebarElement repeaterCard=new SidebarElement(x,y,path,pane,width,height,200);
             repeaterCard.timeoutTime=9000;
             allElements.put(5,repeaterCard);
-//            Image repeaterImage = new Image(path, 97, 58, false, false);
-//            repeaterCard.img.setImage(repeaterImage);
             repeaterCard.img.setOnMouseClicked(e->{
                 if (!repeaterCard.isDisabled){
                     System.out.println("repeater clicked");
@@ -110,11 +102,9 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/jalapenoCard.png";
             x=24;
             y=420;
-            SidebarElement jalapenoCard=new SidebarElement(x,y,path,pane,width,height);
+            SidebarElement jalapenoCard=new SidebarElement(x,y,path,pane,width,height,125);
             jalapenoCard.timeoutTime=10000;
             allElements.put(6,jalapenoCard);
-//            Image jalapenoImage = new Image(path, 97, 58, false, false);
-//            jalapenoCard.img.setImage(jalapenoImage);
             jalapenoCard.img.setOnMouseClicked(e->{
                 if (!jalapenoCard.isDisabled) {
                     System.out.println("Jalapeno clicked");
@@ -123,6 +113,10 @@ public class SidebarElement extends GameElements{
             });
 
         }
+        selectedBorder =new ImageView(new Image("file:src/sample/assets/selectedCardBorder.png",110.0,72.0,false,false));
+        pane.getChildren().add(selectedBorder);
+        selectedBorder.setVisible(false);
+        selectedBorder.setDisable(true);
     }
 
     public static int getCardSelected() {
@@ -131,8 +125,9 @@ public class SidebarElement extends GameElements{
     private static void setCardSelected(int i){
         cardSelected=i;
         selectedBorder.setVisible(true);
-        selectedBorder.setX(allElements.get(cardSelected).getX());
-        selectedBorder.setY(allElements.get(cardSelected).getY());
+        System.out.println("Card selected"+selectedBorder);
+        selectedBorder.setX(allElements.get(cardSelected).getX()-5);
+        selectedBorder.setY(allElements.get(cardSelected).getY()-5);
     }
     public static void setCardSelectedToNull(){
         cardSelected=-1;
@@ -147,7 +142,7 @@ public class SidebarElement extends GameElements{
     public void setDisabledOn(){
         this.isDisabled=true;
         ImageView im =new ImageView(new Image("file:src/sample/assets/lock.png",50.0,50.0,false,false));
-        im.setX(this.getX()-10);
+        im.setX(this.getX()+20);
         im.setY(this.getY());
         this.pane.getChildren().add(im);
         System.out.println("Added lock image");
