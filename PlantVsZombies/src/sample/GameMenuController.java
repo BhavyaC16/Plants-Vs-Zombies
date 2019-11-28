@@ -39,6 +39,8 @@ public class GameMenuController {
 
     @FXML
     void restartGame(MouseEvent event) throws IOException {
+        GamePlayController.gameStatus = false;
+        GamePlayController.sunTimeline.stop();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
@@ -51,11 +53,15 @@ public class GameMenuController {
 
     @FXML
     void saveGame(MouseEvent event) throws IOException {
+        GamePlayController.gameStatus = false;
+        GamePlayController.sunTimeline.stop();
         GameMenuMessage.setText("Game Saved!");
     }
 
     @FXML
     void showMainMenu(MouseEvent event) throws IOException {
+        GamePlayController.gameStatus = false;
+        GamePlayController.sunTimeline.stop();
         AnchorPane pane= FXMLLoader.load(getClass().getResource("MainPage.fxml"));
         GamePlayRoot.getChildren().setAll(pane);
         Stage stage = (Stage) restartGameButton.getScene().getWindow();

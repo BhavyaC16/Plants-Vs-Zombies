@@ -55,7 +55,7 @@ public class GamePlayController {
     @FXML
     private ImageView lawnMower5;
     @FXML
-    private static Label sunCountLabel;
+    private Label sunCountLabel;
     @FXML
     private ImageView GameMenuLoaderButton;
     @FXML
@@ -73,6 +73,9 @@ public class GamePlayController {
     private final int LANE3;
     private final int LANE4;
     private final int LANE5;
+    public static boolean gameStatus;
+    public static Timeline sunTimeline;
+    private static Label sunCountDisplay;
 
 
     public GamePlayController() {
@@ -87,23 +90,27 @@ public class GamePlayController {
 
 
     public void initialize() throws Exception {
-        //System.out.println("initialize");
+        gameStatus = true;
+        sunCount = 50;
+        sunCountDisplay = sunCountLabel;
+        sunCountDisplay.setText("50");
         Random rand = new Random();
-        NormalZombie n = new NormalZombie(1024, 450, GamePlayRoot);
-        n.moveZombie();
-        this.sunCountLabel.setText("50");
+        //NormalZombie n = new NormalZombie(1024, 450, GamePlayRoot);
+        //n.moveZombie();
+
         fallingSuns(rand);
     }
 
-    public static int updateSunCount(int val)
+    public static void updateSunCount(int val)
     {
         sunCount+=val;
-        return(sunCount);
+        System.out.println(sunCount);
+        getSunCountLabel().setText(Integer.toString(sunCount));
     }
 
     public static Label getSunCountLabel()
     {
-        return(sunCountLabel);
+        return(sunCountDisplay);
     }
 
     public void fallingSuns(Random rand) {
@@ -118,7 +125,27 @@ public class GamePlayController {
         }));
         sunDropper.setCycleCount(Timeline.INDEFINITE);
         sunDropper.play();
+        sunTimeline = sunDropper;
     }
+
+//    public void fallingSuns(Random rand) {
+//        {
+//            Thread t = new Thread(() -> {
+//                while (gameStatus) {
+//                    try {
+//                        Thread.sleep(10000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    int sunPosition = rand.nextInt(850);
+//                    sunPosition += 100;
+//                    Sun s = new Sun(sunPosition, 0, GamePlayRoot);
+//                    s.dropSun();
+//                }
+//            });
+//            t.start();
+//        }
+//    }
     @FXML
     public void initData(int levelNumber) {
         //System.out.println("initData");
@@ -142,8 +169,9 @@ public class GamePlayController {
                     }
                 }
                 System.out.println("Placing "+rowIndex+" "+colIndex);
-                if ((flag) && SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= Integer.valueOf(sunCountLabel.getText())) {
+                if ((flag) && SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= sunCount) {
                     placePlant(SidebarElement.getCardSelected(), colIndex, rowIndex);
+                    updateSunCount((-1)*SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
                     SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
                 } else System.out.println("Not enough suns" + Integer.valueOf(sunCountLabel.getText()));
             }

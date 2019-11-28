@@ -17,12 +17,12 @@ public class Sun extends GameElements{
     public Sun(int x, int y, Pane pane)
     {
         super(x, y, "file:src/sample/assets/sun.png", pane, 50, 50);
+        super.makeImage();
         this.img.setOnMouseClicked(e->{
             System.out.println("Falling sun clicked");
             this.img.setVisible(false);
             this.img.setDisable(true);
-            int sunCount = GamePlayController.updateSunCount(25);
-            GamePlayController.getSunCountLabel().setText(Integer.toString(sunCount));
+            GamePlayController.updateSunCount(25);
         });
     }
 
@@ -68,13 +68,8 @@ public class Sun extends GameElements{
 
     public void dropSun()
     {
-        Timeline animation = new Timeline(new KeyFrame(Duration.millis(5),e -> moveSun()));
-        animation.setCycleCount(Timeline.INDEFINITE);
+        Timeline animation = new Timeline(new KeyFrame(Duration.millis(12),e -> moveSun()));
+        animation.setCycleCount(550);
         animation.play();
-    }
-
-    public void updateCount()
-    {
-
     }
 }
