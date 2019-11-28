@@ -1,11 +1,12 @@
 package sample;
 
 import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class CherryBomb extends Plant{
-    public CherryBomb(int x, int y, Pane pane,int z) {
-        super(x, y, "file:src/sample/assets/cherryBomb.gif", pane, 4,80,60,z);
+    public CherryBomb(int x, int y, Pane pane, int z, GridPane grid) {
+        super(x, y, "file:src/sample/assets/cherryBomb.gif", pane, 4,80,60,z,grid);
 //        System.out.println(this.path);
 //        Image cImage = new Image("file:src/sample/assets/cherryBomb.gif", 150, 150, false, false);
 //        System.out.println(cImage);
