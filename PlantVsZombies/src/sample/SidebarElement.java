@@ -35,12 +35,10 @@ public class SidebarElement extends GameElements{
             x=24;
             y=79;
             SidebarElement sunflowerCard=new SidebarElement(x,y,path,pane,width,height,50);
-//            sunflowerCard.makeImage();
             sunflowerCard.timeoutTime=5000;
             allElements.put(1,sunflowerCard);
             sunflowerCard.img.setOnMouseClicked(e->{
                 if (!sunflowerCard.isDisabled){
-                    System.out.println("SUnflowerclcked");
                     setCardSelected(1);
                 }
             });
@@ -50,12 +48,10 @@ public class SidebarElement extends GameElements{
             x=22;
             y=147;
             SidebarElement peashooterCard=new SidebarElement(x,y,path,pane,width,height,100);
-//            peashooterCard.makeImage();
             peashooterCard.timeoutTime=6000;
             allElements.put(2,peashooterCard);
             peashooterCard.img.setOnMouseClicked(e->{
                 if (!peashooterCard.isDisabled){
-                    System.out.println("pealcked");
                       setCardSelected(2);
                 }
             });
@@ -65,7 +61,6 @@ public class SidebarElement extends GameElements{
             x=22;
             y=217;
             SidebarElement wallnutCard=new SidebarElement(x,y,path,pane,width,height,50);
-//            wallnutCard.makeImage();
             wallnutCard.timeoutTime=7000;
             allElements.put(3,wallnutCard);
             wallnutCard.img.setOnMouseClicked(e->{
@@ -79,12 +74,10 @@ public class SidebarElement extends GameElements{
             x=22;
             y=284;
             SidebarElement cherrybombCard=new SidebarElement(x,y,path,pane,width,height,150);
-//            cherrybombCard.makeImage();
             cherrybombCard.timeoutTime=8000;
             allElements.put(4,cherrybombCard);
             cherrybombCard.img.setOnMouseClicked(e->{
                 if (!cherrybombCard.isDisabled) {
-                    System.out.println("CherryBomb clicked");
                     setCardSelected(4);
                 }
             });
@@ -94,12 +87,10 @@ public class SidebarElement extends GameElements{
             x=23;
             y=352;
             SidebarElement repeaterCard=new SidebarElement(x,y,path,pane,width,height,200);
-//            repeaterCard.makeImage();
             repeaterCard.timeoutTime=9000;
             allElements.put(5,repeaterCard);
             repeaterCard.img.setOnMouseClicked(e->{
                 if (!repeaterCard.isDisabled){
-                    System.out.println("repeater clicked");
                     setCardSelected(5);
                 }
             });
@@ -109,12 +100,10 @@ public class SidebarElement extends GameElements{
             x=24;
             y=420;
             SidebarElement jalapenoCard=new SidebarElement(x,y,path,pane,width,height,125);
-//            jalapenoCard.makeImage();
             jalapenoCard.timeoutTime=10000;
             allElements.put(6,jalapenoCard);
             jalapenoCard.img.setOnMouseClicked(e->{
                 if (!jalapenoCard.isDisabled) {
-                    System.out.println("Jalapeno clicked");
                     setCardSelected(6);
                 }
             });
@@ -132,7 +121,6 @@ public class SidebarElement extends GameElements{
     private static void setCardSelected(int i){
         cardSelected=i;
         selectedBorder.setVisible(true);
-        System.out.println("Card selected"+selectedBorder);
         selectedBorder.setX(allElements.get(cardSelected).getX()-5);
         selectedBorder.setY(allElements.get(cardSelected).getY()-5);
     }
@@ -152,17 +140,13 @@ public class SidebarElement extends GameElements{
         im.setX(this.getX()+20);
         im.setY(this.getY());
         this.pane.getChildren().add(im);
-        System.out.println("Added lock image");
-
         Thread t = new Thread(() -> {
             try {
-                System.out.println("now disabled");
                 Thread.sleep(this.timeoutTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             this.isDisabled=false;
-            System.out.println("Now not disabled");
             im.setVisible(false);
             im.setDisable(true);
         });

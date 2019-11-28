@@ -4,8 +4,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class Jalapeno extends Plant {
-    public Jalapeno(int x, int y, Pane pane, int z, GridPane grid) {
-        super(x, y, "file:src/sample/assets/jalapeno.gif", pane, 4,100,100, z, grid);
+    public Jalapeno(int x, int y, Pane pane, int z, GridPane grid,int row,int col) {
+        super(x, y, "file:src/sample/assets/jalapeno.gif", pane, 4,100,100, z, grid,row,col);
     }
     @Override
     public void attack(){

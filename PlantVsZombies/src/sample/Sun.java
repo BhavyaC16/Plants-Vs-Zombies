@@ -13,9 +13,9 @@ import javafx.util.Duration;
 public class Sun extends GameElements{
     private int x;
     private int y;
-    private boolean fallingSun;
+    private final int timeouttime;
 
-    public Sun(int x, int y, Pane pane, boolean isFalling)
+    public Sun(int x, int y, Pane pane, boolean fallingSun)
     {
         super(x, y, "file:src/sample/assets/sun.png", pane, 50, 50);
         super.makeImage();
@@ -24,14 +24,13 @@ public class Sun extends GameElements{
             this.img.setVisible(false);
             this.img.setDisable(true);
             GamePlayController.updateSunCount(25);
-            this.fallingSun=isFalling;
         });
+
+        if(fallingSun) timeouttime=14000;
+        else timeouttime=5000;
         disappearAfterTime();
     }
     public void disappearAfterTime(){
-        int timeouttime=0;
-        if(this.fallingSun) timeouttime=17000;
-        else timeouttime=5000;
         Thread t = new Thread(() -> {
             try {
                 System.out.println("now disabled");

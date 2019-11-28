@@ -10,17 +10,22 @@ public abstract class Plant extends GameElements{
     protected GridPane lawn;
     protected int hp;
     private int zombierow;
-    public Plant(int x, int y, String path, Pane pane, int hp,int width,int height,int z,GridPane lawn){
+    private int col;
+    private int row;
+    public Plant(int x, int y, String path, Pane pane, int hp,int width,int height,int z,GridPane lawn,int col,int row){
         super(x,y,path,pane,width,height);
         this.hp=hp;
         this.zombierow=z;
         this.lawn=lawn;
+        this.col=col;
+        this.row=row;
         this.makeImage();
+
     }
 
     @Override
     public void makeImage(){
-        lawn.add(img,x,y,1,1);
+        lawn.add(img,col,row,1,1);
     }
 
     public void attack(){

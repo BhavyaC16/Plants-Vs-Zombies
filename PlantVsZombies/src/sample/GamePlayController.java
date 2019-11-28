@@ -104,7 +104,6 @@ public class GamePlayController {
     public static void updateSunCount(int val)
     {
         sunCount+=val;
-        System.out.println(sunCount);
         getSunCountLabel().setText(Integer.toString(sunCount));
     }
 
@@ -157,8 +156,6 @@ public class GamePlayController {
     void getGridPosition(MouseEvent event) throws IOException {
         if (SidebarElement.getCardSelected() != -1) {
             Node source = (Node) event.getSource();
-//            int col=(int) (source.getLayoutX() + source.getParent().getLayoutX());
-//            int row=(int) (source.getLayoutY() + source.getParent().getLayoutY());
             Integer colIndex = lawn_grid.getColumnIndex(source);
             Integer rowIndex = lawn_grid.getRowIndex(source);
             if (colIndex != null && rowIndex != null) {
@@ -168,21 +165,23 @@ public class GamePlayController {
                         flag = false;
                     }
                 }
-                System.out.println("Placing "+rowIndex+" "+colIndex);
-                if ((flag) && SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= sunCount) {
-                    placePlant(SidebarElement.getCardSelected(), colIndex, rowIndex);
-                    updateSunCount((-1)*SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
-                    SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
-                } else System.out.println("Not enough suns" + Integer.valueOf(sunCountLabel.getText()));
+                if (flag){
+                    if (SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= sunCount) {
+                        placePlant(SidebarElement.getCardSelected(),(int) (source.getLayoutX() + source.getParent().getLayoutX()),(int) (source.getLayoutY() + source.getParent().getLayoutY()), colIndex, rowIndex);
+                        updateSunCount((-1)*SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
+                        SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
+                    } else System.out.println("Not enough sun score" );
+                }
+                else System.out.println("Cant place more than one plant on cell");
+
             }
             SidebarElement.setCardSelectedToNull();
         }
     }
 
-    public void placePlant(int val, int x, int y) {
-        System.out.println("Placing Plant");
+    public void placePlant(int val, int x, int y,int row,int col) {
         int z=0;
-        switch(y){
+        switch(row){
             case 1:
                 z=LANE1;
                 break;
@@ -203,22 +202,22 @@ public class GamePlayController {
         }
         switch (val) {
             case 1:
-                allPlants.add(new Sunflower(x, y, GamePlayRoot,z,lawn_grid));
+                allPlants.add(new Sunflower(x, y, GamePlayRoot,z,lawn_grid,row,col));
                 break;
             case 2:
-                allPlants.add(new PeaShooter(x, y, GamePlayRoot,z,lawn_grid));
+                allPlants.add(new PeaShooter(x, y, GamePlayRoot,z,lawn_grid,row,col));
                 break;
             case 3:
-                allPlants.add(new Wallnut(x, y, GamePlayRoot,z,lawn_grid));
+                allPlants.add(new Wallnut(x, y, GamePlayRoot,z,lawn_grid,row,col));
                 break;
             case 4:
-                allPlants.add(new CherryBomb(x, y, GamePlayRoot,z,lawn_grid));
+                allPlants.add(new CherryBomb(x, y, GamePlayRoot,z,lawn_grid,row,col));
                 break;
             case 5:
-                allPlants.add(new Repeater(x, y, GamePlayRoot,z,lawn_grid));
+                allPlants.add(new Repeater(x, y, GamePlayRoot,z,lawn_grid,row,col));
                 break;
             case 6:
-                allPlants.add(new Jalapeno(x, y, GamePlayRoot,z,lawn_grid));
+                allPlants.add(new Jalapeno(x, y, GamePlayRoot,z,lawn_grid,row,col));
                 break;
             default:
                 System.out.println("No case match" + val);
