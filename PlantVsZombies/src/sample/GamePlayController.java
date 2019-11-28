@@ -1,6 +1,6 @@
 package sample;
 
-
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -70,6 +70,11 @@ public class GamePlayController {
     private int levelNumber;
 
     public void initialize() throws Exception{
+
+        NormalZombie nz = new NormalZombie(1024, 50);
+        Thread t = new Thread(nz);
+        t.start();
+        /*
         placeSunflower();
         placePeashooter();
         ImageView z1 = new ImageView();
@@ -83,6 +88,7 @@ public class GamePlayController {
         z4 = normalZombie2();
         Pea = shootPea();
         dropSun();
+        */
     }
 
     @FXML
