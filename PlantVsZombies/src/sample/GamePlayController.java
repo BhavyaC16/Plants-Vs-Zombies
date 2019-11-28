@@ -119,7 +119,7 @@ public class GamePlayController {
             public void handle(ActionEvent event) {
                 int sunPosition = rand.nextInt(850);
                 sunPosition += 100;
-                Sun s = new Sun(sunPosition, 0, GamePlayRoot);
+                Sun s = new Sun(sunPosition, 0, GamePlayRoot, true);
                 s.dropSun();
             }
         }));
