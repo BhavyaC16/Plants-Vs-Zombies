@@ -3,7 +3,7 @@ package sample;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 
-public abstract class Zombie extends GameElements{
+public abstract class Zombie extends GameElements {
 
     protected int hp;
     protected int x;
@@ -31,6 +31,7 @@ public abstract class Zombie extends GameElements{
     public void setLane(int lane) {
         this.y = lane;
     }
+
     public void checkCollisionWithPlant() {
 
     }
@@ -61,6 +62,75 @@ public abstract class Zombie extends GameElements{
 //                setX(getX() - 2);
 //                if (checkReachedHouse()) {
 //                    //activate lawnmower or end game.
+//}
+//    public Plant checkCollisionWithPlant(){
+//
+//    }
+//    public void checkReachedHouse() {
+//        public void setLane ( int lane){
+//            this.y = lane;
+//        }
+//        public int getX () {
+//            return this.x;
+//        }
+//        public int getY () {
+//            return this.y;
+//        }
+//        public void checkCollisionWithPlant () {
+//
+//        }
+//        public boolean checkReachedHouse () {
+//            if (this.x <= 50) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        }
+//        public boolean isAlive ()
+//        {
+//            if (this.hp > 0) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        }
+//        public void moveZombie () {
+//            AnimationTimer timer = new AnimationTimer() {
+//                double dx = -2;
+//
+//                @Override
+//                public void handle(long now) {
+//                    zombie.setLayoutX(zombie.getLayoutX() + dx);
+//
+//                    if (checkReachedHouse()) {
+//                        //activate lawnmower or end game.
+//                    }
+//                /*
+//                if(checkCollisionWithPlant())
+//                {
+//                    //make zombie wait (put sleep on thread for 8 seconds)
+//                    //make plant disappear and resume zombie.
+//                }
+//                */
+//                    if (!isAlive()) {
+//                        //kill zombie
+//                    }
+//                }
+//            };
+//        }
+//    }
+//    public void run(){
+//        while(this.hp>0) {
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            if(this.hp==5)
+//            Plant p=checkCollisionWithPlant();
+//            if(p!=null){
+//                while(p.getHp()>0) {
+//                    p.setHp(p.getHp()-this.attackPower);
 //                }
 //                /*
 //                if(checkCollisionWithPlant())

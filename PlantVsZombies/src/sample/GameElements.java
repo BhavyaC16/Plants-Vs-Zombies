@@ -11,13 +11,13 @@ public abstract class GameElements implements Serializable{
     protected String path;
     protected ImageView img;
     protected Pane pane;
-    public GameElements(int x_, int y_, String path, Pane p){
+    public GameElements(int x_, int y_, String path, Pane p,int width,int height){
         this.x=x_;
         this.y=y_;
         this.path=path;
         this.pane=p;
         img = new ImageView();
-        Image im=new Image(path);
+        Image im=new Image(path,(double) width,(double) height,false,false);
         img.setImage(im);
         img.setX(x);
         img.setY(y);
