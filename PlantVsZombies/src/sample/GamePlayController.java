@@ -1,6 +1,5 @@
 package sample;
 
-
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -64,8 +63,6 @@ public class GamePlayController {
     private ArrayList<Plant> allPlants;
     private ArrayList<Zombie> allZombies;
 
-    private int cardSelected = -1;
-
     public GamePlayController() {
         allPlants = new ArrayList<Plant>();
         allZombies = new ArrayList<Zombie>();
@@ -73,81 +70,13 @@ public class GamePlayController {
 
 
     public void initialize() throws Exception {
-        //start thread for all the plants and zombies on game launch
-//        placeSunflower();
-//        placePeashooter();
-//        ImageView z1 = new ImageView();
-//        ImageView z2 = new ImageView();
-//        ImageView z3 = new ImageView();
-//        ImageView z4 = new ImageView();
-//        ImageView Pea = new ImageView();
-//        //z1 = normalZombieWalk();
-//        z2 = coneheadZombieWalk();
-//        z3 = bucketheadZombieWalk();
-//        z4 = normalZombie2();
-//        Pea = shootPea();
-//        dropSun();
-    }
 
+    }
 
     @FXML
     public void initData(int levelNumber) {
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
-
-//        sunBuy.setDisable(false);
-//        sunBuy.setVisible(true);
-//        peaShooterBuy.setDisable(false);
-//        peaShooterBuy.setVisible(true);
-//        if (levelNumber==1){
-//            this.levelNumber=1;
-//            cherryBombBuy.setDisable(true);
-//            cherryBombBuy.setVisible(false);
-//            repeaterBuy.setDisable(true);
-//            repeaterBuy.setVisible(false);
-//            jalapenoBuy.setDisable(true);
-//            jalapenoBuy.setVisible(false);
-//            wallnutBuy.setDisable(true);
-//            wallnutBuy.setVisible(false);
-//        }
-//        else if (levelNumber==2){
-//            this.levelNumber=2;
-//            cherryBombBuy.setDisable(true);
-//            cherryBombBuy.setVisible(false);
-//            repeaterBuy.setDisable(true);
-//            repeaterBuy.setVisible(false);
-//            jalapenoBuy.setDisable(true);
-//            jalapenoBuy.setVisible(false);
-//        }
-//        else if (levelNumber==3){
-//            this.levelNumber=3;
-//            repeaterBuy.setDisable(true);
-//            repeaterBuy.setVisible(false);
-//            jalapenoBuy.setDisable(true);
-//            jalapenoBuy.setVisible(false);
-//        }
-//        else if (levelNumber==4) {
-//            this.levelNumber=4;
-//            jalapenoBuy.setDisable(true);
-//            jalapenoBuy.setVisible(false);
-//        }
-//        else{
-//            this.levelNumber=5;
-//        }
     }
-
-    //    void selectPlant(MouseEvent event) throws IOException{
-//        Node source = (Node)event.getSource();
-//        String id= source.getId();
-//        System.out.println("Selecting card "+id);
-//        if(id.equals("sunBuy")) cardSelected=1;
-//        else if(id.equals("peaShooterBuy")) cardSelected=2;
-//        else if (id.equals("cherryBombBuy")) cardSelected=3;
-//        else if (id.equals("wallnutBuy")) cardSelected=4;
-//        else if(id.equals("repeaterBuy")) cardSelected=5;
-//        else if (id.equals("jalapenoBuy")) cardSelected=6;
-//        else cardSelected=-1;
-//        System.out.println(cardSelected);
-//    }
     @FXML
     public void placePlant(int val, int x, int y) {
         System.out.println("Placing Plant");
@@ -173,18 +102,6 @@ public class GamePlayController {
             default:
                 System.out.println("No case match" + val);
         }
-//        File imagefile = new File("./assets/sunflower.gif");
-//        Image i = new Image(imagefile.toURI().toString());
-//
-//        ImageView p=new ImageView();
-//        if (cardSelected==1) {
-//            lawn_grid.add(p, x,y);
-//            p.setImage(i);
-//            System.out.println("Added"+i);
-//            GamePlayRoot.getChildren().addAll(p);
-//        }
-
-
     }
 
     @FXML
