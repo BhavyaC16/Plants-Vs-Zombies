@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -60,72 +62,33 @@ public class GamePlayController {
     private int levelNumber;
     @FXML
     private GridPane lawn_grid;
-    private ArrayList<Plant> allPlants;
-    private ArrayList<Zombie> allZombies;
-    private int sunCount;
+    private GamePlay g;
 
     public GamePlayController() {
-        this.allPlants = new ArrayList<Plant>();
-        this.allZombies = new ArrayList<Zombie>();
-        this.sunCount = 0;
-        this.sunCountLabel = new Label();
 
     }
 
 
     public void initialize() throws Exception {
+
         NormalZombie n = new NormalZombie(1024, 200, GamePlayRoot);
         n.moveZombie();
-        Sun s = new Sun(400, 0, GamePlayRoot);
-        s.dropSun();
-        this.sunCountLabel.setText("0");
+        this.sunCountLabel.setText("50");
     }
 
     @FXML
     public void initData(int levelNumber) {
-        SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
-    }
-    @FXML
-    public void placePlant(int val, int x, int y) {
-        System.out.println("Placing Plant");
-        switch (val) {
-            case 1:
-                allPlants.add(new Sunflower(x, y, GamePlayRoot));
-                break;
-            case 2:
-                allPlants.add(new PeaShooter(x, y, GamePlayRoot));
-                break;
-            case 3:
-                allPlants.add(new Wallnut(x, y, GamePlayRoot));
-                break;
-            case 4:
-                allPlants.add(new CherryBomb(x, y, GamePlayRoot));
-                break;
-            case 5:
-                allPlants.add(new Repeater(x, y, GamePlayRoot));
-                break;
-            case 6:
-                allPlants.add(new Jalapeno(x, y, GamePlayRoot));
-                break;
-            default:
-                System.out.println("No case match" + val);
-        }
+        Random rand = new Random();
+        GamePlay g = new GamePlay(GamePlayRoot, levelNumber, lawn_grid);
+        this.g = g;
+        g.fallingSuns(rand, GamePlayRoot);
+
+
     }
 
     @FXML
     void getGridPosition(MouseEvent event) throws IOException {
-        if (SidebarElement.getCardSelected() != -1) {
-            Node source = (Node) event.getSource();
-            Integer colIndex = lawn_grid.getColumnIndex(source);
-            Integer rowIndex = lawn_grid.getRowIndex(source);
-            System.out.println("Grid made");
-            if (colIndex != null && rowIndex != null) {
-                placePlant(SidebarElement.getCardSelected(), (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()));
-                System.out.println("plant added");
-            }
-            SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
-            SidebarElement.setCardSelectedToNull();
-            System.out.println("Card is now disabled");
+        g.getGridPosition();
         }
 
 

@@ -16,6 +16,7 @@ public class Sun extends GameElements{
             System.out.println("Falling sun clicked");
             this.img.setVisible(false);
             this.img.setDisable(true);
+
         });
     }
 
@@ -36,5 +37,9 @@ public class Sun extends GameElements{
     });
     t.start();
     }
-    
+
+    public void updateCount()
+    {
+
+    }
 }
