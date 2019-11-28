@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 public class Wallnut extends Plant{
     ImageView img;
     public Wallnut(int x, int y, Pane pane) {
-        super(x, y, "file:src/sample/assets/walnut_full_life.gif", pane, 25);
+        super(x, y, "file:src/sample/assets/walnut_full_life.gif", pane, 25,75,66);
 
     }
 //        img = new ImageView();
