@@ -21,7 +21,8 @@ public class Sun extends GameElements{
             System.out.println("Falling sun clicked");
             this.img.setVisible(false);
             this.img.setDisable(true);
-
+            int sunCount = GamePlayController.updateSunCount(25);
+            GamePlayController.getSunCountLabel().setText(Integer.toString(sunCount));
         });
     }
 
@@ -43,17 +44,33 @@ public class Sun extends GameElements{
 //    t.start();
 //    }
 
+//    public void dropSun()
+//    {
+//
+//        Timeline sunDropper = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                    setY(getY()+1);
+//                    System.out.println(getY());
+//            }
+//        }));
+//        sunDropper.setCycleCount(1);
+//        sunDropper.play();
+//    }
+
+    public void moveSun()
+    {
+        if(getY()<=550)
+        {
+            setY(getY()+1);
+        }
+    }
+
     public void dropSun()
     {
-
-        Timeline sunDropper = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                    setY(getY()+100);
-            }
-        }));
-        sunDropper.setCycleCount(1);
-        sunDropper.play();
+        Timeline animation = new Timeline(new KeyFrame(Duration.millis(5),e -> moveSun()));
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
     }
 
     public void updateCount()

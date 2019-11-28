@@ -55,7 +55,7 @@ public class GamePlayController {
     @FXML
     private ImageView lawnMower5;
     @FXML
-    private Label sunCountLabel;
+    private static Label sunCountLabel;
     @FXML
     private ImageView GameMenuLoaderButton;
     @FXML
@@ -67,7 +67,7 @@ public class GamePlayController {
     //private GamePlay g;
     private ArrayList<Plant> allPlants;
     private ArrayList<Zombie> allZombies;
-    private int sunCount;
+    private static int sunCount;
     private final int LANE1;
     private final int LANE2;
     private final int LANE3;
@@ -95,11 +95,22 @@ public class GamePlayController {
         fallingSuns(rand);
     }
 
+    public static int updateSunCount(int val)
+    {
+        sunCount+=val;
+        return(sunCount);
+    }
+
+    public static Label getSunCountLabel()
+    {
+        return(sunCountLabel);
+    }
+
     public void fallingSuns(Random rand) {
         Timeline sunDropper = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                int sunPosition = rand.nextInt(800);
+                int sunPosition = rand.nextInt(850);
                 sunPosition += 100;
                 Sun s = new Sun(sunPosition, 0, GamePlayRoot);
                 s.dropSun();
