@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -62,34 +63,94 @@ public class GamePlayController {
     private int levelNumber;
     @FXML
     private GridPane lawn_grid;
-    private GamePlay g;
+    //private GamePlay g;
+    private ArrayList<Plant> allPlants;
+    private ArrayList<Zombie> allZombies;
+    private int sunCount;
+
 
     public GamePlayController() {
-
+        allPlants = new ArrayList<Plant>();
+        allZombies = new ArrayList<Zombie>();
     }
 
 
     public void initialize() throws Exception {
-
+        //System.out.println("initialize");
+        Random rand = new Random();
         NormalZombie n = new NormalZombie(1024, 200, GamePlayRoot);
         n.moveZombie();
         this.sunCountLabel.setText("50");
+        fallingSuns(rand);
     }
 
+    public void fallingSuns(Random rand) {
+        Timeline sunDropper = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                int sunPosition = rand.nextInt(800);
+                sunPosition += 100;
+                Sun s = new Sun(sunPosition, 0, GamePlayRoot);
+                s.dropSun();
+            }
+        }));
+        sunDropper.setCycleCount(Timeline.INDEFINITE);
+        sunDropper.play();
+    }
     @FXML
     public void initData(int levelNumber) {
-        Random rand = new Random();
-        GamePlay g = new GamePlay(GamePlayRoot, levelNumber, lawn_grid);
-        this.g = g;
-        g.fallingSuns(rand, GamePlayRoot);
-
-
+        //System.out.println("initData");
+        this.levelNumber = levelNumber;
+        SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
     }
 
     @FXML
     void getGridPosition(MouseEvent event) throws IOException {
-        g.getGridPosition(event);
+        if (SidebarElement.getCardSelected() != -1) {
+            Node source = (Node) event.getSource();
+            int col=(int) (source.getLayoutX() + source.getParent().getLayoutX());
+            int row=(int) (source.getLayoutY() + source.getParent().getLayoutY());
+
+            boolean flag=true;
+            for (Plant p: allPlants){
+                if (p.getX()==col && p.getY()==row) {
+                    flag=false;
+                }
+            }
+            if ((flag) && SidebarElement.getElement(SidebarElement.getCardSelected()).getCost()<=Integer.valueOf(sunCountLabel.getText())){
+                placePlant(SidebarElement.getCardSelected(), col, row);
+                SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
+            }
+            else System.out.println("Not enough suns"+Integer.valueOf(sunCountLabel.getText()));
+            SidebarElement.setCardSelectedToNull();
         }
+    }
+
+    public void placePlant(int val, int x, int y) {
+        System.out.println("Placing Plant");
+        switch (val) {
+            case 1:
+                allPlants.add(new Sunflower(x, y, GamePlayRoot));
+                break;
+            case 2:
+                allPlants.add(new PeaShooter(x, y, GamePlayRoot));
+                break;
+            case 3:
+                allPlants.add(new Wallnut(x, y, GamePlayRoot));
+                break;
+            case 4:
+                allPlants.add(new CherryBomb(x, y, GamePlayRoot));
+                break;
+            case 5:
+                allPlants.add(new Repeater(x, y, GamePlayRoot));
+                break;
+            case 6:
+                allPlants.add(new Jalapeno(x, y, GamePlayRoot));
+                break;
+            default:
+                System.out.println("No case match" + val);
+        }
+    }
 
     @FXML
     void loadGameMenu(MouseEvent event) throws IOException {
