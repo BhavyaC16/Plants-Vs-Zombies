@@ -12,6 +12,11 @@ public class Sun extends GameElements{
     public Sun(int x, int y, Pane pane)
     {
         super(x, y, "file:src/sample/assets/sun.png", pane, 50, 50);
+        this.img.setOnMouseClicked(e->{
+            System.out.println("Falling sun clicked");
+            this.img.setVisible(false);
+            this.img.setDisable(true);
+        });
     }
 
     public void dropSun()
@@ -22,12 +27,6 @@ public class Sun extends GameElements{
            {
                Thread.sleep(20);
                setY(getY()+1);
-               this.img.setOnMouseClicked(e->{
-                   System.out.println("Falling sun clicked");
-                   this.img.setVisible(false);
-                   this.img.setDisable(true);
-               });
-
            }
            catch(InterruptedException e)
            {
@@ -37,4 +36,5 @@ public class Sun extends GameElements{
     });
     t.start();
     }
+    
 }
