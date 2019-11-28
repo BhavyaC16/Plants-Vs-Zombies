@@ -14,6 +14,7 @@ public abstract class Zombie extends GameElements {
         super(x, y, p, pane, width, height);
         this.hp = hp;
         this.attackPower = ap;
+        super.makeImage();
         //add code for displaying zombie
     }
 

@@ -5,9 +5,17 @@ import javafx.scene.layout.Pane;
 public abstract class Plant extends GameElements{
     String path;
     protected int hp;
-    public Plant(int x, int y, String path, Pane pane, int hp,int width,int height){
+    private int zombierow;
+    public Plant(int x, int y, String path, Pane pane, int hp,int width,int height,int z){
         super(x,y,path,pane,width,height);
         this.hp=hp;
+        this.zombierow=z;
+    }
+
+    @Override
+    public void makeImage(){
+
+
     }
 
     public void attack(){

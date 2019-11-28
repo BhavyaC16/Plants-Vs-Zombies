@@ -11,11 +11,18 @@ public abstract class GameElements implements Serializable{
     protected String path;
     protected ImageView img;
     protected Pane pane;
+    protected int width;
+    protected int height;
+
     public GameElements(int x_, int y_, String path, Pane p,int width,int height){
         this.x=x_;
         this.y=y_;
         this.path=path;
         this.pane=p;
+        this.width=width;
+        this.height=height;
+    }
+    public void makeImage(){
         img = new ImageView();
         Image im=new Image(path,(double) width,(double) height,false,false);
         img.setImage(im);
@@ -23,6 +30,7 @@ public abstract class GameElements implements Serializable{
         img.setY(y);
         pane.getChildren().add(img);
     }
+
     public void disappear(){
         img.setDisable(true);
         img.setVisible(false);

@@ -110,18 +110,20 @@ public class GamePlayController {
             Node source = (Node) event.getSource();
             int col=(int) (source.getLayoutX() + source.getParent().getLayoutX());
             int row=(int) (source.getLayoutY() + source.getParent().getLayoutY());
-
-            boolean flag=true;
-            for (Plant p: allPlants){
-                if (p.getX()==col && p.getY()==row) {
-                    flag=false;
+            Integer colIndex = lawn_grid.getColumnIndex(source);
+            Integer rowIndex = lawn_grid.getRowIndex(source);
+            if (colIndex != null && rowIndex != null) {
+                boolean flag = true;
+                for (Plant p : allPlants) {
+                    if (p.getX() == colIndex && p.getY() == rowIndex) {
+                        flag = false;
+                    }
                 }
+                if ((flag) && SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= Integer.valueOf(sunCountLabel.getText())) {
+                    placePlant(SidebarElement.getCardSelected(), col, row);
+                    SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
+                } else System.out.println("Not enough suns" + Integer.valueOf(sunCountLabel.getText()));
             }
-            if ((flag) && SidebarElement.getElement(SidebarElement.getCardSelected()).getCost()<=Integer.valueOf(sunCountLabel.getText())){
-                placePlant(SidebarElement.getCardSelected(), col, row);
-                SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
-            }
-            else System.out.println("Not enough suns"+Integer.valueOf(sunCountLabel.getText()));
             SidebarElement.setCardSelectedToNull();
         }
     }
