@@ -70,7 +70,8 @@ public class GamePlayController {
 
 
     public void initialize() throws Exception {
-
+        NormalZombie n = new NormalZombie(1024, 200, GamePlayRoot);
+        n.moveZombie();
     }
 
     @FXML

@@ -34,6 +34,7 @@ public abstract class GameElements implements Serializable{
 
     public void setX(int x) {
         this.x = x;
+        img.setX(x);
     }
 
     public int getY() {
@@ -42,6 +43,7 @@ public abstract class GameElements implements Serializable{
 
     public void setY(int y) {
         this.y = y;
+        img.setY(y);
     }
 
     public String getPath() {
