@@ -149,19 +149,19 @@ public abstract class Zombie extends GameElements {
 //    }
 
     public void moveZombie() {
-        Thread t = new Thread(() -> {
-            while (this.hp > 0) {
-                try {
-                    System.out.println("running");
-                    setX(getX()-1);
-                    System.out.println(getX());
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        t.start();
+//        Thread t = new Thread(() -> {
+//            while (this.hp > 0) {
+//                try {
+//                    System.out.println("running");
+//                    setX(getX()-1);
+//                    System.out.println(getX());
+//                    Thread.sleep(50);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//        t.start();
         //if(this.hp<=5)
         //Plant p=checkCollisionWithPlant();
         //if(p!=null){

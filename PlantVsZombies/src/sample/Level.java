@@ -7,7 +7,7 @@ public class Level {
     private int totalZombies;
     private ArrayList<String> availablePlants;
     private ArrayList<String> availableZombie;
-    int levelTime=120; //120 seconds
+    int levelTime=120000; //120 seconds
     public Level(int n){
         this.levelNumber=n;
         if (n>=1){

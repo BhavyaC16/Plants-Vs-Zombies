@@ -111,12 +111,17 @@ public class GamePlayController {
             Node source = (Node) event.getSource();
             Integer colIndex = lawn_grid.getColumnIndex(source);
             Integer rowIndex = lawn_grid.getRowIndex(source);
-            System.out.println("Grid made");
             if (colIndex != null && rowIndex != null) {
-                placePlant(SidebarElement.getCardSelected(), (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()));
-                System.out.println("plant added");
+
+                if (SidebarElement.getElement(SidebarElement.getCardSelected()).getCost()<=Integer.valueOf(sunCountLabel.getText())){
+                    placePlant(SidebarElement.getCardSelected(), (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()));
+                    System.out.println("plant added");
+                    SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
+//                    set sun value
+                }
+                else System.out.println("Not enough suns"+Integer.valueOf(sunCountLabel.getText()));
+
             }
-            SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
             SidebarElement.setCardSelectedToNull();
             System.out.println("Card is now disabled");
         }
