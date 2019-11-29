@@ -76,6 +76,7 @@ public class GamePlayController {
     public static boolean gameStatus;
     public static Timeline sunTimeline;
     private static Label sunCountDisplay;
+    private Level l;
 
 
     public GamePlayController() {
@@ -86,6 +87,7 @@ public class GamePlayController {
         LANE3 = 250;
         LANE4 = 350;
         LANE5 = 450;
+        this.l = null;
     }
 
 
@@ -129,15 +131,34 @@ public class GamePlayController {
     }
 
     public void zombieSpawner(Random rand){
-        Timeline waitZombie = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                int laneNumber = rand.nextInt(5);
-
-                System.out.println("waiting");
+        Timeline waitZombie = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+            int lane;
+            int laneNumber = rand.nextInt(5);
+            if(laneNumber==0)
+            {
+                lane = LANE1;
             }
+            else if(laneNumber==1)
+            {
+                lane = LANE2;
+            }
+            else if(laneNumber==2)
+            {
+                lane = LANE3;
+            }
+            else if(laneNumber==3)
+            {
+                lane = LANE4;
+            }
+            else
+            {
+                lane = LANE5;
+            }
+            l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
+
         }));
-        waitZombie.setCycleCount(1);
+
+        waitZombie.setCycleCount(Timeline.INDEFINITE);
         waitZombie.play();
     }
 
@@ -147,7 +168,7 @@ public class GamePlayController {
         this.levelNumber = levelNumber;
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
         Level l = new Level(this.levelNumber);
-
+        this.l = l;
     }
 
     @FXML

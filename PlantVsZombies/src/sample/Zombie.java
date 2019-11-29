@@ -1,8 +1,11 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 public abstract class Zombie extends GameElements {
 
@@ -67,17 +70,17 @@ public abstract class Zombie extends GameElements {
     }
 
     public void moveZombie() {
-        Thread t = new Thread(() -> {
-            while (this.hp > 0) {
-                try {
-                    //System.out.println("running");
-                    setX(getX() - 1);
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        t.start();
+        System.out.println("here");
+        Timeline animation = new Timeline(new KeyFrame(Duration.millis(50), e -> zombieWalk()));
+        animation.setCycleCount(1000);
+        animation.play();
+    }
+
+    public void zombieWalk()
+    {
+        if(getX()>=270)
+        {
+            setX(getX()-1);
+        }
     }
 }
