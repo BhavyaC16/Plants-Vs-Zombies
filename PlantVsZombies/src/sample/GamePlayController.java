@@ -56,7 +56,6 @@ public class GamePlayController {
     private GridPane lawn_grid;
     //private GamePlay g;
     private static ArrayList<Plant> allPlants;
-    private static ArrayList<Zombie> allZombies;
     private static ArrayList<LawnMower> allMowers;
     private static int sunCount;
     private static final int LANE1=50;
@@ -70,6 +69,7 @@ public class GamePlayController {
     public static Timeline spZ2;
     private static Label sunCountDisplay;
     private static Level l;
+    public static ArrayList<Zombie> allZombies = new ArrayList<Zombie>();
 
 
 //    public GamePlayController() {
@@ -203,7 +203,7 @@ public class GamePlayController {
     }
 
     public void zombieSpawner2(Random rand){
-        Timeline spawnZombie2 = new Timeline(new KeyFrame(Duration.seconds(27), event -> {
+        Timeline spawnZombie2 = new Timeline(new KeyFrame(Duration.seconds(30), event -> {
             int lane;
             int laneNumber = rand.nextInt(5);
             if(laneNumber==0)
@@ -255,9 +255,6 @@ public class GamePlayController {
     public void endZombieSpawner2()
     {
         spZ2.stop();
-        waitZombie.setCycleCount(Timeline.INDEFINITE);
-        waitZombie.play();
-
     }
 
     @FXML
@@ -312,5 +309,12 @@ public class GamePlayController {
             default:
                 System.out.println("No case match" + val);
         }
+    }
+
+    public static void endAnimations()
+    {
+        spZ1.stop();
+        spZ2.stop();
+        sunTimeline.stop();
     }
 }

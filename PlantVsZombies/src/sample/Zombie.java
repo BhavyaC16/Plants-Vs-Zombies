@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+
 public abstract class Zombie extends GameElements {
 
     protected int hp;
@@ -88,4 +90,5 @@ public abstract class Zombie extends GameElements {
             setX(getX()-1);
         }
     }
+
 }

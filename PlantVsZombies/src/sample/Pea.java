@@ -34,7 +34,6 @@ public class Pea extends GameElements{
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(5), e -> movePea()));
         animation.setCycleCount(1050);
         animation.play();
-
     }
 
 }
