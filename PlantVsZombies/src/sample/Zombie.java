@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
 public abstract class Zombie extends GameElements {
@@ -24,6 +25,12 @@ public abstract class Zombie extends GameElements {
 
     public void setHp(int hp) {
         this.hp = hp;
+        if (hp<=5) {
+            img.setImage(new Image("file:src/sample/assets/normalzombie.gif", (double) 68,(double) 118,false,false));
+            this.width=68;
+            this.height=118;
+        }
+
     }
 
     //    public Plant checkCollisionWithPlant(){

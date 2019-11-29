@@ -9,9 +9,9 @@ public abstract class Plant extends GameElements{
     String path;
     protected GridPane lawn;
     protected int hp;
-    private int zombierow;
-    private int col;
-    private int row;
+    protected int zombierow;
+    protected int col;
+    protected int row;
     public Plant(int x, int y, String path, Pane pane, int hp,int width,int height,int z,GridPane lawn,int col,int row){
         super(x,y,path,pane,width,height);
         this.hp=hp;
@@ -35,8 +35,8 @@ public abstract class Plant extends GameElements{
     public int getHp(){
         return this.hp;
     }
-    public void setHp(int n){
-        this.hp-=n;
+    public void setHp(int hp){
+        this.hp=hp;
         if (this.hp<=0){
             System.out.println("Plant dead");
             //disappear

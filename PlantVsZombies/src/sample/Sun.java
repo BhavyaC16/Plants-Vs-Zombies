@@ -20,7 +20,6 @@ public class Sun extends GameElements{
         super(x, y, "file:src/sample/assets/sun.png", pane, 50, 50);
         super.makeImage();
         this.img.setOnMouseClicked(e->{
-            System.out.println("Sun clicked");
             this.img.setVisible(false);
             this.img.setDisable(true);
             GamePlayController.updateSunCount(25);
@@ -33,7 +32,6 @@ public class Sun extends GameElements{
     public void disappearAfterTime(){
         Thread t = new Thread(() -> {
             try {
-                System.out.println("now disabled");
                 Thread.sleep(timeouttime);
             } catch (InterruptedException e) {
                 e.printStackTrace();

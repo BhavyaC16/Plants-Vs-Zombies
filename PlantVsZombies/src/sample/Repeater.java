@@ -11,6 +11,14 @@ public class Repeater extends Shooter {
     @Override
     public void attack(){
         super.attack();
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        t.start();
         super.attack();
     }
 }

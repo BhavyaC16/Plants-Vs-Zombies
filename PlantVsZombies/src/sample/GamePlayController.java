@@ -91,9 +91,9 @@ public class GamePlayController {
 
     public void initialize() throws Exception {
         gameStatus = true;
-        sunCount = 50;
+        sunCount = 2000;
         sunCountDisplay = sunCountLabel;
-        sunCountDisplay.setText("50");
+        sunCountDisplay.setText("2000");
         Random rand = new Random();
         //NormalZombie n = new NormalZombie(1024, 450, GamePlayRoot);
         //n.moveZombie();
@@ -182,23 +182,29 @@ public class GamePlayController {
     public void placePlant(int val, int x, int y,int row,int col) {
         int z=0;
         switch(row){
-            case 1:
+            case 0:
+                System.out.println("1");
                 z=LANE1;
                 break;
-            case 2:
+            case 1:
+                System.out.println("2");
                 z=LANE2;
                 break;
-            case 3:
+            case 2:
+                System.out.println("3");
                 z=LANE3;
                 break;
-            case 4:
+            case 3:
+                System.out.println("5");
                 z=LANE4;
                 break;
-            case 5:
+            case 4:
+                System.out.println("6");
                 z=LANE5;
                 break;
             default:
-                System.out.println("Cant find lane "+y);
+                System.out.println("Cant find lane "+row);
+                break;
         }
         switch (val) {
             case 1:

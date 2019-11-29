@@ -10,6 +10,13 @@ public class Wallnut extends Plant{
         super(x, y, "file:src/sample/assets/walnut_full_life.gif", pane, 25,60,66,z,grid,row,col);
 
     }
+    @Override
+    public void setHp(int hp){
+        super.setHp(hp);
+        if (hp<=12) {
+            img.setImage(new Image("file:src/sample/assets/walnut_half_life.gif", (double) width, (double) height, false, false));
+        }
+    }
 //        img = new ImageView();
 //        Image im=new Image(path);
 //        img.setImage(im);
