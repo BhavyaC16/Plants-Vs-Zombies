@@ -11,6 +11,9 @@ public class Repeater extends Shooter {
     @Override
     public void attack(){
         super.attack();
+        Pea pea2=Pea.getPea();
+        pea2.img.setVisible(false);
+        pea2.img.setDisable(true);
         Thread t = new Thread(() -> {
             try {
                 Thread.sleep(400);
