@@ -49,31 +49,31 @@
 <!--            <Image url="@assets/sunflowerCard.png" />-->
 <!--         </image>-->
 <!--      </ImageView>-->
-      <ImageView fx:id="lawnMower1" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="85.0" pickOnBounds="true"  preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="lawnMower2" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="lawnMower3" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="lawnMower4" fitHeight="77.0" fitWidth="81.0" layoutX="243.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="lawnMower5" fitHeight="77.0" fitWidth="81.0" layoutX="236.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
+<!--      <ImageView fx:id="lawnMower1" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="85.0" pickOnBounds="true"  preserveRatio="true">-->
+<!--         <image>-->
+<!--            <Image url="@assets/lawnmowerIdle.gif" />-->
+<!--         </image>-->
+<!--      </ImageView>-->
+<!--      <ImageView fx:id="lawnMower2" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">-->
+<!--         <image>-->
+<!--            <Image url="@assets/lawnmowerIdle.gif" />-->
+<!--         </image>-->
+<!--      </ImageView>-->
+<!--      <ImageView fx:id="lawnMower3" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">-->
+<!--         <image>-->
+<!--            <Image url="@assets/lawnmowerIdle.gif" />-->
+<!--         </image>-->
+<!--      </ImageView>-->
+<!--      <ImageView fx:id="lawnMower4" fitHeight="77.0" fitWidth="81.0" layoutX="243.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">-->
+<!--         <image>-->
+<!--            <Image url="@assets/lawnmowerIdle.gif" />-->
+<!--         </image>-->
+<!--      </ImageView>-->
+<!--      <ImageView fx:id="lawnMower5" fitHeight="77.0" fitWidth="81.0" layoutX="236.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">-->
+<!--         <image>-->
+<!--            <Image url="@assets/lawnmowerIdle.gif" />-->
+<!--         </image>-->
+<!--      </ImageView>-->
       <ImageView fitHeight="58.0" fitWidth="77.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/sun.png" />

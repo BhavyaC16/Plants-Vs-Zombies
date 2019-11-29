@@ -9,8 +9,8 @@ import javafx.scene.layout.Pane;
 public class Jalapeno extends Plant {
     private ImageView[] fireViews;
 
-    public Jalapeno(int x, int y, Pane pane, int z, GridPane grid,int row,int col) {
-        super(x, y, "file:src/sample/assets/jalapeno.gif", pane, 4,100,100, z, grid,row,col);
+    public Jalapeno(int x, int y, Pane pane, GridPane grid,int row,int col) {
+        super(x, y, "file:src/sample/assets/jalapeno.gif", pane, 4,100,100, grid,row,col);
         System.out.println("Placed plant");
         fireViews=new ImageView[9];;
         for(int i=0;i<9;i++){

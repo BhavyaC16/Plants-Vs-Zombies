@@ -12,10 +12,9 @@ public abstract class Plant extends GameElements{
     protected int zombierow;
     protected int col;
     protected int row;
-    public Plant(int x, int y, String path, Pane pane, int hp,int width,int height,int z,GridPane lawn,int col,int row){
+    public Plant(int x, int y, String path, Pane pane, int hp,int width,int height,GridPane lawn,int col,int row){
         super(x,y,path,pane,width,height);
         this.hp=hp;
-        this.zombierow=z;
         this.lawn=lawn;
         this.col=col;
         this.row=row;

@@ -12,8 +12,8 @@ import javafx.util.Duration;
 
 public class Sunflower extends Plant{
     private Timeline sunProducer;
-    public Sunflower(int x, int y, Pane pane, int z, GridPane grid,int row,int col){
-        super(x,y,"file:src/sample/assets/sunflower.gif",pane,6,73,74,z,grid,row,col);
+    public Sunflower(int x, int y, Pane pane, GridPane grid,int row,int col){
+        super(x,y,"file:src/sample/assets/sunflower.gif",pane,6,73,74,grid,row,col);
         produceSun();
     }
 

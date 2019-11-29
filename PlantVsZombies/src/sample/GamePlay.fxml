@@ -19,61 +19,6 @@
             <Image url="@assets/lawn.png" />
          </image>
       </ImageView>
-<!--      <ImageView fx:id="peaShooterBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="147.0" pickOnBounds="true" onMouseClicked="#selectPlant" preserveRatio="true">-->
-<!--         <image>-->
-<!--            <Image url="@assets/peashooterCard.png" />-->
-<!--         </image>-->
-<!--      </ImageView>-->
-<!--      <ImageView fx:id="repeaterBuy" fitHeight="58.0" fitWidth="97.0" layoutX="23.0" layoutY="352.0" pickOnBounds="true" onMouseClicked="#selectPlant" preserveRatio="true">-->
-<!--         <image>-->
-<!--            <Image url="@assets/repeaterCard.png" />-->
-<!--         </image>-->
-<!--      </ImageView>-->
-<!--      <ImageView fx:id="cherryBombBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="284.0" pickOnBounds="true" onMouseClicked="#selectPlant" preserveRatio="true">-->
-<!--         <image>-->
-<!--            <Image url="@assets/cherrybombCard.png" />-->
-<!--         </image>-->
-<!--      </ImageView>-->
-<!--      <ImageView fx:id="jalapenoBuy" fitHeight="58.0" fitWidth="97.0" layoutX="24.0" layoutY="420.0" pickOnBounds="true" onMouseClicked="#selectPlant" preserveRatio="true">-->
-<!--         <image>-->
-<!--            <Image url="@assets/jalapenoCard.png" />-->
-<!--         </image>-->
-<!--      </ImageView>-->
-<!--      <ImageView fx:id="wallnutBuy" fitHeight="58.0" fitWidth="97.0" layoutX="22.0" layoutY="217.0" pickOnBounds="true" onMouseClicked="#selectPlant" preserveRatio="true">-->
-<!--         <image>-->
-<!--            <Image url="@assets/wallnutCard.png" />-->
-<!--         </image>-->
-<!--      </ImageView>-->
-<!--      <ImageView fx:id="sunBuy" fitHeight="58.0" fitWidth="96.0" layoutX="24.0" layoutY="79.0" onMouseClicked="#selectPlant">-->
-<!--         <image>-->
-<!--            <Image url="@assets/sunflowerCard.png" />-->
-<!--         </image>-->
-<!--      </ImageView>-->
-      <ImageView fx:id="lawnMower1" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="85.0" pickOnBounds="true"  preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="lawnMower2" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="lawnMower3" fitHeight="77.0" fitWidth="81.0" layoutX="249.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="lawnMower4" fitHeight="77.0" fitWidth="81.0" layoutX="243.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="lawnMower5" fitHeight="77.0" fitWidth="81.0" layoutX="236.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/lawnmowerIdle.gif" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="58.0" fitWidth="77.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/sun.png" />

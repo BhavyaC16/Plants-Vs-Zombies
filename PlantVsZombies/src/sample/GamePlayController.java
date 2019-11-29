@@ -45,16 +45,6 @@ public class GamePlayController {
     @FXML
     private ImageView sunBuy;
     @FXML
-    private ImageView lawnMower1;
-    @FXML
-    private ImageView lawnMower2;
-    @FXML
-    private ImageView lawnMower3;
-    @FXML
-    private ImageView lawnMower4;
-    @FXML
-    private ImageView lawnMower5;
-    @FXML
     private Label sunCountLabel;
     @FXML
     private ImageView GameMenuLoaderButton;
@@ -67,6 +57,7 @@ public class GamePlayController {
     //private GamePlay g;
     private ArrayList<Plant> allPlants;
     private ArrayList<Zombie> allZombies;
+    private ArrayList<LawnMower> allMowers;
     private static int sunCount;
     private final int LANE1;
     private final int LANE2;
@@ -82,6 +73,7 @@ public class GamePlayController {
     public GamePlayController() {
         allPlants = new ArrayList<Plant>();
         allZombies = new ArrayList<Zombie>();
+        allMowers=new ArrayList<LawnMower>();
         LANE1 = 50;
         LANE2 = 150;
         LANE3 = 250;
@@ -167,6 +159,11 @@ public class GamePlayController {
         //System.out.println("initData");
         this.levelNumber = levelNumber;
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
+        allMowers.add(new LawnMower(249,LANE1+20,GamePlayRoot,0));
+        allMowers.add(new LawnMower(249,LANE2+20,GamePlayRoot,1));
+        allMowers.add(new LawnMower(249,LANE3+20,GamePlayRoot,2));
+        allMowers.add(new LawnMower(243,LANE4+20,GamePlayRoot,3));
+        allMowers.add(new LawnMower(236,LANE5+20,GamePlayRoot,4));
         Level l = new Level(this.levelNumber);
         this.l = l;
     }
@@ -227,22 +224,22 @@ public class GamePlayController {
         }
         switch (val) {
             case 1:
-                allPlants.add(new Sunflower(x, y, GamePlayRoot,z,lawn_grid,row,col));
+                allPlants.add(new Sunflower(x, y, GamePlayRoot,lawn_grid,row,col));
                 break;
             case 2:
-                allPlants.add(new PeaShooter(x, y, GamePlayRoot,z,lawn_grid,row,col));
+                allPlants.add(new PeaShooter(x, y, GamePlayRoot,lawn_grid,row,col));
                 break;
             case 3:
-                allPlants.add(new Wallnut(x, y, GamePlayRoot,z,lawn_grid,row,col));
+                allPlants.add(new Wallnut(x, y,GamePlayRoot,lawn_grid,row,col));
                 break;
             case 4:
-                allPlants.add(new CherryBomb(x, y, GamePlayRoot,z,lawn_grid,row,col));
+                allPlants.add(new CherryBomb(x, y, GamePlayRoot,lawn_grid,row,col));
                 break;
             case 5:
-                allPlants.add(new Repeater(x, y, GamePlayRoot,z,lawn_grid,row,col));
+                allPlants.add(new Repeater(x, y, GamePlayRoot,lawn_grid,row,col));
                 break;
             case 6:
-                allPlants.add(new Jalapeno(x, y, GamePlayRoot,z,lawn_grid,row,col));
+                allPlants.add(new Jalapeno(x, y, GamePlayRoot,lawn_grid,row,col));
                 break;
             default:
                 System.out.println("No case match" + val);

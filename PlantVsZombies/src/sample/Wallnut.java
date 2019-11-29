@@ -6,8 +6,8 @@ import javafx.scene.layout.Pane;
 
 public class Wallnut extends Plant{
     ImageView img;
-    public Wallnut(int x, int y, Pane pane, int z, GridPane grid,int row,int col) {
-        super(x, y, "file:src/sample/assets/walnut_full_life.gif", pane, 25,60,75,z,grid,row,col);
+    public Wallnut(int x, int y, Pane pane, GridPane grid,int row,int col) {
+        super(x, y, "file:src/sample/assets/walnut_full_life.gif", pane, 25,60,75,grid,row,col);
 
     }
     @Override
