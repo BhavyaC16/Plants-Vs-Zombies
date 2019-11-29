@@ -15,7 +15,7 @@ public class Repeater extends Shooter {
     }
     @Override
     public void attack(){
-        Timeline peaShooter = new Timeline(new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
+        Timeline peaShooter = new Timeline(new KeyFrame(Duration.seconds(2), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                     for (int i = 0; i < GamePlayController.allZombies.size(); i++) {

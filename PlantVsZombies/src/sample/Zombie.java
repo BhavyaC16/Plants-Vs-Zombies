@@ -16,6 +16,7 @@ public abstract class Zombie extends GameElements {
     protected int y;
     protected int attackPower;
     protected int lane;
+    protected int dx;
 
     public Zombie(int hp, int ap, String p, int x, int y, Pane pane, int width, int height, int lane) {
         super(x, y, p, pane, width, height);
@@ -23,6 +24,7 @@ public abstract class Zombie extends GameElements {
         this.attackPower = ap;
         super.makeImage();
         this.lane = lane;
+        this.dx = -1;
     }
 
     public int getHp() {
@@ -87,8 +89,26 @@ public abstract class Zombie extends GameElements {
     {
         if(getX()>=240)
         {
-            setX(getX()-1);
+            setX(getX()+this.dx);
         }
+        eatPlant();
     }
 
+    public void eatPlant()
+    {
+        for(int i = 0; i<GamePlayController.allPlants.size(); i++)
+        {
+            if(GamePlayController.allPlants.get(i).row == getLane())
+            {
+                if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=35)
+                {
+                    this.dx = 0;
+                }
+                else
+                {
+                    this.dx = -1;
+                }
+            }
+        }
+    }
 }

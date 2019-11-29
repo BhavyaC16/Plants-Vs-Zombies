@@ -55,7 +55,7 @@ public class GamePlayController {
     @FXML
     private GridPane lawn_grid;
     //private GamePlay g;
-    private static ArrayList<Plant> allPlants;
+    public static ArrayList<Plant> allPlants;
     private static ArrayList<LawnMower> allMowers;
     private static int sunCount;
     private static final int LANE1=50;
@@ -174,19 +174,16 @@ public class GamePlayController {
             try
             {
                 if(l.getZombieList1().get(0)==0) {
-                    System.out.println("normal");
                     l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList1().remove(0);
                 }
                 else if(l.getZombieList1().get(0)==1)
                 {
-                    System.out.println("cone");
                     l.spawnConeZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList1().remove(0);
                 }
                 else if(l.getZombieList1().get(0)==2)
                 {
-                    System.out.println("bucket");
                     l.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList1().remove(0);
                 }
@@ -219,19 +216,16 @@ public class GamePlayController {
             try
             {
                 if(l.getZombieList2().get(0)==0) {
-                    System.out.println("normal");
                     l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList2().remove(0);
                 }
                 else if(l.getZombieList2().get(0)==1)
                 {
-                    System.out.println("cone");
                     l.spawnConeZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList2().remove(0);
                 }
                 else if(l.getZombieList2().get(0)==2)
                 {
-                    System.out.println("bucket");
                     l.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList2().remove(0);
                 }
