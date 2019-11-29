@@ -11,19 +11,24 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class Sunflower extends Plant{
+    private Timeline sunProducer;
     public Sunflower(int x, int y, Pane pane, int z, GridPane grid,int row,int col){
         super(x,y,"file:src/sample/assets/sunflower.gif",pane,6,73,74,z,grid,row,col);
         produceSun();
     }
 
     public void produceSun(){
-        Timeline sunDropper = new Timeline(new KeyFrame(Duration.seconds(7), new EventHandler<ActionEvent>() {
+        Timeline sunProducer = new Timeline(new KeyFrame(Duration.seconds(7), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Sun s = new Sun(getX(), getY(), pane, false);
+                Sun s = new Sun(getX()+20, getY()+40, pane, false);
             }
         }));
-        sunDropper.setCycleCount(Timeline.INDEFINITE);
-        sunDropper.play();
+        sunProducer.setCycleCount(Timeline.INDEFINITE);
+        sunProducer.play();
+    }
+    public Timeline getTimeline()
+    {
+        return this.sunProducer;
     }
 }

@@ -99,6 +99,7 @@ public class GamePlayController {
         //n.moveZombie();
 
         fallingSuns(rand);
+        zombieSpawner(rand);
     }
 
     public static void updateSunCount(int val)
@@ -127,29 +128,26 @@ public class GamePlayController {
         sunTimeline = sunDropper;
     }
 
-//    public void fallingSuns(Random rand) {
-//        {
-//            Thread t = new Thread(() -> {
-//                while (gameStatus) {
-//                    try {
-//                        Thread.sleep(10000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    int sunPosition = rand.nextInt(850);
-//                    sunPosition += 100;
-//                    Sun s = new Sun(sunPosition, 0, GamePlayRoot);
-//                    s.dropSun();
-//                }
-//            });
-//            t.start();
-//        }
-//    }
+    public void zombieSpawner(Random rand){
+        Timeline waitZombie = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                int laneNumber = rand.nextInt(5);
+
+                System.out.println("waiting");
+            }
+        }));
+        waitZombie.setCycleCount(1);
+        waitZombie.play();
+    }
+
     @FXML
     public void initData(int levelNumber) {
         //System.out.println("initData");
         this.levelNumber = levelNumber;
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
+        Level l = new Level(this.levelNumber);
+
     }
 
     @FXML
@@ -241,185 +239,4 @@ public class GamePlayController {
         stage.show();
     }
 
-    @FXML
-    private void placeSunflower() {
-        ImageView plant = new ImageView();
-        Image Sunflower = new Image("file:src/sample/assets/sunflower.gif", 60, 60, false, false);
-        plant.setImage(Sunflower);
-        plant.setX(330);
-        plant.setY(180);
-        GamePlayRoot.getChildren().addAll(plant);
-    }
-
-    @FXML
-    private void placePeashooter() {
-        ImageView plant = new ImageView();
-        Image peashooter = new Image("file:src/sample/assets/peashooter.gif", 60, 60, false, false);
-        plant.setImage(peashooter);
-        plant.setX(330);
-        plant.setY(80);
-        GamePlayRoot.getChildren().addAll(plant);
-    }
-
-    @FXML
-    private ImageView normalZombieWalk() {
-        ImageView zombie = new ImageView();
-        ImageView img = new ImageView();
-        Image normalZombie = new Image("file:src/sample/assets/normalzombie.gif", 68, 118, false, false);
-        zombie.setImage(normalZombie);
-        img = addTransition(30000, 1, 1024, 40, 270, 40, zombie);
-        return (img);
-    }
-
-    @FXML
-    private ImageView shootPea() {
-        ImageView Pea = new ImageView();
-        ImageView img = new ImageView();
-        Image pea = new Image("file:src/sample/assets/pea.png", 20, 20, false, false);
-        Pea.setImage(pea);
-        img = addTransition(3000, 5000, 380, 85, 1100, 85, Pea);
-        return (img);
-
-    }
-
-    @FXML
-    private ImageView normalZombie2() {
-        ImageView zombie = new ImageView();
-        ImageView img = new ImageView();
-        Image normalZombie = new Image("file:src/sample/assets/normalzombie.gif", 68, 118, false, false);
-        zombie.setImage(normalZombie);
-        TranslateTransition translate = new TranslateTransition();
-        translate.setDuration(Duration.millis(60000));
-        translate.setCycleCount(1);
-        translate.setFromY(420);
-        translate.setFromX(2048);
-        translate.setToX(270);
-        translate.setToY(420);
-        translate.setNode(zombie);
-        translate.play();
-        GamePlayRoot.getChildren().addAll(zombie);
-        translate.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                zombie.setVisible(false);
-                ImageView gameEnded = new ImageView();
-                Image gameEnd = new Image("file:src/sample/assets/ZombiesAteYourBrains.png", 500, 300, false, false);
-                gameEnded.setImage(gameEnd);
-                gameEnded.setX(400);
-                gameEnded.setY(150);
-                GamePlayRoot.getChildren().addAll(gameEnded);
-            }
-        });
-
-
-        return (img);
-
-    }
-
-    @FXML
-    private ImageView bucketheadZombieWalk() {
-        ImageView img = new ImageView();
-        ImageView lawnMower = new ImageView();
-        Image lm = new Image("file:src/sample/assets/lawnmowerActivated.gif", 100, 100, false, false);
-        lawnMower.setImage(lm);
-        ImageView zombie = new ImageView();
-        Image bucketheadZombie = new Image("file:src/sample/assets/bucketheadzombie.gif", 68, 118, false, false);
-        zombie.setImage(bucketheadZombie);
-        TranslateTransition translate = new TranslateTransition();
-        translate.setDuration(Duration.millis(30000));
-        translate.setCycleCount(1);
-        translate.setFromY(420);
-        translate.setFromX(1024);
-        translate.setToX(270);
-        translate.setToY(420);
-        translate.setNode(zombie);
-        translate.play();
-
-        TranslateTransition lawnmower = new TranslateTransition();
-        lawnmower.setDuration(Duration.millis(3000));
-        lawnmower.setCycleCount(1);
-        lawnmower.setFromY(460);
-        lawnmower.setFromX(270);
-        lawnmower.setToX(1100);
-        lawnmower.setToY(460);
-        lawnmower.setNode(lawnMower);
-        GamePlayRoot.getChildren().addAll(zombie);
-        translate.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                lawnMower5.setVisible(false);
-                zombie.setVisible(false);
-                lawnmower.play();
-                GamePlayRoot.getChildren().addAll(lawnMower);
-            }
-        });
-        return (img);
-    }
-
-    @FXML
-    private ImageView coneheadZombieWalk() {
-
-        ImageView img = new ImageView();
-        ImageView lawnMower = new ImageView();
-        Image lm = new Image("file:src/sample/assets/lawnmowerActivated.gif", 100, 100, false, false);
-        lawnMower.setImage(lm);
-        ImageView zombie = new ImageView();
-        Image coneheadZombie = new Image("file:src/sample/assets/coneheadzombie.gif", 133, 122, false, false);
-        zombie.setImage(coneheadZombie);
-        TranslateTransition translate = new TranslateTransition();
-        translate.setDuration(Duration.millis(30000));
-        translate.setCycleCount(1);
-        translate.setFromY(220);
-        translate.setFromX(1024);
-        translate.setToX(250);
-        translate.setToY(220);
-        translate.setNode(zombie);
-        translate.play();
-
-        TranslateTransition lawnmower = new TranslateTransition();
-        lawnmower.setDuration(Duration.millis(3000));
-        lawnmower.setCycleCount(1);
-        lawnmower.setFromY(270);
-        lawnmower.setFromX(270);
-        lawnmower.setToX(1100);
-        lawnmower.setToY(270);
-        lawnmower.setNode(lawnMower);
-        //Bounds bounds = translate.getNode().localToScene(translate.getNode().getBoundsInLocal());
-        GamePlayRoot.getChildren().addAll(zombie);
-        translate.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                lawnMower3.setVisible(false);
-                zombie.setVisible(false);
-                lawnmower.play();
-                GamePlayRoot.getChildren().addAll(lawnMower);
-            }
-        });
-        return (img);
-    }
-
-    @FXML
-    private void dropSun() {
-        ImageView sunToken = new ImageView();
-        Image sun = new Image("file:src/sample/assets/sun.png", 50, 50, false, false);
-        sunToken.setImage(sun);
-        Random rand = new Random();
-        int startX = rand.nextInt(850) + 270;
-        int stopX = startX;
-        addTransition(15000, 1, startX, 0, stopX, 550, sunToken);
-    }
-
-    private ImageView addTransition(double duration, int count, double startX, double startY, double stopX, double stopY, ImageView img) {
-        TranslateTransition translate = new TranslateTransition();
-        translate.setDuration(Duration.millis(duration));
-        translate.setCycleCount(count);
-        translate.setFromY(startY);
-        translate.setFromX(startX);
-        translate.setToX(stopX);
-        translate.setToY(stopY);
-        translate.setNode(img);
-        translate.play();
-        GamePlayRoot.getChildren().addAll(img);
-        return (img);
-    }
 }
