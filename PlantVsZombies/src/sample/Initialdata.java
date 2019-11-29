@@ -1,8 +1,4 @@
 package sample;
-
-import javafx.fxml.Initializable;
-import javafx.scene.chart.PieChart;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -10,6 +6,7 @@ public class Initialdata implements Serializable {
     private int maxLevel;
     private static Initialdata d;
     private ArrayList<Database> databaseFiles;
+
     private Initialdata(){
         this.maxLevel=0;
         databaseFiles=new ArrayList<Database>();
@@ -20,11 +17,7 @@ public class Initialdata implements Serializable {
         }
         return d;
     }
-
-    public int getMaxLevel() {
-        return maxLevel;
-    }
-
+    public int getMaxLevel() { return maxLevel; }
     public void setMaxLevel(int maxLevel) {
         this.maxLevel = maxLevel;
     }

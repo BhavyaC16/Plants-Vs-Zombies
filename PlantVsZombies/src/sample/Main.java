@@ -15,6 +15,8 @@ import java.io.File;
 
 public class Main extends Application {
     public static MediaPlayer mediaPlayer;
+    private static int maxLevel;
+    private static Initialdata initData;
     @Override
     public void start(Stage primaryStage) throws Exception{
         addMusic();
@@ -36,9 +38,16 @@ public class Main extends Application {
         mediaPlayer.setStopTime(Duration.seconds(50));
         mediaPlayer.play();
     }
+    public static int getMaxLevel(){
+        return maxLevel;
+    }
+    public static void setMaxLevel(int l){
+        maxLevel=l;
+    }
 
 
     public static void main(String[] args) {
         launch(args);
+
     }
 }

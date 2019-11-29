@@ -55,58 +55,90 @@ public class GamePlayController {
     @FXML
     private GridPane lawn_grid;
     //private GamePlay g;
-    private ArrayList<Plant> allPlants;
-    private ArrayList<Zombie> allZombies;
-    private ArrayList<LawnMower> allMowers;
+    private static ArrayList<Plant> allPlants;
+    private static ArrayList<Zombie> allZombies;
+    private static ArrayList<LawnMower> allMowers;
     private static int sunCount;
-    private final int LANE1;
-    private final int LANE2;
-    private final int LANE3;
-    private final int LANE4;
-    private final int LANE5;
+    private static final int LANE1=50;
+    private static final int LANE2=150;
+    private static final int LANE3=250;
+    private static final int LANE4=350;
+    private static final int LANE5=450;
     public static boolean gameStatus;
     public static Timeline sunTimeline;
     public static Timeline spZ1;
     public static Timeline spZ2;
     private static Label sunCountDisplay;
-    private Level l;
+    private static Level l;
 
 
-    public GamePlayController() {
-        allPlants = new ArrayList<Plant>();
-        allZombies = new ArrayList<Zombie>();
-        allMowers=new ArrayList<LawnMower>();
-        LANE1 = 50;
-        LANE2 = 150;
-        LANE3 = 250;
-        LANE4 = 350;
-        LANE5 = 450;
-        this.l = null;
-    }
+//    public GamePlayController() {
+////        allPlants = new ArrayList<Plant>();
+////        allZombies = new ArrayList<Zombie>();
+////        allMowers=new ArrayList<LawnMower>();
+////        l = null;
+//    }
 
 
     public void initialize() throws Exception {
+        allPlants = new ArrayList<Plant>();
+        allZombies = new ArrayList<Zombie>();
+        allMowers=new ArrayList<LawnMower>();
+        l = null;
         gameStatus = true;
         sunCount = 2000;
         sunCountDisplay = sunCountLabel;
         sunCountDisplay.setText("2000");
         Random rand = new Random();
-        //NormalZombie n = new NormalZombie(1024, 450, GamePlayRoot);
-        //n.moveZombie();
-
         fallingSuns(rand);
         zombieSpawner1(rand);
         zombieSpawner2(rand);
     }
 
-    public static void updateSunCount(int val)
-    {
+    @FXML
+    public void initData(int levelNumber) {
+        //System.out.println("initData");
+        this.levelNumber = levelNumber;
+        SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
+        allMowers.add(new LawnMower(249,LANE1+20,GamePlayRoot,0));
+        allMowers.add(new LawnMower(249,LANE2+20,GamePlayRoot,1));
+        allMowers.add(new LawnMower(249,LANE3+20,GamePlayRoot,2));
+        allMowers.add(new LawnMower(243,LANE4+20,GamePlayRoot,3));
+        allMowers.add(new LawnMower(236,LANE5+20,GamePlayRoot,4));
+        Level l = new Level(this.levelNumber);
+        this.l = l;
+    }
+
+    @FXML
+    void loadGameMenu(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameMenu.fxml"));
+        Parent gameMenu = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(gameMenu));
+        GameMenuController controller = fxmlLoader.<GameMenuController>getController();
+        controller.initData(GamePlayRoot, levelNumber);
+        stage.show();
+    }
+
+    public void removePlant(Plant p){
+        p.img.setVisible(false);
+        allPlants.remove(p);
+    }
+    public void removeZombie(Zombie z){
+        z.img.setVisible(false);
+        allZombies.remove(z);
+    }
+    public void removeMower(LawnMower l){
+        l.img.setVisible(false);
+        allMowers.remove(l);
+    }
+
+    public static void updateSunCount(int val) {
         sunCount+=val;
         getSunCountLabel().setText(Integer.toString(sunCount));
     }
 
-    public static Label getSunCountLabel()
-    {
+    public static Label getSunCountLabel() {
         return(sunCountDisplay);
     }
 
@@ -223,32 +255,23 @@ public class GamePlayController {
     public void endZombieSpawner2()
     {
         spZ2.stop();
-    }
+        waitZombie.setCycleCount(Timeline.INDEFINITE);
+        waitZombie.play();
 
-    @FXML
-    public void initData(int levelNumber) {
-        //System.out.println("initData");
-        this.levelNumber = levelNumber;
-        SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
-        allMowers.add(new LawnMower(249,LANE1+20,GamePlayRoot,0));
-        allMowers.add(new LawnMower(249,LANE2+20,GamePlayRoot,1));
-        allMowers.add(new LawnMower(249,LANE3+20,GamePlayRoot,2));
-        allMowers.add(new LawnMower(243,LANE4+20,GamePlayRoot,3));
-        allMowers.add(new LawnMower(236,LANE5+20,GamePlayRoot,4));
-        Level l = new Level(this.levelNumber);
-        this.l = l;
     }
 
     @FXML
     void getGridPosition(MouseEvent event) throws IOException {
+        System.out.println(allPlants.size());
         if (SidebarElement.getCardSelected() != -1) {
             Node source = (Node) event.getSource();
             Integer colIndex = lawn_grid.getColumnIndex(source);
             Integer rowIndex = lawn_grid.getRowIndex(source);
             if (colIndex != null && rowIndex != null) {
                 boolean flag = true;
+
                 for (Plant p : allPlants) {
-                    if (p.getX() == colIndex && p.getY() == rowIndex) {
+                    if (p.col == colIndex && p.row == rowIndex) {
                         flag = false;
                     }
                 }
@@ -267,32 +290,6 @@ public class GamePlayController {
     }
 
     public void placePlant(int val, int x, int y,int row,int col) {
-        int z=0;
-        switch(row){
-            case 0:
-                System.out.println("1");
-                z=LANE1;
-                break;
-            case 1:
-                System.out.println("2");
-                z=LANE2;
-                break;
-            case 2:
-                System.out.println("3");
-                z=LANE3;
-                break;
-            case 3:
-                System.out.println("5");
-                z=LANE4;
-                break;
-            case 4:
-                System.out.println("6");
-                z=LANE5;
-                break;
-            default:
-                System.out.println("Cant find lane "+row);
-                break;
-        }
         switch (val) {
             case 1:
                 allPlants.add(new Sunflower(x, y, GamePlayRoot,lawn_grid,row,col));
@@ -316,16 +313,4 @@ public class GamePlayController {
                 System.out.println("No case match" + val);
         }
     }
-
-    @FXML
-    void loadGameMenu(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameMenu.fxml"));
-        Parent gameMenu = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(gameMenu));
-        GameMenuController controller = fxmlLoader.<GameMenuController>getController();
-        controller.initData(GamePlayRoot, levelNumber);
-        stage.show();
-    }
-
 }

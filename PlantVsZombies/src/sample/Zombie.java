@@ -38,6 +38,8 @@ public abstract class Zombie extends GameElements {
             this.width=68;
             this.height=118;
         }
+        if(hp<=0){
+        }
 
     }
 
@@ -67,14 +69,6 @@ public abstract class Zombie extends GameElements {
 
     public boolean checkReachedHouse() {
         if (this.x <= 240) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean isAlive() {
-        if (this.hp > 0) {
             return true;
         } else {
             return false;
