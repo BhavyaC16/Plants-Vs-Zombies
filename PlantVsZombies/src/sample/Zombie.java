@@ -89,7 +89,7 @@ public abstract class Zombie extends GameElements {
 
     public void zombieWalk()
     {
-        if(getX()>=270)
+        if(getX()>=240)
         {
             setX(getX()-1);
         }

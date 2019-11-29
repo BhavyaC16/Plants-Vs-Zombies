@@ -66,6 +66,8 @@ public class GamePlayController {
     private final int LANE5;
     public static boolean gameStatus;
     public static Timeline sunTimeline;
+    public static Timeline spZ1;
+    public static Timeline spZ2;
     private static Label sunCountDisplay;
     private Level l;
 
@@ -93,7 +95,8 @@ public class GamePlayController {
         //n.moveZombie();
 
         fallingSuns(rand);
-        zombieSpawner(rand);
+        zombieSpawner1(rand);
+        zombieSpawner2(rand);
     }
 
     public static void updateSunCount(int val)
@@ -122,36 +125,104 @@ public class GamePlayController {
         sunTimeline = sunDropper;
     }
 
-    public void zombieSpawner(Random rand){
-        Timeline waitZombie = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+    public void zombieSpawner1(Random rand){
+        Timeline spawnZombie1 = new Timeline(new KeyFrame(Duration.seconds(15), event -> {
             int lane;
             int laneNumber = rand.nextInt(5);
             if(laneNumber==0)
-            {
                 lane = LANE1;
-            }
             else if(laneNumber==1)
-            {
                 lane = LANE2;
-            }
             else if(laneNumber==2)
-            {
                 lane = LANE3;
-            }
             else if(laneNumber==3)
-            {
                 lane = LANE4;
-            }
             else
-            {
                 lane = LANE5;
+            try
+            {
+                if(l.getZombieList1().get(0)==0) {
+                    System.out.println("normal");
+                    l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
+                    l.getZombieList1().remove(0);
+                }
+                else if(l.getZombieList1().get(0)==1)
+                {
+                    System.out.println("cone");
+                    l.spawnConeZombie(GamePlayRoot, lane, laneNumber);
+                    l.getZombieList1().remove(0);
+                }
+                else if(l.getZombieList1().get(0)==2)
+                {
+                    System.out.println("bucket");
+                    l.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
+                    l.getZombieList1().remove(0);
+                }
             }
-            l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
-
+            catch(IndexOutOfBoundsException e)
+            {
+                endZombieSpawner1();
+            }
         }));
 
-        waitZombie.setCycleCount(Timeline.INDEFINITE);
-        waitZombie.play();
+        spawnZombie1.setCycleCount(Timeline.INDEFINITE);
+        spawnZombie1.play();
+        spZ1 = spawnZombie1;
+    }
+
+    public void zombieSpawner2(Random rand){
+        Timeline spawnZombie2 = new Timeline(new KeyFrame(Duration.seconds(27), event -> {
+            int lane;
+            int laneNumber = rand.nextInt(5);
+            if(laneNumber==0)
+                lane = LANE1;
+            else if(laneNumber==1)
+                lane = LANE2;
+            else if(laneNumber==2)
+                lane = LANE3;
+            else if(laneNumber==3)
+                lane = LANE4;
+            else
+                lane = LANE5;
+            try
+            {
+                if(l.getZombieList2().get(0)==0) {
+                    System.out.println("normal");
+                    l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
+                    l.getZombieList2().remove(0);
+                }
+                else if(l.getZombieList2().get(0)==1)
+                {
+                    System.out.println("cone");
+                    l.spawnConeZombie(GamePlayRoot, lane, laneNumber);
+                    l.getZombieList2().remove(0);
+                }
+                else if(l.getZombieList2().get(0)==2)
+                {
+                    System.out.println("bucket");
+                    l.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
+                    l.getZombieList2().remove(0);
+                }
+            }
+            catch(IndexOutOfBoundsException e)
+            {
+                endZombieSpawner2();
+            }
+        }));
+
+        spawnZombie2.setCycleCount(Timeline.INDEFINITE);
+        spawnZombie2.play();
+        spZ2 = spawnZombie2;
+    }
+
+    public void endZombieSpawner1()
+    {
+        spZ1.stop();
+    }
+
+    public void endZombieSpawner2()
+    {
+        spZ2.stop();
     }
 
     @FXML

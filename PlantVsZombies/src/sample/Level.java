@@ -3,6 +3,7 @@ package sample;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Level {
@@ -12,17 +13,21 @@ public class Level {
     private int numBucketZombie;
     private int totalZombies;
     private ArrayList<Plant> availablePlants;
-    private ArrayList<Zombie> availableZombies;
+    private ArrayList<Integer> availableZombies;
+    private ArrayList<Integer> zombieList1;
+    private ArrayList<Integer> zombieList2;
     private int levelTime; //120 seconds
     public Level(int n){
         this.levelNumber=n;
         this.availablePlants = new ArrayList<Plant>();
-        this.availableZombies = new ArrayList<Zombie>();
+        this.availableZombies = new ArrayList<Integer>();
+        this.zombieList1 = new ArrayList<Integer>();
+        this.zombieList2 = new ArrayList<Integer>();
         if (n>=1){
             this.totalZombies = 10;
-            this.numNormalZombie =10;
-            this.numConeZombie =0;
-            this.numBucketZombie =0;
+            this.numNormalZombie = 10;
+            this.numConeZombie = 0;
+            this.numBucketZombie = 0;
             this.levelTime = 90000;
         }
         if (n >= 2) {
@@ -53,6 +58,39 @@ public class Level {
             this.numBucketZombie = 8;
             this.levelTime = 150000;
         }
+        for(int i = 0; i<this.numNormalZombie; i++)
+        {
+            this.availableZombies.add(0);
+        }
+        for(int j = 0; j<this.numConeZombie; j++)
+        {
+            this.availableZombies.add(1);
+        }
+        for(int k = 0; k<this.numBucketZombie; k++)
+        {
+            this.availableZombies.add(2);
+        }
+        Collections.shuffle(availableZombies);
+        for(int m = 0; m<availableZombies.size(); m++)
+        {
+            if(m%2==0)
+            {
+                this.zombieList1.add(availableZombies.get(m));
+            }
+            else {
+                this.zombieList2.add(availableZombies.get(m));
+            }
+        }
+    }
+
+    public ArrayList<Integer> getZombieList1()
+    {
+        return(this.zombieList1);
+    }
+
+    public ArrayList<Integer> getZombieList2()
+    {
+        return(this.zombieList2);
     }
 
     public void spawnNormalZombie(Pane pane, int lane, int laneNumber)
