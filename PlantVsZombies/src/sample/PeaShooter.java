@@ -8,9 +8,5 @@ public class PeaShooter extends Shooter{
     public PeaShooter(int x, int y, Pane pane, GridPane grid,int row,int col) {
         super(x, y, "file:src/sample/assets/peashooter.gif", pane, 7,60,62, grid,row,col);
     }
-    public void attack(){
-       Pea pea = Pea.getPea(x,y,pane);
-       pea.throwpea();
-    }
 
 }
