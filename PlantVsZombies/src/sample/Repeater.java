@@ -22,7 +22,7 @@ public class Repeater extends Shooter {
             public void handle(ActionEvent event) {
                 int pea1StartX = getX()+50;
                 int pea2StartX = getX()-20;
-                int peaStartY = getY()+30;
+                int peaStartY = getY()+26;
                 Pea p1 = new Pea(pea1StartX, peaStartY, pane, getX()+50);
                 Pea p2 = new Pea(pea2StartX, peaStartY, pane, getX()+50);
                 p1.shootPea();
