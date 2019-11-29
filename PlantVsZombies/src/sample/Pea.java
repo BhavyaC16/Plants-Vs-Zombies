@@ -7,4 +7,7 @@ public class Pea extends GameElements{
     public Pea(int x, int y, Pane pane) {
         super(x, y, "file:src/sample/assets/pea.png", pane,50,50);
     }
+    public void throwpea(){
+
+    }
 }

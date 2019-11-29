@@ -45,9 +45,8 @@ public class Jalapeno extends Plant {
             for(int i=0;i<9;i++){
                 fireViews[i].setVisible(true);
             }
+            //roast zombies
             removefire();
-
-
         });
         t.start();
     }
