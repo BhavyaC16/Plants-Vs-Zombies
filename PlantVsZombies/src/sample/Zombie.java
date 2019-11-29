@@ -21,7 +21,6 @@ public abstract class Zombie extends GameElements {
         this.attackPower = ap;
         super.makeImage();
         this.lane = lane;
-        //add code for displaying zombie
     }
 
     public int getHp() {
@@ -42,9 +41,22 @@ public abstract class Zombie extends GameElements {
 
     }
 
-    //    public Plant checkCollisionWithPlant(){
-//
-//    }
+    public void roastZombie(){
+        img.setImage(new Image("file:src/sample/assets/burntZombie.gif", (double) 68,(double) 118,false,false));
+        //add code here to stop zombie animation
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            img.setVisible(false);
+            img.setDisable(true);
+        });
+        t.start();
+
+    }
+
     public void setLane(int lane) {
         this.y = lane;
     }
@@ -54,7 +66,7 @@ public abstract class Zombie extends GameElements {
     }
 
     public boolean checkReachedHouse() {
-        if (this.x <= 50) {
+        if (this.x <= 240) {
             return true;
         } else {
             return false;
@@ -70,7 +82,6 @@ public abstract class Zombie extends GameElements {
     }
 
     public void moveZombie() {
-        System.out.println("here");
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(50), e -> zombieWalk()));
         animation.setCycleCount(1000);
         animation.play();

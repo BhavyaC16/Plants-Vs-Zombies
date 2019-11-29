@@ -35,7 +35,6 @@ public class CherryBomb extends Plant{
     }
 
     public void removepowie(){
-        System.out.println("POweiieeeee");
         Thread t = new Thread(() -> {
             try {
                 Thread.sleep(1250);

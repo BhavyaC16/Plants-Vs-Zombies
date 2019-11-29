@@ -74,7 +74,7 @@ public class SidebarElement extends GameElements{
             x=22;
             y=284;
             SidebarElement cherrybombCard=new SidebarElement(x,y,path,pane,width,height,150);
-            cherrybombCard.timeoutTime=8000;
+            cherrybombCard.timeoutTime=15000;
             allElements.put(4,cherrybombCard);
             cherrybombCard.img.setOnMouseClicked(e->{
                 if (!cherrybombCard.isDisabled) {
@@ -87,7 +87,7 @@ public class SidebarElement extends GameElements{
             x=23;
             y=352;
             SidebarElement repeaterCard=new SidebarElement(x,y,path,pane,width,height,200);
-            repeaterCard.timeoutTime=9000;
+            repeaterCard.timeoutTime=10000;
             allElements.put(5,repeaterCard);
             repeaterCard.img.setOnMouseClicked(e->{
                 if (!repeaterCard.isDisabled){
@@ -100,7 +100,7 @@ public class SidebarElement extends GameElements{
             x=24;
             y=420;
             SidebarElement jalapenoCard=new SidebarElement(x,y,path,pane,width,height,125);
-            jalapenoCard.timeoutTime=10000;
+            jalapenoCard.timeoutTime=12000;
             allElements.put(6,jalapenoCard);
             jalapenoCard.img.setOnMouseClicked(e->{
                 if (!jalapenoCard.isDisabled) {
