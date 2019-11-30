@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="mainRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="133.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="133.0" layoutY="150.0" onMouseClicked="#showAlmanac" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@assets/mainmenu-01.png" />
          </image>
@@ -29,6 +29,11 @@
       <ImageView fx:id="loadGame" fitHeight="109.0" fitWidth="241.0" layoutX="279.0" layoutY="460.0" onMouseClicked="#showSavedGames" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/loadgame.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="92.0" layoutX="896.0" layoutY="40.0" onMouseClicked="#showAlmanac" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/Almanac_ion.png" />
          </image>
       </ImageView>
    </children>

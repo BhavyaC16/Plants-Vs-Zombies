@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="almanacPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Almanac">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/Almanac_ZombieBack.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="376.0" layoutY="16.0" text="Almanac" textFill="WHITE">
+         <font>
+            <Font name="Chalkboard SE Light" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="117.0" fitWidth="116.0" layoutX="28.0" layoutY="85.0" onMouseClicked="#normalAlmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/normal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="122.0" layoutX="185.0" layoutY="85.0" onMouseClicked="#conealmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/cone.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="122.0" fitWidth="115.0" layoutX="342.0" layoutY="85.0" onMouseClicked="#bucketalmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/bucket.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="116.0" layoutX="28.0" layoutY="220.0" onMouseClicked="#sunalmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/sunflower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="116.0" layoutX="185.0" layoutY="220.0" onMouseClicked="#peaalmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/peashooter.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="116.0" layoutX="342.0" layoutY="220.0" onMouseClicked="#walnutalmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/walnut.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="116.0" layoutX="28.0" layoutY="366.0" onMouseClicked="#cherryalmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/cherrybomb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="116.0" layoutX="185.0" layoutY="366.0" onMouseClicked="#repeateralmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/repeater.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="117.0" fitWidth="116.0" layoutX="342.0" layoutY="366.0" onMouseClicked="#jalapenoalmanac" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/jalapeno.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="entry" fitHeight="383.0" fitWidth="284.0" layoutX="486.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="68.0" fitWidth="72.0" layoutX="712.0" layoutY="16.0" onMouseClicked="#loadPrevMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/backbutton.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

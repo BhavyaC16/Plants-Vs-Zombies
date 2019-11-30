@@ -3,7 +3,9 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -37,19 +39,30 @@ public class MainPageController implements Initializable {
 
     @FXML
     void exitGame(MouseEvent event) {
-        try{
-            Database.serialize();
-        }
-        catch(IOException e){
-            System.out.println("Could not save the progress :(");
-        }
-        System.exit(0);
+//        try{
+//            Database.serialize();
+//        }
+//        catch(IOException e){
+//            System.out.println("Could not save the progress :(");
+//        }
+//        System.exit(0);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        Database.getInstance().setMaxLevel(5);
+//        try {
+//            Database.deserialize();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
 
+    @FXML
+    void showAlmanac(MouseEvent event) throws Exception {
+        AnchorPane pane= FXMLLoader.load(getClass().getResource("Almanac.fxml"));
+        mainRoot.getChildren().setAll(pane);
     }
 
     @FXML

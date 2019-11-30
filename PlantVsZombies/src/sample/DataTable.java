@@ -74,12 +74,12 @@ public class DataTable implements Serializable {
     public void saveGame(){
 //        this.setNewDate();
         Database.getInstance().getDatabaseFiles().add(this);
-        try{
-            Database.serialize();
-        }
-        catch (IOException e){
-            System.out.println("Cant close stream");
-        }
+//        try{
+//            Main.serialize();
+//        }
+//        catch (IOException e){
+//            System.out.println("Cant close stream");
+//        }
     }
 
     public List<LawnMower> getAllLawnMowers() {

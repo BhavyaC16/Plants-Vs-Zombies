@@ -22,6 +22,7 @@ public class Database implements Serializable {
         return d;
     }
 
+
     protected Object readResolve()
     {
         return d;
@@ -71,6 +72,7 @@ public class Database implements Serializable {
         }
         catch (NullPointerException e) {
             d=new Database();
+            e.printStackTrace();
         }
         catch (FileNotFoundException f){
             System.out.println("Cant find file");
@@ -79,8 +81,16 @@ public class Database implements Serializable {
             System.out.println("Not able to save");
         }
         finally {
-            in.close();
+            try{
+                in.close();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
+//            System.out.println("size "+Database.getInstance().getDatabaseFiles().size());
         }
+
     }
 
 
