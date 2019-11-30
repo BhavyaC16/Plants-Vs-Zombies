@@ -122,15 +122,15 @@ public class GamePlayController {
         stage.show();
     }
 
-    public void removePlant(Plant p){
+    public static void removePlant(Plant p){
         p.img.setVisible(false);
         allPlants.remove(p);
     }
-    public void removeZombie(Zombie z){
+    public static void removeZombie(Zombie z){
         z.img.setVisible(false);
         allZombies.remove(z);
     }
-    public void removeMower(LawnMower l){
+    public static void removeMower(LawnMower l){
         l.img.setVisible(false);
         allMowers.remove(l);
     }

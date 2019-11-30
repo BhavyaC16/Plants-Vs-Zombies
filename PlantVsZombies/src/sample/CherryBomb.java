@@ -86,5 +86,6 @@ public class CherryBomb extends Plant{
             powie.setVisible(false);
         });
         t.start();
+        this.setHp(0);
     }
 }

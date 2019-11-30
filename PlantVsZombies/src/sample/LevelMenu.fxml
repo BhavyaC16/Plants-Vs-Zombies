@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="levelRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelMenuController">
+<AnchorPane fx:id="levelRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelMenuController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="87.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
@@ -36,10 +36,30 @@
                 <Image url="@assets/L5.png" />
             </image>
         </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="backbutton" fitHeight="47.0" fitWidth="49.0" layoutX="961.0" layoutY="14.0" onMouseClicked="#loadPrevMenu" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@assets/backbutton.png" />
             </image>
         </ImageView>
+      <ImageView fx:id="lock2" fitHeight="60.0" fitWidth="68.0" layoutX="284.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/lock.png" />
+         </image></ImageView>
+      <ImageView fx:id="lock3" fitHeight="60.0" fitWidth="68.0" layoutX="456.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/lock.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lock4" fitHeight="60.0" fitWidth="68.0" layoutX="629.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/lock.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lock5" fitHeight="60.0" fitWidth="68.0" layoutX="800.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/lock.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

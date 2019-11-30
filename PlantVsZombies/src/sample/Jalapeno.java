@@ -84,6 +84,7 @@ public class Jalapeno extends Plant {
             }
         });
         t.start();
+        this.setHp(0);
     }
 
 }

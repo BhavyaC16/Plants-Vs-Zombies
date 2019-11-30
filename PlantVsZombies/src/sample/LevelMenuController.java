@@ -31,8 +31,49 @@ public class LevelMenuController {
     private ImageView level5button;
 
     @FXML
+    private ImageView lock2;
+
+    @FXML
+    private ImageView lock3;
+
+    @FXML
+    private ImageView lock4;
+
+    @FXML
+    private ImageView lock5;
+
+    @FXML
     private ImageView backbutton;
 
+    public void initialize(){
+        int l=Database.getInstance().getMaxLevel();
+        System.out.println("level"+l);
+        level2button.setDisable(true);
+        level3button.setDisable(true);
+        level4button.setDisable(true);
+        level5button.setDisable(true);
+        if(l>=2){
+            lock2.setVisible(false);
+            lock2.setDisable(true);
+            level2button.setDisable(false);
+        }
+        if(l>=3){
+            lock3.setVisible(false);
+            lock3.setDisable(true);
+            level3button.setDisable(false);
+        }
+        if(l>=4){
+            lock4.setVisible(false);
+            lock4.setDisable(true);
+            level4button.setDisable(false);
+        }
+        if(l>=5){
+            lock5.setVisible(false);
+            lock5.setDisable(true);
+            level5button.setDisable(false);
+        }
+
+    }
     @FXML
     void glowImage(MouseEvent event) throws IOException{
         Glow glow=new Glow();

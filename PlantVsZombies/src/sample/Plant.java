@@ -38,14 +38,16 @@ public abstract class Plant extends GameElements{
     public void setHp(int hp){
         this.hp=hp;
         if (this.hp<=0){
-            disappear();
-            for(int i = 0; i<GamePlayController.allPlants.size(); i++)
-            {
-                if(this==GamePlayController.allPlants.get(i))
-                {
-                    GamePlayController.allPlants.remove(i);
-                }
-            }
+            img.setVisible(false);
+            img.setDisable(true);
+            GamePlayController.removePlant(this);
+//            for(int i = 0; i<GamePlayController.allPlants.size(); i++)
+//            {
+//                if(this==GamePlayController.allPlants.get(i))
+//                {
+//                    GamePlayController.allPlants.remove(i);
+//                }
+//            }
         }
     }
 
