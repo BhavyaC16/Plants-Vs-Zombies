@@ -79,9 +79,7 @@ public class DataTable implements Serializable {
             System.out.println("Cant close stream");
         }
     }
-    public void deleteGame(){
-        Database.getInstance().getDatabaseFiles().remove(this);
-    }
+
     public ArrayList<LawnMower> getAllLawnMowers() {
         return allLawnMowers;
     }

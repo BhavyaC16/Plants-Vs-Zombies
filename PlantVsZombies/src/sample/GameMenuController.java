@@ -71,9 +71,11 @@ public class GameMenuController {
         GamePlayController.gameStatus = false;
         GamePlayController.sunTimeline.stop();
         GameMenuMessage.setText("Game Saved!");
+        Database.getInstance().removeData(data);
         data.update(levelNumber,sunCount, allPlants,allZombies,allMowers, time);
         data.saveGame();
         Database.getInstance().setMaxLevel(levelNumber);
+
     }
 
     @FXML

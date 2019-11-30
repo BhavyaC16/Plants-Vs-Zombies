@@ -47,7 +47,6 @@ public class LevelMenuController {
 
     public void initialize(){
         int l=Database.getInstance().getMaxLevel();
-        System.out.println("level"+l);
         level2button.setDisable(true);
         level3button.setDisable(true);
         level4button.setDisable(true);

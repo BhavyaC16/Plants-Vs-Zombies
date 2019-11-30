@@ -369,4 +369,20 @@ public class GamePlayController {
         spZ2.stop();
         sunTimeline.stop();
     }
+    public void gameLost() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EndGame.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        EndGameController controller = fxmlLoader.<EndGameController>getController();
+        controller.initData(levelNumber, false,d);
+        GamePlayRoot.getChildren().setAll(pane);
+
+    }
+    public void gameWon() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EndGame.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        EndGameController controller = fxmlLoader.<EndGameController>getController();
+        controller.initData(levelNumber, true,d);
+        GamePlayRoot.getChildren().setAll(pane);
+
+    }
 }
