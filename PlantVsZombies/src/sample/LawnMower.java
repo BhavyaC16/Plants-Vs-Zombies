@@ -29,19 +29,22 @@ public class LawnMower extends GameElements{
                 {
                     if(GamePlayController.allZombies.get(i).getLane()==lane)
                     {
-                        if(Math.abs(GamePlayController.allZombies.get(i).getX()-getX())<=50)
+                        if(Math.abs(GamePlayController.allZombies.get(i).getX()-getX())<=100)
                         {
                             if(activated==false)
                             {
                                 activate();
                                 GamePlayController.allZombies.get(i).setHp(0);
                                 activated = true;
+                                GamePlayController.allZombies.get(i).getZombieAnimation().stop();
                             }
                             else
                             {
                                 GamePlayController.allZombies.get(i).setHp(0);
+                                GamePlayController.allZombies.get(i).getZombieAnimation().stop();
                             }
                         }
+                        GamePlayController.allMowers.remove(this);
                     }
                 }
             }
@@ -63,4 +66,5 @@ public class LawnMower extends GameElements{
             setX(getX()+1);
         }
     }
+
 }

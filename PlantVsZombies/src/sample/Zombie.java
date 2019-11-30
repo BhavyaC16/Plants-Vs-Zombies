@@ -38,6 +38,7 @@ public abstract class Zombie extends GameElements {
     public void setHp(int hp) {
         this.hp = hp;
         if(hp<=0){
+            GamePlayController.numZombiesKilled+=1;
             this.img.setVisible(false);
             this.img.setDisable(true);
             this.zombieAnimation.stop();
@@ -79,20 +80,14 @@ public abstract class Zombie extends GameElements {
         this.y = lane;
     }
 
-    public void checkCollisionWithPlant() {
-
-    }
-
-    public boolean checkReachedHouse() {
-        if (this.x <= 240) {
-            return true;
-        } else {
-            return false;
+    public void checkReachedHouse() {
+        if (img.getX() <= 220) {
+            GamePlayController.wonGame = -1;
         }
     }
 
     public void moveZombie() {
-        Timeline animation = new Timeline(new KeyFrame(Duration.millis(50), e -> zombieWalk()));
+        Timeline animation = new Timeline(new KeyFrame(Duration.millis(70), e -> zombieWalk()));
         animation.setCycleCount(1000);
         animation.play();
         this.zombieAnimation = animation;
@@ -100,11 +95,17 @@ public abstract class Zombie extends GameElements {
 
     public void zombieWalk()
     {
-        if(getX()>=240 && this.hp>0)
+        if(getX()>220 && this.hp>0)
         {
             setX(getX()+this.dx);
             eatPlant();
+            checkReachedHouse();
         }
+    }
+
+    public Timeline getZombieAnimation()
+    {
+        return this.zombieAnimation;
     }
 
     public void eatPlant()

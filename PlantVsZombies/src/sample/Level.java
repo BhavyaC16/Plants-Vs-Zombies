@@ -116,4 +116,10 @@ public class Level {
         GamePlayController.allZombies.add(z);
         z.moveZombie();
     }
+
+    public int getTotalZombies()
+    {
+        return(this.totalZombies);
+    }
+
 }

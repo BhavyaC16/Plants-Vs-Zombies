@@ -56,7 +56,7 @@ public class GamePlayController {
     @FXML
     private GridPane lawn_grid;
     public static ArrayList<Plant> allPlants;
-    private static ArrayList<LawnMower> allMowers;
+    public static ArrayList<LawnMower> allMowers;
     private static int sunCount;
     public static final int LANE1=50;
     public static final int LANE2=150;
@@ -72,7 +72,9 @@ public class GamePlayController {
     private static Level l;
     public static ArrayList<Zombie> allZombies = new ArrayList<Zombie>();
     private static DataTable d;
-    private static int wonGame;
+    public static int wonGame = 0;
+    private volatile int spawnedZombies = 0;
+    public static int numZombiesKilled = 0;
 
 
     public void initialize() throws Exception {
@@ -106,9 +108,37 @@ public class GamePlayController {
         Level l = new Level(this.levelNumber);
         this.l = l;
         Random rand = new Random();
+        gameProgress();
         fallingSuns(rand);
         zombieSpawner1(rand);
         zombieSpawner2(rand);
+
+    }
+
+    public void gameProgress()
+    {
+        Timeline gameStatus = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                progressBar.setProgress(((double)numZombiesKilled/l.getTotalZombies()));
+                System.out.println(((double)numZombiesKilled/l.getTotalZombies()));
+                if(wonGame==(-1))
+                {
+                    System.out.println("LostGame :(");
+                }
+                else if(wonGame==0 && allZombies.size()==0 && l.getTotalZombies()==spawnedZombies)
+                {
+                    System.out.println("GAME WON!!");
+                }
+            }
+        }));
+        gameStatus.setCycleCount(Timeline.INDEFINITE);
+        gameStatus.play();
+    }
+
+    public synchronized void updateSpawnedZombies()
+    {
+        this.spawnedZombies+=1;
     }
 
     @FXML
@@ -179,16 +209,19 @@ public class GamePlayController {
                 if(l.getZombieList1().get(0)==0) {
                     l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList1().remove(0);
+                    updateSpawnedZombies();
                 }
                 else if(l.getZombieList1().get(0)==1)
                 {
                     l.spawnConeZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList1().remove(0);
+                    updateSpawnedZombies();
                 }
                 else if(l.getZombieList1().get(0)==2)
                 {
                     l.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList1().remove(0);
+                    updateSpawnedZombies();
                 }
             }
             catch(IndexOutOfBoundsException e)
@@ -221,16 +254,19 @@ public class GamePlayController {
                 if(l.getZombieList2().get(0)==0) {
                     l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList2().remove(0);
+                    updateSpawnedZombies();
                 }
                 else if(l.getZombieList2().get(0)==1)
                 {
                     l.spawnConeZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList2().remove(0);
+                    updateSpawnedZombies();
                 }
                 else if(l.getZombieList2().get(0)==2)
                 {
                     l.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
                     l.getZombieList2().remove(0);
+                    updateSpawnedZombies();
                 }
             }
             catch(IndexOutOfBoundsException e)
