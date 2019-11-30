@@ -38,8 +38,10 @@ public class Shovel extends GameElements{
     }
 
     public void disable(){
-        Glow glow=(Glow) shovel.img.getEffect();
-        glow.setLevel(0.0);
-        shovel.isDisabled=true;
+        if (!isDisabled){
+            Glow glow=(Glow) shovel.img.getEffect();
+            glow.setLevel(0.0);
+            shovel.isDisabled=true;
+        }
     }
 }

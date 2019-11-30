@@ -314,15 +314,22 @@ public class GamePlayController {
         Node source = (Node) event.getSource();
         Integer colIndex = lawn_grid.getColumnIndex(source);
         Integer rowIndex = lawn_grid.getRowIndex(source);
-        if (shovel.isIsDisabled() == false) {
-
+        if (!shovel.isIsDisabled()) {
+            shovel.disable();
             if (colIndex != null && rowIndex != null) {
-                boolean flag = false;
-
+                System.out.println("shovelling"+colIndex+" "+rowIndex);
                 for (Plant p : allPlants) {
+                    System.out.println("plant"+p.col+" "+p.row);
                     if (p.col == colIndex && p.row == rowIndex) {
+                        p.img.setVisible(false);
+                        p.img.setDisable(true);
                         allPlants.remove(p);
-                        shovel.disable();
+                        System.out.println(p.getClass());
+                        if(p.getClass().equals("sample.PeaShooter")  || p.getClass().equals("sample.Repeater")){
+                            ((Shooter) p).getShooterTimeline().stop();
+                        }
+                        else if(p.getClass().equals("sample.Sunflower")){
+                        }
                         break;
                     }
                 }
