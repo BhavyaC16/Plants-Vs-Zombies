@@ -95,21 +95,24 @@ public class Level {
 
     public void spawnNormalZombie(Pane pane, int lane, int laneNumber)
     {
-        NormalZombie z = new NormalZombie(1024, lane, pane, laneNumber);
+        NormalZombie z = new NormalZombie(1024, lane, laneNumber);
+        z.makeImage(pane);
         GamePlayController.allZombies.add(z);
         z.moveZombie();
     }
 
     public void spawnConeZombie(Pane pane, int lane, int laneNumber)
     {
-        ConeZombie z = new ConeZombie(1024, lane, pane, laneNumber);
+        ConeZombie z = new ConeZombie(1024, lane, laneNumber);
+        z.makeImage(pane);
         GamePlayController.allZombies.add(z);
         z.moveZombie();
     }
 
     public void spawnBucketZombie(Pane pane, int lane, int laneNumber)
     {
-        BucketZombie z = new BucketZombie(1024, lane, pane, laneNumber);
+        BucketZombie z = new BucketZombie(1024, lane, laneNumber);
+        z.makeImage(pane);
         GamePlayController.allZombies.add(z);
         z.moveZombie();
     }

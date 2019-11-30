@@ -12,9 +12,9 @@ public class Pea extends GameElements{
     private static int peaID=0;
     private boolean flag;
     private int thispea;
-    public Pea(int x, int y, Pane pane, int plantPosition, int lane) {
-        super(x, y, "file:src/sample/assets/pea.png", pane,20,20);
-        super.makeImage();
+    public Pea(int x, int y, int plantPosition, int lane) {
+        super(x, y, "file:src/sample/assets/pea.png",20,20);
+//        super.makeImage();
         this.plantPosition = plantPosition;
         this.lane = lane;
         thispea = peaID++;

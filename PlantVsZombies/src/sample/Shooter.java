@@ -15,14 +15,14 @@ public class Shooter extends Plant {
     protected Timeline shooterTimeline;
     protected int lane;
 
-    public Shooter(int x, int y, String path, Pane pane, int hp, int width, int height, GridPane grid,int row,int col){
-        super(x,y,path,pane,hp,width,height,grid,row,col);
+    public Shooter(int x, int y, String path, int hp, int width, int height,int row,int col){
+        super(x,y,path,hp,width,height,row,col);
         this.lane = col;
-        attack();
+//        attack();
     }
 
     @Override
-    public void attack(){
+    public void attack(Pane pane){
         Timeline peaShooter = new Timeline(new KeyFrame(Duration.seconds(2), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -30,7 +30,8 @@ public class Shooter extends Plant {
                     if (GamePlayController.allZombies.get(i).getLane() == getShooterLane() && getX()<=GamePlayController.allZombies.get(i).getX()) {
                         int peaStartX = getX() + 50;
                         int peaStartY = getY() + 25;
-                        Pea p = new Pea(peaStartX, peaStartY, pane, getX() + 50, row);
+                        Pea p = new Pea(peaStartX, peaStartY, getX() + 50, row);
+                        p.makeImage(pane);
                         p.shootPea();
                         checkHp();
                     }

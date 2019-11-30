@@ -15,10 +15,10 @@ public class Sun extends GameElements{
     private int y;
     private final int timeouttime;
 
-    public Sun(int x, int y, Pane pane, boolean fallingSun)
+    public Sun(int x, int y, boolean fallingSun)
     {
-        super(x, y, "file:src/sample/assets/sun.png", pane, 50, 50);
-        super.makeImage();
+        super(x, y, "file:src/sample/assets/sun.png", 50, 50);
+//        super.makeImage();
         this.img.setOnMouseClicked(e->{
             this.img.setVisible(false);
             this.img.setDisable(true);

@@ -48,14 +48,6 @@ public class MainPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        System.out.println("Main launched");
-        ArrayList<Plant> p = new ArrayList<Plant>();
-        ArrayList<Zombie> z = new ArrayList<Zombie>();
-        DataTable d=new DataTable(3);
-        DataTable d1=new DataTable(4);
-        Database.getInstance().setMaxLevel(3);
-        d.saveGame();
-        d1.saveGame();
     }
 
     @FXML

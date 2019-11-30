@@ -28,7 +28,7 @@ public class Database implements Serializable {
     }
     public int getMaxLevel() { return maxLevel; }
     public void setMaxLevel(int maxLevel) {
-        this.maxLevel = maxLevel;
+        if (this.maxLevel< maxLevel) this.maxLevel=maxLevel;
     }
 
     public void addData(DataTable d){

@@ -16,13 +16,13 @@ public abstract class Zombie extends GameElements implements Serializable {
     protected int attackPower;
     protected int lane;
     protected int dx;
-    protected Timeline zombieAnimation;
+    transient protected Timeline zombieAnimation;
 
-    public Zombie(int hp, int ap, String p, int x, int y, Pane pane, int width, int height, int lane) {
-        super(x, y, p, pane, width, height);
+    public Zombie(int hp, int ap, String p, int x, int y, int width, int height, int lane) {
+        super(x, y, p, width, height);
         this.hp = hp;
         this.attackPower = ap;
-        super.makeImage();
+//        super.makeImage();
         this.lane = lane;
         this.dx = -1;
     }
@@ -110,10 +110,8 @@ public abstract class Zombie extends GameElements implements Serializable {
         {
             if(GamePlayController.allPlants.get(i).row == getLane())
             {
-                System.out.println("wallnut detected in lane");
                 if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=50)
                 {
-                    System.out.println("wallnut stopped me");
                     this.dx = 0;
                     GamePlayController.allPlants.get(i).setHp(GamePlayController.allPlants.get(i).getHp()-1);
                     if(GamePlayController.allPlants.get(i).getHp()==0)

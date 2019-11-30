@@ -26,12 +26,13 @@ import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class GamePlayController {
 
     @FXML
-    public static AnchorPane GamePlayRoot;
+    private AnchorPane GamePlayRoot;
     @FXML
     private ImageView peaShooterBuy;
     @FXML
@@ -68,9 +69,11 @@ public class GamePlayController {
     public static Timeline spZ1;
     public static Timeline spZ2;
     private static Label sunCountDisplay;
+    private static int timeElapsed;
     private static Level l;
     public static ArrayList<Zombie> allZombies = new ArrayList<Zombie>();
     private static DataTable d;
+//    private static HashMap<GameElements,ImageView> hash;
 
 
 //    public GamePlayController() {
@@ -89,11 +92,8 @@ public class GamePlayController {
         gameStatus = true;
 //        sunCount = 2000;
         sunCountDisplay = sunCountLabel;
-        sunCountDisplay.setText("2000");
-        Random rand = new Random();
-        fallingSuns(rand);
-        zombieSpawner1(rand);
-        zombieSpawner2(rand);
+//        sunCountDisplay.setText("2000");
+//        hash=new HashMap<GameElements,ImageView>();
     }
 
     @FXML
@@ -104,10 +104,26 @@ public class GamePlayController {
         allZombies = d.getAllZombie();
         allMowers=d.getAllLawnMowers();
         sunCount=d.getSunCount();
+        for (Plant p: allPlants){
+            p.makeImage(GamePlayRoot);
+            p.attack(GamePlayRoot);
+        }
+        for(Zombie z : allZombies){
+            z.makeImage(GamePlayRoot);
+
+        }
+        for (LawnMower l : allMowers){
+            l.makeImage(GamePlayRoot);
+        }
+        sunCountDisplay.setText(String.valueOf(sunCount));
         this.d=d;
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
         Level l = new Level(this.levelNumber);
         this.l = l;
+        Random rand = new Random();
+        fallingSuns(rand);
+        zombieSpawner1(rand);
+        zombieSpawner2(rand);
     }
 
     @FXML
@@ -117,7 +133,7 @@ public class GamePlayController {
         Stage stage = new Stage();
         stage.setScene(new Scene(gameMenu));
         GameMenuController controller = fxmlLoader.<GameMenuController>getController();
-        controller.initData(GamePlayRoot, levelNumber);
+        controller.initData(GamePlayRoot, levelNumber,d,sunCount,allPlants, allZombies, allMowers, timeElapsed);
         stage.show();
     }
 
@@ -149,7 +165,8 @@ public class GamePlayController {
             public void handle(ActionEvent event) {
                 int sunPosition = rand.nextInt(850);
                 sunPosition += 100;
-                Sun s = new Sun(sunPosition, 0, GamePlayRoot, true);
+                Sun s = new Sun(sunPosition, 0, true);
+                s.makeImage(GamePlayRoot);
                 s.dropSun();
             }
         }));
@@ -271,7 +288,7 @@ public class GamePlayController {
                     if (SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= sunCount) {
                         placePlant(SidebarElement.getCardSelected(),(int) (source.getLayoutX() + source.getParent().getLayoutX()),(int) (source.getLayoutY() + source.getParent().getLayoutY()), colIndex, rowIndex);
                         updateSunCount((-1)*SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
-                        SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn();
+                        SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn(GamePlayRoot);
                     } else System.out.println("Not enough sun score" );
                 }
                 else System.out.println("Cant place more than one plant on cell");
@@ -282,24 +299,43 @@ public class GamePlayController {
     }
 
     public void placePlant(int val, int x, int y,int row,int col) {
+        Plant p;
         switch (val) {
             case 1:
-                allPlants.add(new Sunflower(x, y, GamePlayRoot,lawn_grid,row,col));
+                p=new Sunflower(x, y,row,col);
+                allPlants.add(p);
+                p.makeImage(lawn_grid);
+                p.attack(GamePlayRoot);
                 break;
             case 2:
-                allPlants.add(new PeaShooter(x, y, GamePlayRoot,lawn_grid,row,col));
+                p=new PeaShooter(x, y,row,col);
+                allPlants.add(p);
+                p.makeImage(lawn_grid);
+                p.attack(GamePlayRoot);
                 break;
             case 3:
-                allPlants.add(new Wallnut(x, y,GamePlayRoot,lawn_grid,row,col));
+                p=new Wallnut(x, y,row,col);
+                allPlants.add(p);
+                p.makeImage(lawn_grid);
+                p.attack(GamePlayRoot);
                 break;
             case 4:
-                allPlants.add(new CherryBomb(x, y, GamePlayRoot,lawn_grid,row,col));
+                p=new CherryBomb(x, y,row,col);
+                allPlants.add(p);
+                p.makeImage(lawn_grid);
+                p.attack(GamePlayRoot);
                 break;
             case 5:
-                allPlants.add(new Repeater(x, y, GamePlayRoot,lawn_grid,row,col));
+                p=new Repeater(x, y,row,col);
+                allPlants.add(p);
+                p.makeImage(lawn_grid);
+                p.attack(GamePlayRoot);
                 break;
             case 6:
-                allPlants.add(new Jalapeno(x, y, GamePlayRoot,lawn_grid,row,col));
+                p=new Jalapeno(x, y,row,col);
+                allPlants.add(p);
+                p.makeImage(lawn_grid);
+                p.attack(GamePlayRoot);
                 break;
             default:
                 System.out.println("No case match" + val);

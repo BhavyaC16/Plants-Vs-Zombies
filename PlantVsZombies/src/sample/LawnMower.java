@@ -14,9 +14,8 @@ public class LawnMower extends GameElements implements Serializable {
     int lane;
     boolean activated = false;
     String activatedPath="file:src/sample/assets/lawnmowerActivated.gif";
-    public LawnMower(int x, int y, Pane pane, int lane){
-        super(x, y, "file:src/sample/assets/lawnmowerIdle.gif", pane, 81, 77);
-        super.makeImage();
+    public LawnMower(int x, int y, int lane){
+        super(x, y, "file:src/sample/assets/lawnmowerIdle.gif", 81, 77);
         this.lane=lane;
         checkZombie();
     }

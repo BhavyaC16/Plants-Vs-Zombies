@@ -13,10 +13,10 @@ public class SidebarElement extends GameElements{
     private static ImageView selectedBorder;
     private static HashMap<Integer,SidebarElement> allElements;
     private final int cost;
-    public SidebarElement(int x,int y,String path,Pane pane, int width,int height,int cost){
-        super(x,y,path,pane,width,height);
+    public SidebarElement(int x,int y,String path, int width,int height,int cost){
+        super(x,y,path,width,height);
         this.cost=cost;
-        super.makeImage();
+//        super.makeImage();
     }
 
     public int getCost(){
@@ -34,7 +34,8 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/sunflowerCard.png";
             x=24;
             y=79;
-            SidebarElement sunflowerCard=new SidebarElement(x,y,path,pane,width,height,50);
+            SidebarElement sunflowerCard=new SidebarElement(x,y,path,width,height,50);
+            sunflowerCard.makeImage(pane);
             sunflowerCard.timeoutTime=5000;
             allElements.put(1,sunflowerCard);
             sunflowerCard.img.setOnMouseClicked(e->{
@@ -47,7 +48,8 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/peashooterCard.png";
             x=22;
             y=147;
-            SidebarElement peashooterCard=new SidebarElement(x,y,path,pane,width,height,100);
+            SidebarElement peashooterCard=new SidebarElement(x,y,path,width,height,100);
+            peashooterCard.makeImage(pane);
             peashooterCard.timeoutTime=6000;
             allElements.put(2,peashooterCard);
             peashooterCard.img.setOnMouseClicked(e->{
@@ -60,7 +62,8 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/wallnutCard.png";
             x=22;
             y=217;
-            SidebarElement wallnutCard=new SidebarElement(x,y,path,pane,width,height,50);
+            SidebarElement wallnutCard=new SidebarElement(x,y,path,width,height,50);
+            wallnutCard.makeImage(pane);
             wallnutCard.timeoutTime=7000;
             allElements.put(3,wallnutCard);
             wallnutCard.img.setOnMouseClicked(e->{
@@ -73,7 +76,8 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/cherrybombCard.png";
             x=22;
             y=284;
-            SidebarElement cherrybombCard=new SidebarElement(x,y,path,pane,width,height,150);
+            SidebarElement cherrybombCard=new SidebarElement(x,y,path,width,height,150);
+            cherrybombCard.makeImage(pane);
             cherrybombCard.timeoutTime=15000;
             allElements.put(4,cherrybombCard);
             cherrybombCard.img.setOnMouseClicked(e->{
@@ -86,7 +90,8 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/repeaterCard.png";
             x=23;
             y=352;
-            SidebarElement repeaterCard=new SidebarElement(x,y,path,pane,width,height,200);
+            SidebarElement repeaterCard=new SidebarElement(x,y,path,width,height,200);
+            repeaterCard.makeImage(pane);
             repeaterCard.timeoutTime=10000;
             allElements.put(5,repeaterCard);
             repeaterCard.img.setOnMouseClicked(e->{
@@ -99,7 +104,8 @@ public class SidebarElement extends GameElements{
             path="file:src/sample/assets/jalapenoCard.png";
             x=24;
             y=420;
-            SidebarElement jalapenoCard=new SidebarElement(x,y,path,pane,width,height,125);
+            SidebarElement jalapenoCard=new SidebarElement(x,y,path,width,height,125);
+            jalapenoCard.makeImage(pane);
             jalapenoCard.timeoutTime=12000;
             allElements.put(6,jalapenoCard);
             jalapenoCard.img.setOnMouseClicked(e->{
@@ -134,12 +140,12 @@ public class SidebarElement extends GameElements{
         else return null;
     }
 
-    public void setDisabledOn(){
+    public void setDisabledOn(Pane pane){
         this.isDisabled=true;
         ImageView im =new ImageView(new Image("file:src/sample/assets/lock.png",50.0,50.0,false,false));
         im.setX(this.getX()+20);
         im.setY(this.getY());
-        this.pane.getChildren().add(im);
+        pane.getChildren().add(im);
         Thread t = new Thread(() -> {
             try {
                 Thread.sleep(this.timeoutTime);

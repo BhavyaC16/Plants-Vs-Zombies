@@ -9,18 +9,35 @@ import javafx.scene.layout.Pane;
 public class Jalapeno extends Plant {
     private ImageView[] fireViews;
 
-    public Jalapeno(int x, int y, Pane pane, GridPane grid,int row,int col) {
-        super(x, y, "file:src/sample/assets/jalapeno.gif", pane, 4,100,100, grid,row,col);
+    public Jalapeno(int x, int y,int row,int col) {
+        super(x, y, "file:src/sample/assets/jalapeno.gif", 4,100,100,row,col);
         System.out.println("Placed plant");
         fireViews=new ImageView[9];;
+//        for(int i=0;i<9;i++){
+//            fireViews[i]=new ImageView(new Image("file:src/sample/assets/jalapenoFire.gif",(double) 100, (double) 100, false,false));
+//            fireViews[i].setDisable(true);
+//            fireViews[i].setVisible(false);
+//            lawn.add(fireViews[i],i,this.row,1,1);
+//        }
+//        attack();
+    }
+    @Override
+    public void makeImage(GridPane lawn){
         for(int i=0;i<9;i++){
             fireViews[i]=new ImageView(new Image("file:src/sample/assets/jalapenoFire.gif",(double) 100, (double) 100, false,false));
             fireViews[i].setDisable(true);
             fireViews[i].setVisible(false);
             lawn.add(fireViews[i],i,this.row,1,1);
         }
-        attack();
     }
+//    public void makeFireViews(GridPane lawn){
+//        for(int i=0;i<9;i++){
+//            fireViews[i]=new ImageView(new Image("file:src/sample/assets/jalapenoFire.gif",(double) 100, (double) 100, false,false));
+//            fireViews[i].setDisable(true);
+//            fireViews[i].setVisible(false);
+//            lawn.add(fireViews[i],i,this.row,1,1);
+//        }
+//    }
 
     public void sleep(int time){
         Thread t = new Thread(() -> {
@@ -33,7 +50,7 @@ public class Jalapeno extends Plant {
         t.start();
     }
     @Override
-    public void attack() {
+    public void attack(Pane pane) {
         Thread t = new Thread(() -> {
             try {
                 Thread.sleep(1650);

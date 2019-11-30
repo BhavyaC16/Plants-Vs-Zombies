@@ -9,27 +9,25 @@ import java.nio.file.spi.FileSystemProvider;
 
 public abstract class Plant extends GameElements implements Serializable {
     String path;
-    protected GridPane lawn;
+//    protected GridPane lawn;
     protected int hp;
-    protected int zombierow;
     protected int col;
     protected int row;
-    public Plant(int x, int y, String path, Pane pane, int hp,int width,int height,GridPane lawn,int col,int row){
-        super(x,y,path,pane,width,height);
+    public Plant(int x, int y, String path, int hp,int width,int height,int col,int row){
+        super(x,y,path,width,height);
         this.hp=hp;
-        this.lawn=lawn;
+//        this.lawn=lawn;
         this.col=col;
         this.row=row;
-        this.makeImage();
 
     }
 
-    @Override
-    public void makeImage(){
+
+    public void makeImage(GridPane lawn){
         lawn.add(img,col,row,1,1);
     }
 
-    public void attack(){
+    public void attack(Pane p){
 
     }
 

@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameMenuController {
     @FXML
@@ -30,24 +31,38 @@ public class GameMenuController {
 
     @FXML
     private int levelNumber;
+    private DataTable data;
+    public static ArrayList<Plant> allPlants;
+    private static ArrayList<LawnMower> allMowers;
+    private static int sunCount;
+    private static ArrayList<Zombie> allZombies;
+    private static int time;
 
     @FXML
-    public void initData(AnchorPane gamePlayRoot,int levelNumber){
+    public void initData(AnchorPane gamePlayRoot,int levelNumber,DataTable d, int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed){
         this.GamePlayRoot=gamePlayRoot;
         this.levelNumber=levelNumber;
+        this.data=d;
+        this.sunCount=sunCount;
+        this.allPlants=allPlants;
+        this.allZombies=allZombie;
+        this.allMowers=allLawnMowers;
+        this.time=timeElapsed;
     }
 
     @FXML
     void restartGame(MouseEvent event) throws IOException {
         GamePlayController.gameStatus = false;
         GamePlayController.sunTimeline.stop();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
-        AnchorPane pane=fxmlLoader.load();
-        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(levelNumber,new DataTable(levelNumber));
+        System.out.println("restart called");
         Stage stage = (Stage) restartGameButton.getScene().getWindow();
         stage.close();
-        AnchorPane game= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
+        AnchorPane game=fxmlLoader.load();
+        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
+        data=new DataTable(levelNumber);
+        controller.initData(levelNumber,data);
+
         GamePlayRoot.getChildren().setAll(game);
     }
 
@@ -56,6 +71,9 @@ public class GameMenuController {
         GamePlayController.gameStatus = false;
         GamePlayController.sunTimeline.stop();
         GameMenuMessage.setText("Game Saved!");
+        data.update(levelNumber,sunCount, allPlants,allZombies,allMowers, time);
+        data.saveGame();
+        Database.getInstance().setMaxLevel(levelNumber);
     }
 
     @FXML

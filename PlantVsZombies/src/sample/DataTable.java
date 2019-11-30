@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DataTable implements Serializable {
+    private static int id=0;
+    private int gameId;
     private int sunCount;
     private ArrayList<Plant> allPlants;
     private ArrayList<Zombie> allZombie;
@@ -26,37 +28,49 @@ public class DataTable implements Serializable {
     public static final int LANE5=450;
 //    private String filename;
     public DataTable(int levelNumber){
+        id++;
+        this.gameId=id;
         this.sunCount=50;
         this.allPlants=new ArrayList<Plant>();
         this.allZombie= new ArrayList<Zombie>();
         this.allLawnMowers=new ArrayList<LawnMower>();
-        allLawnMowers.add(new LawnMower(249,LANE1+20,GamePlayController.GamePlayRoot,0));
-        allLawnMowers.add(new LawnMower(249,LANE2+20,GamePlayController.GamePlayRoot,1));
-        allLawnMowers.add(new LawnMower(249,LANE3+20,GamePlayController.GamePlayRoot,2));
-        allLawnMowers.add(new LawnMower(243,LANE4+20,GamePlayController.GamePlayRoot,3));
-        allLawnMowers.add(new LawnMower(236,LANE5+20,GamePlayController.GamePlayRoot,4));
+        allLawnMowers.add(new LawnMower(249,LANE1+20,0));
+        allLawnMowers.add(new LawnMower(249,LANE2+20,1));
+        allLawnMowers.add(new LawnMower(249,LANE3+20,2));
+        allLawnMowers.add(new LawnMower(243,LANE4+20,3));
+        allLawnMowers.add(new LawnMower(236,LANE5+20,4));
 
     }
-    public DataTable(int levelNumber,int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed){
+//    public DataTable(int levelNumber,int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed){
+//        this.sunCount=sunCount;
+//        this.allPlants=allPlants;
+//        this.allZombie=allZombie;
+//        this.allLawnMowers=allLawnMowers;
+//        this.levelNumber=levelNumber;
+//        this.timeElapsed=timeElapsed;
+////        this.filename="";
+////        setNewDate();
+//    }
+
+    public void update(int levelNumber,int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed){
         this.sunCount=sunCount;
         this.allPlants=allPlants;
         this.allZombie=allZombie;
         this.allLawnMowers=allLawnMowers;
         this.levelNumber=levelNumber;
         this.timeElapsed=timeElapsed;
-//        this.filename="";
-        setNewDate();
     }
 
-    public void setNewDate(){
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        Date date = new Date();
-        savingTimeStamp=("Level: "+String.valueOf(levelNumber)+"                                                             "+String.valueOf(dateFormat.format(date)));
-        System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
-//        filename="Level: "+String.valueOf(levelNumber)+" "+String.valueOf(dateFormat.format(date));
-    }
+
+//    public void setNewDate(){
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+//        Date date = new Date();
+//        savingTimeStamp=("Level: "+String.valueOf(levelNumber)+"                                                             "+String.valueOf(dateFormat.format(date)));
+//        System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+////        filename="Level: "+String.valueOf(levelNumber)+" "+String.valueOf(dateFormat.format(date));
+//    }
     public void saveGame(){
-        this.setNewDate();
+//        this.setNewDate();
         Database.getInstance().getDatabaseFiles().add(this);
         try{
             Database.serialize();
@@ -98,7 +112,7 @@ public class DataTable implements Serializable {
 
     public String toString()
     {
-        return savingTimeStamp;
+        return ("Level: "+String.valueOf(levelNumber)+"                                                             Game"+String.valueOf(gameId));
     }
     
 }
