@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="endGame" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EndGameController">
+   <children>
+      <ImageView fitHeight="473.0" fitWidth="728.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/lawn.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="410.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" width="728.0" />
+      <ImageView fx:id="zombiesAteYourBrains" fitHeight="274.0" fitWidth="375.0" layoutX="210.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@assets/ZombiesAteYourBrains.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="plantImage" fitHeight="122.0" fitWidth="118.0" layoutX="305.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+      <Label fx:id="plantName" layoutX="328.0" layoutY="243.0" prefHeight="58.0" prefWidth="157.0" text="Label" textFill="#f7ff09" visible="false">
+         <font>
+            <Font name="Comic Sans MS Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="youWon" fitHeight="94.0" fitWidth="219.0" layoutX="255.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@assets/YouUnlocked.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="nextLevelButton" fitHeight="96.0" fitWidth="200.0" layoutX="483.0" layoutY="271.0" onMouseClicked="#goToNextLevel" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@assets/nextLevel.png" />
+         </image></ImageView>
+      <Button fx:id="mainMenuButton" layoutX="286.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#goToMainMenu" prefHeight="33.0" prefWidth="157.0" text="Main Menu" textFill="#046f22">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

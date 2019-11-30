@@ -76,6 +76,7 @@ public class GamePlayController {
     private volatile int spawnedZombies = 0;
     public static int numZombiesKilled = 0;
     public static ArrayList<Timeline> animationTimelines;
+    private Shovel shovel;
 
 
     public void initialize() throws Exception {
@@ -104,6 +105,8 @@ public class GamePlayController {
             l.makeImage(GamePlayRoot);
         }
         sunCount = 2000;
+        shovel=Shovel.getInstance();
+        shovel.makeImage(GamePlayRoot);
         sunCountDisplay.setText(String.valueOf(sunCount));
         this.d=d;
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
@@ -126,12 +129,20 @@ public class GamePlayController {
                 if(wonGame==(-1))
                 {
                     System.out.println("LostGame :(");
-                    gameLost();
+                    try {
+                        gameLost();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else if(wonGame==0 && allZombies.size()==0 && l.getTotalZombies()==spawnedZombies)
                 {
                     System.out.println("GAME WON!!");
-                    gameWon();
+                    try {
+                        gameWon();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }));
@@ -300,30 +311,44 @@ public class GamePlayController {
     @FXML
     void getGridPosition(MouseEvent event) throws IOException {
         System.out.println(allPlants.size());
-        if (SidebarElement.getCardSelected() != -1) {
-            Node source = (Node) event.getSource();
-            Integer colIndex = lawn_grid.getColumnIndex(source);
-            Integer rowIndex = lawn_grid.getRowIndex(source);
+        Node source = (Node) event.getSource();
+        Integer colIndex = lawn_grid.getColumnIndex(source);
+        Integer rowIndex = lawn_grid.getRowIndex(source);
+        if (shovel.isIsDisabled() == false) {
+
             if (colIndex != null && rowIndex != null) {
-                boolean flag = true;
+                boolean flag = false;
 
                 for (Plant p : allPlants) {
                     if (p.col == colIndex && p.row == rowIndex) {
-                        flag = false;
+                        allPlants.remove(p);
+                        shovel.disable();
+                        break;
                     }
                 }
-                if (flag){
-                    if (SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= sunCount) {
-                        placePlant(SidebarElement.getCardSelected(),(int) (source.getLayoutX() + source.getParent().getLayoutX()),(int) (source.getLayoutY() + source.getParent().getLayoutY()), colIndex, rowIndex);
-                        updateSunCount((-1)*SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
-                        SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn(GamePlayRoot);
-                    } else System.out.println("Not enough sun score" );
-                }
-                else System.out.println("Cant place more than one plant on cell");
-
             }
-            SidebarElement.setCardSelectedToNull();
         }
+        if (SidebarElement.getCardSelected() != -1) {
+                if (colIndex != null && rowIndex != null) {
+                    boolean flag = true;
+
+                    for (Plant p : allPlants) {
+                        if (p.col == colIndex && p.row == rowIndex) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        if (SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= sunCount) {
+                            placePlant(SidebarElement.getCardSelected(), (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()), colIndex, rowIndex);
+                            updateSunCount((-1) * SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
+                            SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn(GamePlayRoot);
+                        } else System.out.println("Not enough sun score");
+                    } else System.out.println("Cant place more than one plant on cell");
+
+                }
+                SidebarElement.setCardSelectedToNull();
+            }
+
     }
 
     public void placePlant(int val, int x, int y,int row,int col) {

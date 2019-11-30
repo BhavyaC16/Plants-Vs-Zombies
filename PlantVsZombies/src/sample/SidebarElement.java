@@ -30,6 +30,9 @@ public class SidebarElement extends GameElements{
         int width=97;
         int height=58;
         allElements=new HashMap<Integer, SidebarElement>();
+        path="file:src/sample/assets/sunflowerCard.png";
+        x=24;
+        y=79;
         if(level>=1){
             path="file:src/sample/assets/sunflowerCard.png";
             x=24;
@@ -41,6 +44,7 @@ public class SidebarElement extends GameElements{
             sunflowerCard.img.setOnMouseClicked(e->{
                 if (!sunflowerCard.isDisabled){
                     setCardSelected(1);
+                    Shovel.getInstance().disable();
                 }
             });
         }
@@ -55,6 +59,7 @@ public class SidebarElement extends GameElements{
             peashooterCard.img.setOnMouseClicked(e->{
                 if (!peashooterCard.isDisabled){
                       setCardSelected(2);
+                      Shovel.getInstance().disable();
                 }
             });
         }
@@ -69,6 +74,7 @@ public class SidebarElement extends GameElements{
             wallnutCard.img.setOnMouseClicked(e->{
                 if (!wallnutCard.isDisabled) {
                     setCardSelected(3);
+                    Shovel.getInstance().disable();
                 }
             });
         }
@@ -83,6 +89,7 @@ public class SidebarElement extends GameElements{
             cherrybombCard.img.setOnMouseClicked(e->{
                 if (!cherrybombCard.isDisabled) {
                     setCardSelected(4);
+                    Shovel.getInstance().disable();
                 }
             });
         }
@@ -97,6 +104,7 @@ public class SidebarElement extends GameElements{
             repeaterCard.img.setOnMouseClicked(e->{
                 if (!repeaterCard.isDisabled){
                     setCardSelected(5);
+                    Shovel.getInstance().disable();
                 }
             });
         }
@@ -111,6 +119,7 @@ public class SidebarElement extends GameElements{
             jalapenoCard.img.setOnMouseClicked(e->{
                 if (!jalapenoCard.isDisabled) {
                     setCardSelected(6);
+                    Shovel.getInstance().disable();
                 }
             });
 

@@ -116,50 +116,5 @@
             <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="8" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-<!--      <Button fx:id="btn00" layoutX="326.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn01" layoutX="403.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn02" layoutX="469.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn03" layoutX="553.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn04" layoutX="630.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn05" layoutX="714.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn06" layoutX="791.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn07" layoutX="868.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn08" layoutX="934.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn10" layoutX="326.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn11" layoutX="403.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn12" layoutX="469.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn13" layoutX="553.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn14" layoutX="630.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn15" layoutX="714.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn16" layoutX="791.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn17" layoutX="868.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn18" layoutX="934.0" layoutY="173.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn20" layoutX="326.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn21" layoutX="403.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn22" layoutX="469.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn23" layoutX="553.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn24" layoutX="630.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn25" layoutX="714.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn26" layoutX="791.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn27" layoutX="868.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn28" layoutX="934.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn30" layoutX="326.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn31" layoutX="403.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn32" layoutX="469.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn33" layoutX="553.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn34" layoutX="630.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn35" layoutX="714.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn36" layoutX="791.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn37" layoutX="868.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn38" layoutX="934.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn40" layoutX="326.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn41" layoutX="403.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn42" layoutX="469.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn43" layoutX="553.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn44" layoutX="630.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn45" layoutX="714.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn46" layoutX="791.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn47" layoutX="868.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="66.0" text="Button" visible="false" />-->
-<!--      <Button fx:id="btn48" layoutX="934.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="84.0" text="Button" visible="false" />-->
    </children>
 </AnchorPane>
