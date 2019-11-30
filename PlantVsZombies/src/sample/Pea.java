@@ -42,6 +42,7 @@ public class Pea extends GameElements{
         animation.setCycleCount(1050);
         animation.play();
         this.peaAnimation = animation;
+        GamePlayController.animationTimelines.add(animation);
     }
 
     public void checkZombieCollision()

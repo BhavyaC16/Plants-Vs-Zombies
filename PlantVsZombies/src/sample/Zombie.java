@@ -91,6 +91,7 @@ public abstract class Zombie extends GameElements {
         animation.setCycleCount(1000);
         animation.play();
         this.zombieAnimation = animation;
+        GamePlayController.animationTimelines.add(animation);
     }
 
     public void zombieWalk()

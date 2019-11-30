@@ -36,5 +36,6 @@ public class Repeater extends Shooter {
         peaShooter.setCycleCount(Timeline.INDEFINITE);
         peaShooter.play();
         this.shooterTimeline = peaShooter;
+        GamePlayController.animationTimelines.add(peaShooter);
     }
 }

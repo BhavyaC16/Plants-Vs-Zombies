@@ -33,6 +33,7 @@ public class Sunflower extends Plant{
         sunProducer.setCycleCount(Timeline.INDEFINITE);
         sunProducer.play();
         this.sunProducer = sunProducer;
+        GamePlayController.animationTimelines.add(sunProducer);
     }
     public Timeline getTimeline()
     {

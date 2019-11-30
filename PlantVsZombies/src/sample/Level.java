@@ -16,7 +16,6 @@ public class Level {
     private ArrayList<Integer> availableZombies;
     private ArrayList<Integer> zombieList1;
     private ArrayList<Integer> zombieList2;
-    private int levelTime; //120 seconds
     public Level(int n){
         this.levelNumber=n;
         this.availablePlants = new ArrayList<Plant>();
@@ -28,35 +27,30 @@ public class Level {
             this.numNormalZombie = 10;
             this.numConeZombie = 0;
             this.numBucketZombie = 0;
-            this.levelTime = 90000;
         }
         if (n >= 2) {
             this.totalZombies = 15;
             this.numNormalZombie =10;
             this.numConeZombie =5;
             this.numBucketZombie =0;
-            this.levelTime = 120000;
         }
         if (n>=3){
             this.totalZombies = 20;
             this.numNormalZombie = 10;
             this.numConeZombie = 8;
             this.numBucketZombie = 2;
-            this.levelTime = 120000;
         }
         if (n>=4){
             this.totalZombies = 25;
             this.numNormalZombie = 12;
             this.numConeZombie = 9;
             this.numBucketZombie = 4;
-            this.levelTime = 150000;
         }
         if (n>=5){
             this.totalZombies = 30;
             this.numNormalZombie = 12;
             this.numConeZombie = 10;
             this.numBucketZombie = 8;
-            this.levelTime = 150000;
         }
         for(int i = 0; i<this.numNormalZombie; i++)
         {

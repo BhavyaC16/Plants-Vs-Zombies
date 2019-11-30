@@ -58,6 +58,7 @@ public class LawnMower extends GameElements{
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(5), e -> moveMower()));
         animation.setCycleCount(1100);
         animation.play();
+        GamePlayController.animationTimelines.add(animation);
     }
     public void moveMower()
     {

@@ -75,6 +75,7 @@ public class GamePlayController {
     public static int wonGame = 0;
     private volatile int spawnedZombies = 0;
     public static int numZombiesKilled = 0;
+    public static ArrayList<Timeline> animationTimelines;
 
 
     public void initialize() throws Exception {
@@ -90,6 +91,7 @@ public class GamePlayController {
         allZombies = d.getAllZombie();
         allMowers=d.getAllLawnMowers();
         sunCount=d.getSunCount();
+        animationTimelines = new ArrayList<Timeline>();
         for (Plant p: allPlants){
             p.makeImage(GamePlayRoot);
             p.attack(GamePlayRoot);
@@ -121,19 +123,21 @@ public class GamePlayController {
             @Override
             public void handle(ActionEvent event) {
                 progressBar.setProgress(((double)numZombiesKilled/l.getTotalZombies()));
-                System.out.println(((double)numZombiesKilled/l.getTotalZombies()));
                 if(wonGame==(-1))
                 {
                     System.out.println("LostGame :(");
+                    gameLost();
                 }
                 else if(wonGame==0 && allZombies.size()==0 && l.getTotalZombies()==spawnedZombies)
                 {
                     System.out.println("GAME WON!!");
+                    gameWon();
                 }
             }
         }));
         gameStatus.setCycleCount(Timeline.INDEFINITE);
         gameStatus.play();
+        animationTimelines.add(gameStatus);
     }
 
     public synchronized void updateSpawnedZombies()
@@ -188,6 +192,7 @@ public class GamePlayController {
         sunDropper.setCycleCount(Timeline.INDEFINITE);
         sunDropper.play();
         sunTimeline = sunDropper;
+        animationTimelines.add(sunDropper);
     }
 
     public void zombieSpawner1(Random rand){
@@ -233,6 +238,7 @@ public class GamePlayController {
         spawnZombie1.setCycleCount(Timeline.INDEFINITE);
         spawnZombie1.play();
         spZ1 = spawnZombie1;
+        animationTimelines.add(spawnZombie1);
     }
 
     public void zombieSpawner2(Random rand){
@@ -278,6 +284,7 @@ public class GamePlayController {
         spawnZombie2.setCycleCount(Timeline.INDEFINITE);
         spawnZombie2.play();
         spZ2 = spawnZombie2;
+        animationTimelines.add(spawnZombie2);
     }
 
     public void endZombieSpawner1()
@@ -365,9 +372,10 @@ public class GamePlayController {
 
     public static void endAnimations()
     {
-        spZ1.stop();
-        spZ2.stop();
-        sunTimeline.stop();
+        for(int i = 0; i<animationTimelines.size(); i++)
+        {
+            animationTimelines.get(i).stop();
+        }
     }
     public void gameLost() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EndGame.fxml"));
