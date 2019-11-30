@@ -66,7 +66,7 @@ public class GamePlayController {
     public static Timeline spZ1;
     public static Timeline spZ2;
     private static Label sunCountDisplay;
-    private static int timeElapsed;
+    private static double timeElapsed;
     private static Level l;
     public static List allZombies;
     public static List allPlants;
@@ -93,6 +93,15 @@ public class GamePlayController {
     public void initData(int levelNumber, DataTable d) {
         this.levelNumber = levelNumber;
         allPlants = d.getAllPlants();
+//        System.out.println("WITHIN SAME GAME");
+//        synchronized (allPlants) {
+//            Iterator<Plant> i = allPlants.iterator();
+//            while (i.hasNext()) {
+//                Plant p = i.next();
+//                System.out.print(p.row);
+//                System.out.println(" " + p.col);
+//            }
+//        }
         allZombies = d.getAllZombie();
         allMowers=d.getAllLawnMowers();
         sunCount=d.getSunCount();
@@ -144,7 +153,8 @@ public class GamePlayController {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    progressBar.setProgress(((double) numZombiesKilled / l.getTotalZombies()));
+                    timeElapsed = ((double) numZombiesKilled / l.getTotalZombies());
+                    progressBar.setProgress(timeElapsed);
                     if (wonGame == (-1)) {
                         System.out.println("LostGame :(");
                         numZombiesKilled = 0;
@@ -179,7 +189,7 @@ public class GamePlayController {
         Stage stage = new Stage();
         stage.setScene(new Scene(gameMenu));
         GameMenuController controller = fxmlLoader.<GameMenuController>getController();
-        controller.initData(GamePlayRoot, levelNumber,d,sunCount,allPlants, allZombies, allMowers, timeElapsed);
+        controller.initData(GamePlayRoot, levelNumber,d,sunCount,allPlants, allZombies, allMowers, timeElapsed, l.getZombieList1(), l.getZombieList2());
         stage.show();
     }
 
@@ -344,11 +354,9 @@ public class GamePlayController {
                             p.img.setDisable(true);
                             allPlants.remove(p);
                             System.out.println(p.getClass());
-                            if(p.getClass().equals("sample.PeaShooter")  || p.getClass().equals("sample.Repeater")){
-                                ((Shooter) p).getShooterTimeline().stop();
-                            }
-                            else if(p.getClass().equals("sample.Sunflower")){
-                            }
+                            p.setHp(0);
+                            ((Shooter)p).checkHp();
+                            ((Sunflower)p).checkHp();
                             break;
                         }
                     }

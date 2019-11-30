@@ -37,18 +37,22 @@ public class GameMenuController {
     private static List<LawnMower> allMowers;
     private static int sunCount;
     private static List<Zombie> allZombies;
-    private static int time;
+    private static double time;
+    private static ArrayList<Integer> zombieList1;
+    private static ArrayList<Integer> zombieList2;
 
     @FXML
-    public void initData(AnchorPane gamePlayRoot, int levelNumber, DataTable d, int sunCount, List<Plant> allPlants, List<Zombie> allZombie, List<LawnMower> allLawnMowers, int timeElapsed){
+    public void initData(AnchorPane gamePlayRoot, int levelNumber, DataTable d, int sCount, List<Plant> allPlant, List<Zombie> allZombie, List<LawnMower> allLawnMowers, double timeElapsed, ArrayList<Integer> zL1, ArrayList<Integer> zL2){
         this.GamePlayRoot=gamePlayRoot;
         this.levelNumber=levelNumber;
         this.data=d;
-        this.sunCount=sunCount;
-        this.allPlants=allPlants;
-        this.allZombies=allZombie;
-        this.allMowers=allLawnMowers;
-        this.time=timeElapsed;
+        sunCount=sCount;
+        allPlants=allPlant;
+        allZombies=allZombie;
+        allMowers=allLawnMowers;
+        time=timeElapsed;
+        zombieList1 = zL1;
+        zombieList2 = zL2;
     }
 
     @FXML
@@ -72,7 +76,7 @@ public class GameMenuController {
         GamePlayController.gameStatus = false;
         GameMenuMessage.setText("Game Saved!");
         Database.getInstance().removeData(data);
-        data.update(levelNumber,sunCount, allPlants,allZombies,allMowers, time);
+        data.update(levelNumber,sunCount, allPlants,allZombies,allMowers, time, zombieList1, zombieList2);
         data.saveGame();
         Database.getInstance().setMaxLevel(levelNumber);
 

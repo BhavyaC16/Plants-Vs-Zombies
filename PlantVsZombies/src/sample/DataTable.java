@@ -8,10 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class DataTable implements Serializable {
     private static int id=0;
@@ -19,7 +16,9 @@ public class DataTable implements Serializable {
     private int sunCount;
     private List<Plant> allPlants;
     private List<Zombie> allZombie;
-    private int timeElapsed;
+    private ArrayList<Integer> zombieList1;
+    private ArrayList<Integer> zombieList2;
+    private double timeElapsed;
     private List<LawnMower> allLawnMowers;
     private int levelNumber;
     private String savingTimeStamp;
@@ -33,6 +32,8 @@ public class DataTable implements Serializable {
         id++;
         this.gameId=id;
         this.sunCount=50;
+        this.zombieList1 = new ArrayList<Integer>();
+        this.zombieList2 = new ArrayList<Integer>();
         this.allZombie = Collections.synchronizedList(new ArrayList<Zombie>());
         this.allPlants = Collections.synchronizedList(new ArrayList<Plant>());
         this.allLawnMowers = Collections.synchronizedList(new ArrayList<LawnMower>());
@@ -43,36 +44,29 @@ public class DataTable implements Serializable {
         allLawnMowers.add(new LawnMower(236,LANE5+20,4));
 
     }
-//    public DataTable(int levelNumber,int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed){
-//        this.sunCount=sunCount;
-//        this.allPlants=allPlants;
-//        this.allZombie=allZombie;
-//        this.allLawnMowers=allLawnMowers;
-//        this.levelNumber=levelNumber;
-//        this.timeElapsed=timeElapsed;
-////        this.filename="";
-////        setNewDate();
-//    }
 
-    public void update(int levelNumber, int sunCount, List<Plant> allPlants, List<Zombie> allZombie, List<LawnMower> allLawnMowers, int timeElapsed){
-        this.sunCount=sunCount;
-        this.allPlants=allPlants;
-        this.allZombie=allZombie;
-        this.allLawnMowers=allLawnMowers;
-        this.levelNumber=levelNumber;
-        this.timeElapsed=timeElapsed;
+    public void update(int levelNumber, int sunCount, List<Plant> allPlants, List<Zombie> allZombie, List<LawnMower> allLawnMowers, double timeElapsed, ArrayList<Integer> zombieList1, ArrayList<Integer> zombieList2) {
+        this.sunCount = sunCount;
+        this.allPlants = allPlants;
+        this.allZombie = allZombie;
+        this.allLawnMowers = allLawnMowers;
+        this.levelNumber = levelNumber;
+        this.timeElapsed = timeElapsed;
+        this.zombieList1 = zombieList1;
+        this.zombieList2 = zombieList2;
+//        System.out.println("SERIALIZING");
+//        synchronized (allPlants) {
+//            Iterator<Plant> i = allPlants.iterator();
+//            while (i.hasNext()) {
+//                Plant p = i.next();
+//                System.out.print(p.row);
+//                System.out.println(" " + p.col);
+//            }
+//        }
+//        System.out.println("=======================");
     }
 
-
-//    public void setNewDate(){
-//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-//        Date date = new Date();
-//        savingTimeStamp=("Level: "+String.valueOf(levelNumber)+"                                                             "+String.valueOf(dateFormat.format(date)));
-//        System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
-////        filename="Level: "+String.valueOf(levelNumber)+" "+String.valueOf(dateFormat.format(date));
-//    }
     public void saveGame(){
-//        this.setNewDate();
         Database.getInstance().getDatabaseFiles().add(this);
 //        try{
 //            Main.serialize();
@@ -106,7 +100,7 @@ public class DataTable implements Serializable {
         return sunCount;
     }
 
-    public int getTimeElapsed() {
+    public double getTimeElapsed() {
         return timeElapsed;
     }
 

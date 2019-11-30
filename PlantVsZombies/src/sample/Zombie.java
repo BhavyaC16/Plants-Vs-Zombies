@@ -124,7 +124,7 @@ public abstract class Zombie extends GameElements {
                     {
                         this.dx = 0;
                         p.setHp(p.getHp()-this.attackPower);
-                        if(p.getHp()==0)
+                        if(p.getHp()<=0)
                         {
                             p.img.setVisible(false);
                             p.img.setDisable(true);
