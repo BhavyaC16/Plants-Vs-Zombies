@@ -48,6 +48,8 @@ public class MainPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        Database.getInstance().setMaxLevel(5);
+
     }
 
     @FXML
