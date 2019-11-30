@@ -2,6 +2,8 @@ package sample;
 
 import javafx.scene.layout.Pane;
 
+import java.util.Iterator;
+
 public class ConeZombie extends Zombie {
     public ConeZombie(int x, int y, int lane) {
         super(14, 1, "file:src/sample/assets/coneheadzombie.gif", x, y, 133, 122, lane);
@@ -9,25 +11,30 @@ public class ConeZombie extends Zombie {
     @Override
     public void eatPlant()
     {
-        for(int i = 0; i<GamePlayController.allPlants.size(); i++)
+        synchronized (GamePlayController.allPlants)
         {
-            if(GamePlayController.allPlants.get(i).row == getLane())
+            Iterator<Plant> i = GamePlayController.allPlants.iterator();
+            while(i.hasNext())
             {
-                if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=25)
+                Plant p = i.next();
+                if(p.row == getLane())
                 {
-                    this.dx = 0;
-                    GamePlayController.allPlants.get(i).setHp(GamePlayController.allPlants.get(i).getHp()-this.attackPower);
-                    if(GamePlayController.allPlants.get(i).getHp()==0)
+                    if (Math.abs(p.getX()-img.getX())<=25)
                     {
-                        GamePlayController.allPlants.get(i).img.setVisible(false);
-                        GamePlayController.allPlants.get(i).img.setDisable(true);
-                        GamePlayController.allPlants.remove(i);
+                        this.dx = 0;
+                        p.setHp(p.getHp()-this.attackPower);
+                        if(p.getHp()==0)
+                        {
+                            p.img.setVisible(false);
+                            p.img.setDisable(true);
+                            GamePlayController.allPlants.remove(p);
+                            this.dx = -1;
+                        }
+                    }
+                    else
+                    {
                         this.dx = -1;
                     }
-                }
-                else
-                {
-                    this.dx = -1;
                 }
             }
         }

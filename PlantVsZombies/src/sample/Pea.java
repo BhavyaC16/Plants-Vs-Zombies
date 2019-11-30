@@ -5,6 +5,8 @@ import javafx.animation.Timeline;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
+import java.util.Iterator;
+
 public class Pea extends GameElements{
     private int lane;
     private int plantPosition;
@@ -47,20 +49,20 @@ public class Pea extends GameElements{
 
     public void checkZombieCollision()
     {
-        for(int i = 0; i<GamePlayController.allZombies.size(); i++)
-        {
-            //System.out.println("lane"+lane);
-            if(GamePlayController.allZombies.get(i).getLane() == lane && !flag)
-            {
-                //System.out.println("Zombie in my lane"+lane);
-                //System.out.println(GamePlayController.allZombies.get(i).getLane());
-                if(Math.abs(GamePlayController.allZombies.get(i).getX()-getX())<=1 && !flag)
+        synchronized (GamePlayController.allZombies) {
+            Iterator<Zombie> i = GamePlayController.allZombies.iterator();
+            while (i.hasNext()) {
+                Zombie z = i.next();
+                if(z.getLane() == lane && !flag)
                 {
-                    this.flag = true;
-                    GamePlayController.allZombies.get(i).setHp(GamePlayController.allZombies.get(i).getHp()-1);
-                    img.setVisible(false);
-                    img.setDisable(true);
-                    peaAnimation.stop();
+                    if(Math.abs(z.getX()-getX())<=1 && !flag)
+                    {
+                        this.flag = true;
+                        z.setHp(z.getHp()-1);
+                        img.setVisible(false);
+                        img.setDisable(true);
+                        peaAnimation.stop();
+                    }
                 }
             }
         }

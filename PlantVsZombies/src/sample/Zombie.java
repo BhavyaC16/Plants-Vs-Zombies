@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import java.io.Serializable;
+import java.util.Iterator;
 
 public abstract class Zombie extends GameElements {
 
@@ -111,27 +112,33 @@ public abstract class Zombie extends GameElements {
 
     public void eatPlant()
     {
-        for(int i = 0; i<GamePlayController.allPlants.size(); i++)
+        synchronized (GamePlayController.allPlants)
         {
-            if(GamePlayController.allPlants.get(i).row == getLane())
+            Iterator<Plant> i = GamePlayController.allPlants.iterator();
+            while(i.hasNext())
             {
-                if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=50)
+                Plant p = i.next();
+                if(p.row == getLane())
                 {
-                    this.dx = 0;
-                    GamePlayController.allPlants.get(i).setHp(GamePlayController.allPlants.get(i).getHp()-this.attackPower);
-                    if(GamePlayController.allPlants.get(i).getHp()==0)
+                    if (Math.abs(p.getX()-img.getX())<=50)
                     {
-                        GamePlayController.allPlants.get(i).img.setVisible(false);
-                        GamePlayController.allPlants.get(i).img.setDisable(true);
-                        GamePlayController.allPlants.remove(i);
+                        this.dx = 0;
+                        p.setHp(p.getHp()-this.attackPower);
+                        if(p.getHp()==0)
+                        {
+                            p.img.setVisible(false);
+                            p.img.setDisable(true);
+                            GamePlayController.allPlants.remove(p);
+                            this.dx = -1;
+                        }
+                    }
+                    else
+                    {
                         this.dx = -1;
                     }
                 }
-                else
-                {
-                    this.dx = -1;
-                }
             }
         }
+
     }
 }

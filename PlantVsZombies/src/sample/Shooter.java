@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Shooter extends Plant {
 
@@ -26,14 +27,18 @@ public class Shooter extends Plant {
         Timeline peaShooter = new Timeline(new KeyFrame(Duration.seconds(2), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                for(int i = 0; i<GamePlayController.allZombies.size(); i++) {
-                    if (GamePlayController.allZombies.get(i).getLane() == getShooterLane() && getX()<=GamePlayController.allZombies.get(i).getX()) {
-                        int peaStartX = getX() + 50;
-                        int peaStartY = getY() + 25;
-                        Pea p = new Pea(peaStartX, peaStartY, getX() + 50, row);
-                        p.makeImage(pane);
-                        p.shootPea();
-                        checkHp();
+                synchronized (GamePlayController.allZombies) {
+                    Iterator<Zombie> i = GamePlayController.allZombies.iterator();
+                    while (i.hasNext()) {
+                        Zombie z = i.next();
+                        if (z.getLane() == getShooterLane() && getX() <= z.getX()) {
+                            int peaStartX = getX() + 50;
+                            int peaStartY = getY() + 25;
+                            Pea p = new Pea(peaStartX, peaStartY, getX() + 50, row);
+                            p.makeImage(pane);
+                            p.shootPea();
+                            checkHp();
+                        }
                     }
                 }
             }

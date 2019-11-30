@@ -9,16 +9,18 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 public class DataTable implements Serializable {
     private static int id=0;
     private int gameId;
     private int sunCount;
-    private ArrayList<Plant> allPlants;
-    private ArrayList<Zombie> allZombie;
+    private List<Plant> allPlants;
+    private List<Zombie> allZombie;
     private int timeElapsed;
-    private ArrayList<LawnMower> allLawnMowers;
+    private List<LawnMower> allLawnMowers;
     private int levelNumber;
     private String savingTimeStamp;
     public static final int LANE1=50;
@@ -31,9 +33,9 @@ public class DataTable implements Serializable {
         id++;
         this.gameId=id;
         this.sunCount=50;
-        this.allPlants=new ArrayList<Plant>();
-        this.allZombie= new ArrayList<Zombie>();
-        this.allLawnMowers=new ArrayList<LawnMower>();
+        this.allZombie = Collections.synchronizedList(new ArrayList<Zombie>());
+        this.allPlants = Collections.synchronizedList(new ArrayList<Plant>());
+        this.allLawnMowers = Collections.synchronizedList(new ArrayList<LawnMower>());
         allLawnMowers.add(new LawnMower(249,LANE1+20,0));
         allLawnMowers.add(new LawnMower(249,LANE2+20,1));
         allLawnMowers.add(new LawnMower(249,LANE3+20,2));
@@ -52,7 +54,7 @@ public class DataTable implements Serializable {
 ////        setNewDate();
 //    }
 
-    public void update(int levelNumber,int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed){
+    public void update(int levelNumber, int sunCount, List<Plant> allPlants, List<Zombie> allZombie, List<LawnMower> allLawnMowers, int timeElapsed){
         this.sunCount=sunCount;
         this.allPlants=allPlants;
         this.allZombie=allZombie;
@@ -80,15 +82,15 @@ public class DataTable implements Serializable {
         }
     }
 
-    public ArrayList<LawnMower> getAllLawnMowers() {
+    public List<LawnMower> getAllLawnMowers() {
         return allLawnMowers;
     }
 
-    public ArrayList<Plant> getAllPlants() {
+    public List<Plant> getAllPlants() {
         return allPlants;
     }
 
-    public ArrayList<Zombie> getAllZombie() {
+    public List<Zombie> getAllZombie() {
         return allZombie;
     }
 

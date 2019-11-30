@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 public class LawnMower extends GameElements{
     int lane;
@@ -25,26 +26,30 @@ public class LawnMower extends GameElements{
         Timeline findZombie = new Timeline(new KeyFrame(Duration.millis(500), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                for(int i = 0; i<GamePlayController.allZombies.size(); i++)
-                {
-                    if(GamePlayController.allZombies.get(i).getLane()==lane)
-                    {
-                        if(Math.abs(GamePlayController.allZombies.get(i).getX()-getX())<=100)
+                synchronized (GamePlayController.allZombies) {
+                    Iterator<Zombie> i = GamePlayController.allZombies.iterator();
+                    while (i.hasNext()) {
+                        Zombie z = i.next();
+                        if(z.getLane()==lane)
                         {
-                            if(activated==false)
+                            if(Math.abs(z.getX()-getX())<=100)
                             {
-                                activate();
-                                GamePlayController.allZombies.get(i).setHp(0);
-                                activated = true;
-                                GamePlayController.allZombies.get(i).getZombieAnimation().stop();
+                                if(activated==false)
+                                {
+                                    activate();
+                                    z.setHp(0);
+                                    activated = true;
+                                    z.getZombieAnimation().stop();
+                                }
+                                else
+                                {
+                                    z.setHp(0);
+                                    z.getZombieAnimation().stop();
+                                }
                             }
-                            else
-                            {
-                                GamePlayController.allZombies.get(i).setHp(0);
-                                GamePlayController.allZombies.get(i).getZombieAnimation().stop();
-                            }
+                            GamePlayController.allMowers.remove(this);
                         }
-                        GamePlayController.allMowers.remove(this);
+
                     }
                 }
             }

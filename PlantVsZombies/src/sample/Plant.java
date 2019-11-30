@@ -41,13 +41,6 @@ public abstract class Plant extends GameElements{
             img.setVisible(false);
             img.setDisable(true);
             GamePlayController.removePlant(this);
-//            for(int i = 0; i<GamePlayController.allPlants.size(); i++)
-//            {
-//                if(this==GamePlayController.allPlants.get(i))
-//                {
-//                    GamePlayController.allPlants.remove(i);
-//                }
-//            }
         }
     }
 

@@ -25,9 +25,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 public class GamePlayController {
 
@@ -55,8 +53,8 @@ public class GamePlayController {
     private int levelNumber;
     @FXML
     private GridPane lawn_grid;
-    public static ArrayList<Plant> allPlants;
-    public static ArrayList<LawnMower> allMowers;
+    //public static ArrayList<Plant> allPlants;
+    //public static ArrayList<LawnMower> allMowers;
     private static int sunCount;
     public static final int LANE1=50;
     public static final int LANE2=150;
@@ -70,7 +68,10 @@ public class GamePlayController {
     private static Label sunCountDisplay;
     private static int timeElapsed;
     private static Level l;
-    public static ArrayList<Zombie> allZombies = new ArrayList<Zombie>();
+    public static List allZombies;
+    public static List allPlants;
+    public static List allMowers;
+    //public static ArrayList<Zombie> allZombies = new ArrayList<Zombie>();
     private static DataTable d;
     public static int wonGame = 0;
     private volatile int spawnedZombies = 0;
@@ -83,6 +84,9 @@ public class GamePlayController {
         l = null;
         gameStatus = true;
         sunCountDisplay = sunCountLabel;
+        allZombies = Collections.synchronizedList(new ArrayList<Zombie>());
+        allPlants = Collections.synchronizedList(new ArrayList<Plant>());
+        allMowers = Collections.synchronizedList(new ArrayList<LawnMower>());
     }
 
     @FXML
@@ -93,16 +97,30 @@ public class GamePlayController {
         allMowers=d.getAllLawnMowers();
         sunCount=d.getSunCount();
         animationTimelines = new ArrayList<Timeline>();
-        for (Plant p: allPlants){
-            p.makeImage(GamePlayRoot);
-            p.attack(GamePlayRoot);
+        synchronized (allPlants)
+        {
+            Iterator<Plant> i = allPlants.iterator();
+            while(i.hasNext())
+            {
+                i.next().makeImage(GamePlayRoot);
+                i.next().attack(GamePlayRoot);
+            }
         }
-        for(Zombie z : allZombies){
-            z.makeImage(GamePlayRoot);
-
+        synchronized (allZombies)
+        {
+            Iterator<Zombie> i = allZombies.iterator();
+            while(i.hasNext())
+            {
+                i.next().makeImage(GamePlayRoot);
+            }
         }
-        for (LawnMower l : allMowers){
-            l.makeImage(GamePlayRoot);
+        synchronized (allMowers)
+        {
+            Iterator<LawnMower> i = allMowers.iterator();
+            while(i.hasNext())
+            {
+                i.next().makeImage(GamePlayRoot);
+            }
         }
         sunCount = 2000;
         shovel=Shovel.getInstance();
@@ -125,24 +143,21 @@ public class GamePlayController {
         Timeline gameStatus = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                progressBar.setProgress(((double)numZombiesKilled/l.getTotalZombies()));
-                if(wonGame==(-1))
-                {
-                    System.out.println("LostGame :(");
-                    try {
+                try {
+                    progressBar.setProgress(((double) numZombiesKilled / l.getTotalZombies()));
+                    if (wonGame == (-1)) {
+                        System.out.println("LostGame :(");
+                        numZombiesKilled = 0;
+                        endAnimations();
                         gameLost();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else if(wonGame==0 && allZombies.size()==0 && l.getTotalZombies()==spawnedZombies)
-                {
-                    System.out.println("GAME WON!!");
-                    try {
+                    } else if (wonGame == 0 && allZombies.size() == 0 && l.getTotalZombies() == spawnedZombies) {
+                        System.out.println("GAME WON!!");
+                        numZombiesKilled = 0;
+                        endAnimations();
                         gameWon();
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }));
@@ -150,6 +165,7 @@ public class GamePlayController {
         gameStatus.play();
         animationTimelines.add(gameStatus);
     }
+
 
     public synchronized void updateSpawnedZombies()
     {
@@ -318,43 +334,50 @@ public class GamePlayController {
             shovel.disable();
             if (colIndex != null && rowIndex != null) {
                 System.out.println("shovelling"+colIndex+" "+rowIndex);
-                for (Plant p : allPlants) {
-                    System.out.println("plant"+p.col+" "+p.row);
-                    if (p.col == colIndex && p.row == rowIndex) {
-                        p.img.setVisible(false);
-                        p.img.setDisable(true);
-                        allPlants.remove(p);
-                        System.out.println(p.getClass());
-                        if(p.getClass().equals("sample.PeaShooter")  || p.getClass().equals("sample.Repeater")){
-                            ((Shooter) p).getShooterTimeline().stop();
+                synchronized (allPlants) {
+                    Iterator<Plant> i = allPlants.iterator();
+                    while (i.hasNext()) {
+                        Plant p = i.next();
+                        System.out.println("plant"+p.col+" "+p.row);
+                        if (p.col == colIndex && p.row == rowIndex) {
+                            p.img.setVisible(false);
+                            p.img.setDisable(true);
+                            allPlants.remove(p);
+                            System.out.println(p.getClass());
+                            if(p.getClass().equals("sample.PeaShooter")  || p.getClass().equals("sample.Repeater")){
+                                ((Shooter) p).getShooterTimeline().stop();
+                            }
+                            else if(p.getClass().equals("sample.Sunflower")){
+                            }
+                            break;
                         }
-                        else if(p.getClass().equals("sample.Sunflower")){
-                        }
-                        break;
                     }
                 }
             }
         }
         if (SidebarElement.getCardSelected() != -1) {
-                if (colIndex != null && rowIndex != null) {
-                    boolean flag = true;
-
-                    for (Plant p : allPlants) {
+            if (colIndex != null && rowIndex != null) {
+                boolean flag = true;
+                synchronized (allPlants) {
+                    Iterator<Plant> i = allPlants.iterator();
+                    while (i.hasNext()) {
+                        Plant p = i.next();
                         if (p.col == colIndex && p.row == rowIndex) {
                             flag = false;
                         }
                     }
-                    if (flag) {
-                        if (SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= sunCount) {
-                            placePlant(SidebarElement.getCardSelected(), (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()), colIndex, rowIndex);
-                            updateSunCount((-1) * SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
-                            SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn(GamePlayRoot);
-                        } else System.out.println("Not enough sun score");
-                    } else System.out.println("Cant place more than one plant on cell");
-
                 }
-                SidebarElement.setCardSelectedToNull();
+                if (flag) {
+                    if (SidebarElement.getElement(SidebarElement.getCardSelected()).getCost() <= sunCount) {
+                        placePlant(SidebarElement.getCardSelected(), (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()), colIndex, rowIndex);
+                        updateSunCount((-1) * SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
+                        SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn(GamePlayRoot);
+                    } else System.out.println("Not enough sun score");
+                } else System.out.println("Cant place more than one plant on cell");
+
             }
+            SidebarElement.setCardSelectedToNull();
+        }
 
     }
 

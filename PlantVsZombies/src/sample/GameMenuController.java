@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GameMenuController {
     @FXML
@@ -32,14 +33,14 @@ public class GameMenuController {
     @FXML
     private int levelNumber;
     private DataTable data;
-    public static ArrayList<Plant> allPlants;
-    private static ArrayList<LawnMower> allMowers;
+    public static List<Plant> allPlants;
+    private static List<LawnMower> allMowers;
     private static int sunCount;
-    private static ArrayList<Zombie> allZombies;
+    private static List<Zombie> allZombies;
     private static int time;
 
     @FXML
-    public void initData(AnchorPane gamePlayRoot,int levelNumber,DataTable d, int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed){
+    public void initData(AnchorPane gamePlayRoot, int levelNumber, DataTable d, int sunCount, List<Plant> allPlants, List<Zombie> allZombie, List<LawnMower> allLawnMowers, int timeElapsed){
         this.GamePlayRoot=gamePlayRoot;
         this.levelNumber=levelNumber;
         this.data=d;

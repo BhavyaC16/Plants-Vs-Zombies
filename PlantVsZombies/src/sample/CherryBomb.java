@@ -6,6 +6,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class CherryBomb extends Plant{
@@ -42,13 +43,17 @@ public class CherryBomb extends Plant{
             img.setDisable(true);
             powie.setVisible(true);
             System.out.println("attacking");
-            for(int i = 0; i<GamePlayController.allZombies.size(); i++)
+            synchronized (GamePlayController.allZombies)
             {
-                if(GamePlayController.allZombies.get(i).getX()<=(getX()+250) && GamePlayController.allZombies.get(i).getX()>=(getX()-150))
-                {
-                    if(GamePlayController.allZombies.get(i).getY()<=(getY()+250) && GamePlayController.allZombies.get(i).getY()>=(getY()-150)) {
-                        roastedZombies.add(GamePlayController.allZombies.get(i));
-                        GamePlayController.allZombies.get(i).roastZombie();
+                Iterator<Zombie> i = GamePlayController.allZombies.iterator();
+                while(i.hasNext()) {
+                    Zombie x = i.next();
+                    if(x.getX()<=(getX()+250) && x.getX()>=(getX()-150))
+                    {
+                        if(x.getY()<=(getY()+250) && x.getY()>=(getY()-150)) {
+                            roastedZombies.add(x);
+                            x.roastZombie();
+                        }
                     }
                 }
             }

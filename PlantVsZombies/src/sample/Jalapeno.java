@@ -7,6 +7,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Jalapeno extends Plant {
     private ArrayList<Zombie> roastedZombies;
@@ -42,11 +43,15 @@ public class Jalapeno extends Plant {
             for(int i=0;i<9;i++){
                 fireViews[i].setVisible(true);
             }
-            for(int i = 0; i<GamePlayController.allZombies.size(); i++)
+            synchronized (GamePlayController.allZombies)
             {
-                if(row == GamePlayController.allZombies.get(i).getLane())
-                {
-                    GamePlayController.allZombies.get(i).roastZombie();
+                Iterator<Zombie> i = GamePlayController.allZombies.iterator();
+                while(i.hasNext()) {
+                    Zombie x = i.next();
+                    if(row == x.getLane())
+                    {
+                        x.roastZombie();
+                    }
                 }
             }
             for(int j = 0; j<GamePlayController.allPlants.size(); j++)
