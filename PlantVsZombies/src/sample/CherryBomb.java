@@ -9,10 +9,19 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class CherryBomb extends Plant{
+
     private ArrayList<Zombie> roastedZombies;
-    ImageView powie=new ImageView(new Image("file:src/sample/assets/powie.gif",180,160,false,false));
+    transient ImageView powie;
+
     public CherryBomb(int x, int y,int row,int col) {
         super(x, y, "file:src/sample/assets/anim_cherrybomb.gif", 4,90,68,row,col);
+
+    }
+
+    @Override
+    public void makeImage(GridPane lawn){
+        super.makeImage(lawn);
+        powie=new ImageView(new Image("file:src/sample/assets/powie.gif",180,160,false,false));
         powie.setX(x-40);
         powie.setY(y-20);
         powie.setVisible(false);

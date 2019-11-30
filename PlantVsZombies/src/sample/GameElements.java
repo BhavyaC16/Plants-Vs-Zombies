@@ -30,12 +30,6 @@ public abstract class GameElements implements Serializable{
         img.setY(y);
         pane.getChildren().add(img);
     }
-
-    public void disappear(){
-        img.setDisable(true);
-        img.setVisible(false);
-    }
-
     public int getX(){
         return this.x;
     }
@@ -52,13 +46,6 @@ public abstract class GameElements implements Serializable{
     public void setY(int y) {
         this.y = y;
         img.setY(y);
-    }
-
-    public String getPath() {
-        return path;
-    }
-    public void setPath(String path) {
-        this.path = path;
     }
 
 }

@@ -10,7 +10,7 @@ import javafx.util.Duration;
 
 import java.io.Serializable;
 
-public class LawnMower extends GameElements implements Serializable {
+public class LawnMower extends GameElements{
     int lane;
     boolean activated = false;
     String activatedPath="file:src/sample/assets/lawnmowerActivated.gif";

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class Shooter extends Plant {
 
-    protected Timeline shooterTimeline;
+    transient protected Timeline shooterTimeline;
     protected int lane;
 
     public Shooter(int x, int y, String path, int hp, int width, int height,int row,int col){

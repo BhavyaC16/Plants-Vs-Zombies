@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import java.io.Serializable;
 import java.nio.file.spi.FileSystemProvider;
 
-public abstract class Plant extends GameElements implements Serializable {
+public abstract class Plant extends GameElements{
     String path;
 //    protected GridPane lawn;
     protected int hp;

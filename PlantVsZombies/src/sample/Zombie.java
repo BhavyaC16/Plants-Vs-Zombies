@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import java.io.Serializable;
 
-public abstract class Zombie extends GameElements implements Serializable {
+public abstract class Zombie extends GameElements {
 
     protected int hp;
     protected int x;

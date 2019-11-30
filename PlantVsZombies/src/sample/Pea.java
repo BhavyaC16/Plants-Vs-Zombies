@@ -8,7 +8,7 @@ import javafx.util.Duration;
 public class Pea extends GameElements{
     private int lane;
     private int plantPosition;
-    private Timeline peaAnimation;
+    transient private Timeline peaAnimation;
     private static int peaID=0;
     private boolean flag;
     private int thispea;

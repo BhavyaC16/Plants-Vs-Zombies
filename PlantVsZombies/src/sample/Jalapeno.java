@@ -9,8 +9,8 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 
 public class Jalapeno extends Plant {
-    private ImageView[] fireViews;
     private ArrayList<Zombie> roastedZombies;
+    transient private ImageView[] fireViews;
 
     public Jalapeno(int x, int y,int row,int col) {
         super(x, y, "file:src/sample/assets/jalapeno.gif", 4,100,100,row,col);
@@ -19,6 +19,7 @@ public class Jalapeno extends Plant {
     }
     @Override
     public void makeImage(GridPane lawn){
+        super.makeImage(lawn);
         for(int i=0;i<9;i++){
             fireViews[i]=new ImageView(new Image("file:src/sample/assets/jalapenoFire.gif",(double) 100, (double) 100, false,false));
             fireViews[i].setDisable(true);
@@ -28,16 +29,6 @@ public class Jalapeno extends Plant {
         }
     }
 
-    public void sleep(int time){
-        Thread t = new Thread(() -> {
-            try {
-                Thread.sleep(time);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        t.start();
-    }
     @Override
     public void attack(Pane pane) {
         Thread t = new Thread(() -> {
