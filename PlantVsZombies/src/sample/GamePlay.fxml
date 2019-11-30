@@ -4,14 +4,13 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.Region?>
 <AnchorPane fx:id="GamePlayRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GamePlayController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -24,7 +23,7 @@
             <Image url="@assets/sun.png" />
          </image>
       </ImageView>
-      <Label fx:id="sunCountLabel" layoutX="58.0" layoutY="3.0" text="50" textFill="WHITE">
+      <Label fx:id="sunCountLabel" layoutX="58.0" layoutY="3.0" prefHeight="73.0" prefWidth="57.0" text="50" textFill="WHITE">
          <font>
             <Font name="Dyuthi" size="45.0" />
          </font>
@@ -34,7 +33,21 @@
             <Image url="@assets/gamemenuLoader.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="progressBar" layoutX="176.0" layoutY="21.0" prefHeight="20.0" prefWidth="228.0" progress="0.38" />
+      <ImageView fitHeight="50.0" fitWidth="298.0" layoutX="162.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/progressbar.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="progressBar" layoutX="174.0" layoutY="21.0" prefHeight="20.0" prefWidth="277.0" progress="0.38" />
+      <ImageView fx:id="zombieHead" fitHeight="35.0" fitWidth="32.0" layoutX="170.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/zombieHead.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="432.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/Flag.png" />
+         </image></ImageView>
 
       <GridPane fx:id="lawn_grid" layoutX="322.0" layoutY="83.0" prefHeight="489.0" prefWidth="694.0">
         <columnConstraints>
@@ -56,51 +69,51 @@
            <RowConstraints maxHeight="299.0" minHeight="10.0" prefHeight="97.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Region GridPane.columnIndex="0" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="0" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="0" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="0" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="0" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="1" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="1" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="1" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="1" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="1" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="2" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="2" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="2" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="2" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="2" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="3" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="3" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="3" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="3" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="3" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="4" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="4" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="4" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="4" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="4" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="5" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="5" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="5" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="5" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="5" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="6" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="6" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="6" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="6" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="6" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="7" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="7" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="7" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="7" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="7" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="8" GridPane.rowIndex="0" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="8" GridPane.rowIndex="1" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="8" GridPane.rowIndex="2" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="8" GridPane.rowIndex="3" onMouseClicked="#getGridPosition"/>
-            <Region GridPane.columnIndex="8" GridPane.rowIndex="4" onMouseClicked="#getGridPosition"/>
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+            <Region onMouseClicked="#getGridPosition" GridPane.columnIndex="8" GridPane.rowIndex="4" />
          </children>
       </GridPane>
 <!--      <Button fx:id="btn00" layoutX="326.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#getButtonPosition" prefHeight="99.0" prefWidth="77.0" text="Button" visible="false" />-->

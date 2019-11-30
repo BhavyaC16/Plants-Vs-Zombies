@@ -232,7 +232,7 @@ public class GamePlayController {
             }
             catch(IndexOutOfBoundsException e)
             {
-                endZombieSpawner2();
+//                endZombieSpawner2();
             }
         }));
 

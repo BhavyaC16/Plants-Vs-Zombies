@@ -4,34 +4,34 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="levelRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelMenuController">
+<AnchorPane fx:id="levelRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelMenuController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="87.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
                 <Image url="@assets/menu3-01.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="level1button" fitHeight="177.0" fitWidth="162.0" layoutX="59.0" layoutY="151.0" onMouseClicked="#launchLevel1" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="level1button" fitHeight="177.0" fitWidth="162.0" layoutX="59.0" layoutY="151.0" onMouseClicked="#launchLevel1" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@assets/L1.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="level2button" fitHeight="177.0" fitWidth="160.0" layoutX="233.0" layoutY="151.0" onMouseClicked="#launchLevel2" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="level2button" fitHeight="177.0" fitWidth="160.0" layoutX="233.0" layoutY="151.0" onMouseClicked="#launchLevel2" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@assets/L2.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="level3button" fitHeight="177.0" fitWidth="160.0" layoutX="405.0" layoutY="151.0" onMouseClicked="#launchLevel3" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="level3button" fitHeight="177.0" fitWidth="160.0" layoutX="405.0" layoutY="151.0" onMouseClicked="#launchLevel3" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@assets/L3.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="level4button" fitHeight="177.0" fitWidth="160.0" layoutX="579.0" layoutY="151.0" onMouseClicked="#launchLevel4" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="level4button" fitHeight="177.0" fitWidth="160.0" layoutX="579.0" layoutY="151.0" onMouseClicked="#launchLevel4" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@assets/L4.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="level5button" fitHeight="177.0" fitWidth="160.0" layoutX="749.0" layoutY="151.0" onMouseClicked="#launchLevel5" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="level5button" fitHeight="177.0" fitWidth="160.0" layoutX="749.0" layoutY="151.0" onMouseClicked="#launchLevel5" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@assets/L5.png" />
             </image>

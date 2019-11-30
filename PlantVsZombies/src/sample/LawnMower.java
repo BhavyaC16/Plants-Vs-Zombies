@@ -8,7 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-public class LawnMower extends GameElements{
+import java.io.Serializable;
+
+public class LawnMower extends GameElements implements Serializable {
     int lane;
     boolean activated = false;
     String activatedPath="file:src/sample/assets/lawnmowerActivated.gif";

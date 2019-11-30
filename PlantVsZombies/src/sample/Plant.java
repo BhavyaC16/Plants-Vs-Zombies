@@ -3,9 +3,10 @@ package sample;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
+import java.io.Serializable;
 import java.nio.file.spi.FileSystemProvider;
 
-public abstract class Plant extends GameElements{
+public abstract class Plant extends GameElements implements Serializable {
     String path;
     protected GridPane lawn;
     protected int hp;

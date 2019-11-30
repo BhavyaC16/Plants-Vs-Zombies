@@ -1,52 +1,37 @@
 package sample;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Database implements Serializable {
-    private int sunCount;
-    private ArrayList<Plant> allPlants;
-    private ArrayList<Zombie> allZombie;
-    private int timeElapsed;
-    private ArrayList<LawnMower> allLawnMowers;
-    private int levelNumber;
-    private int savingTimeStamp;
-    public Database(int levelNumber,int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed,int savingTimeStamp){
-        this.sunCount=sunCount;
-        this.allPlants=allPlants;
-        this.allZombie=allZombie;
-        this.allLawnMowers=allLawnMowers;
-        this.levelNumber=levelNumber;
-        this.timeElapsed=timeElapsed;
-        this.savingTimeStamp=savingTimeStamp;
-    }
+    private int maxLevel;
+    private static Database d;
+    private ObservableList<DataTable> databaseFiles;
 
-    public ArrayList<LawnMower> getAllLawnMowers() {
-        return allLawnMowers;
+    private Database(){
+        this.maxLevel=0;
+        databaseFiles= FXCollections.observableArrayList(new ArrayList<DataTable>());
     }
-
-    public ArrayList<Plant> getAllPlants() {
-        return allPlants;
+    public static Database getInstance(){
+        if (d==null) {
+            d=new Database();
+        }
+        return d;
     }
-
-    public ArrayList<Zombie> getAllZombie() {
-        return allZombie;
+    public int getMaxLevel() { return maxLevel; }
+    public void setMaxLevel(int maxLevel) {
+        this.maxLevel = maxLevel;
     }
-
-    public int getLevelNumber() {
-        return levelNumber;
+    public void addData(DataTable d){
+        databaseFiles.add(d);
     }
-
-    public int getSavingTimeStamp() {
-        return savingTimeStamp;
+    public void removeData(DataTable d) {
+        if (databaseFiles.contains(d)) databaseFiles.remove(d);
     }
-
-    public int getSunCount() {
-        return sunCount;
+    public ObservableList<DataTable> getDatabaseFiles() {
+        return databaseFiles;
     }
-
-    public int getTimeElapsed() {
-        return timeElapsed;
-    }
-    
 }
+

@@ -8,7 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainPageController implements Initializable {
@@ -35,12 +37,23 @@ public class MainPageController implements Initializable {
 
     @FXML
     void exitGame(MouseEvent event) {
+        try{
+            Database.getInstance().serialize();
+        }
+        catch(IOException e){
+            System.out.println("Could not save the progress :(");
+        }
         System.exit(0);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-
+        System.out.println("Main launched");
+        ArrayList<Plant> p = new ArrayList<Plant>();
+        ArrayList<Zombie> z = new ArrayList<Zombie>();
+        DataTable d=new DataTable(3,50,p,z,new ArrayList<LawnMower>(),1200);
+        Database.getInstance().setMaxLevel(3);
+        d.saveGame();
     }
 
     @FXML

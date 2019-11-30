@@ -6,10 +6,9 @@ import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import java.io.Serializable;
 
-import java.util.ArrayList;
-
-public abstract class Zombie extends GameElements {
+public abstract class Zombie extends GameElements implements Serializable {
 
     protected int hp;
     protected int x;

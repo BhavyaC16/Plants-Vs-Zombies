@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="loadGameRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoadGameController">
+<AnchorPane fx:id="loadGameRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoadGameController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="-11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -25,5 +26,10 @@
          </font>
       </Label>
       <ListView fx:id="gameStateList" layoutX="363.0" layoutY="145.0" onMouseClicked="#handleMouseClick" prefHeight="244.0" prefWidth="402.0" />
+      <Button fx:id="deleteProgress" layoutX="467.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#deleteAllProgress" prefHeight="48.0" prefWidth="195.0" text="Delete Progress" textFill="#17b215">
+         <font>
+            <Font name="Comic Sans MS Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
