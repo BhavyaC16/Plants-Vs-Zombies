@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="GamePlayRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GamePlayController">
+<AnchorPane fx:id="GamePlayRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GamePlayController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -23,9 +23,9 @@
             <Image url="@assets/sun.png" />
          </image>
       </ImageView>
-      <Label fx:id="sunCountLabel" layoutX="58.0" layoutY="3.0" prefHeight="73.0" prefWidth="57.0" text="50" textFill="WHITE">
+      <Label fx:id="sunCountLabel" layoutX="58.0" layoutY="3.0" prefHeight="73.0" prefWidth="104.0" text="50" textFill="WHITE">
          <font>
-            <Font name="Dyuthi" size="45.0" />
+            <Font name="Dyuthi" size="35.0" />
          </font>
       </Label>
       <ImageView fx:id="GameMenuLoaderButton" fitHeight="91.0" fitWidth="150.0" layoutX="2.0" layoutY="505.0" onMouseClicked="#loadGameMenu" pickOnBounds="true" preserveRatio="true">

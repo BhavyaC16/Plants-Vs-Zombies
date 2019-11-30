@@ -34,12 +34,18 @@ public abstract class Plant extends GameElements implements Serializable {
     public int getHp(){
         return this.hp;
     }
+
     public void setHp(int hp){
         this.hp=hp;
         if (this.hp<=0){
-            System.out.println("Plant dead");
-            //disappear
-            //remove from list
+            disappear();
+            for(int i = 0; i<GamePlayController.allPlants.size(); i++)
+            {
+                if(this==GamePlayController.allPlants.get(i))
+                {
+                    GamePlayController.allPlants.remove(i);
+                }
+            }
         }
     }
 

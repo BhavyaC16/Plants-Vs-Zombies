@@ -43,7 +43,7 @@ public class Sunflower extends Plant{
     {
         if(getHp()<=0)
         {
-            endAnimation(sunProducer);
+            endAnimation(getTimeline());
         }
     }
 }

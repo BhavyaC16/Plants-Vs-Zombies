@@ -16,6 +16,14 @@ public class ConeZombie extends Zombie {
                 if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=25)
                 {
                     this.dx = 0;
+                    GamePlayController.allPlants.get(i).setHp(GamePlayController.allPlants.get(i).getHp()-this.attackPower);
+                    if(GamePlayController.allPlants.get(i).getHp()==0)
+                    {
+                        GamePlayController.allPlants.get(i).img.setVisible(false);
+                        GamePlayController.allPlants.get(i).img.setDisable(true);
+                        GamePlayController.allPlants.remove(i);
+                        this.dx = -1;
+                    }
                 }
                 else
                 {

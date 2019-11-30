@@ -6,20 +6,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+
 public class Jalapeno extends Plant {
     private ImageView[] fireViews;
+    private ArrayList<Zombie> roastedZombies;
 
     public Jalapeno(int x, int y,int row,int col) {
         super(x, y, "file:src/sample/assets/jalapeno.gif", 4,100,100,row,col);
         System.out.println("Placed plant");
         fireViews=new ImageView[9];;
-//        for(int i=0;i<9;i++){
-//            fireViews[i]=new ImageView(new Image("file:src/sample/assets/jalapenoFire.gif",(double) 100, (double) 100, false,false));
-//            fireViews[i].setDisable(true);
-//            fireViews[i].setVisible(false);
-//            lawn.add(fireViews[i],i,this.row,1,1);
-//        }
-//        attack();
     }
     @Override
     public void makeImage(GridPane lawn){
@@ -28,16 +24,9 @@ public class Jalapeno extends Plant {
             fireViews[i].setDisable(true);
             fireViews[i].setVisible(false);
             lawn.add(fireViews[i],i,this.row,1,1);
+            this.roastedZombies = new ArrayList<Zombie>();
         }
     }
-//    public void makeFireViews(GridPane lawn){
-//        for(int i=0;i<9;i++){
-//            fireViews[i]=new ImageView(new Image("file:src/sample/assets/jalapenoFire.gif",(double) 100, (double) 100, false,false));
-//            fireViews[i].setDisable(true);
-//            fireViews[i].setVisible(false);
-//            lawn.add(fireViews[i],i,this.row,1,1);
-//        }
-//    }
 
     public void sleep(int time){
         Thread t = new Thread(() -> {
@@ -62,7 +51,30 @@ public class Jalapeno extends Plant {
             for(int i=0;i<9;i++){
                 fireViews[i].setVisible(true);
             }
-            //roast zombies
+            for(int i = 0; i<GamePlayController.allZombies.size(); i++)
+            {
+                if(row == GamePlayController.allZombies.get(i).getLane())
+                {
+                    GamePlayController.allZombies.get(i).roastZombie();
+                }
+            }
+            for(int j = 0; j<GamePlayController.allPlants.size(); j++)
+            {
+                if(this==GamePlayController.allPlants.get(j))
+                {
+                    GamePlayController.allPlants.remove(j);
+                }
+            }
+            for(int k = 0; k<this.roastedZombies.size(); k++)
+            {
+                for(int m = 0; m<GamePlayController.allZombies.size(); m++)
+                {
+                    if(roastedZombies.get(k)==GamePlayController.allZombies.get(m))
+                    {
+                        GamePlayController.allZombies.remove(m);
+                    }
+                }
+            }
             removefire();
         });
         t.start();

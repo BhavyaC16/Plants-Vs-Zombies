@@ -55,7 +55,6 @@ public class GamePlayController {
     private int levelNumber;
     @FXML
     private GridPane lawn_grid;
-    //private GamePlay g;
     public static ArrayList<Plant> allPlants;
     private static ArrayList<LawnMower> allMowers;
     private static int sunCount;
@@ -73,32 +72,17 @@ public class GamePlayController {
     private static Level l;
     public static ArrayList<Zombie> allZombies = new ArrayList<Zombie>();
     private static DataTable d;
-//    private static HashMap<GameElements,ImageView> hash;
-
-
-//    public GamePlayController() {
-////        allPlants = new ArrayList<Plant>();
-////        allZombies = new ArrayList<Zombie>();
-////        allMowers=new ArrayList<LawnMower>();
-////        l = null;
-//    }
+    private static int wonGame;
 
 
     public void initialize() throws Exception {
-//        allPlants = new ArrayList<Plant>();
-//        allZombies = new ArrayList<Zombie>();
-//        allMowers=new ArrayList<LawnMower>();
         l = null;
         gameStatus = true;
-//        sunCount = 2000;
         sunCountDisplay = sunCountLabel;
-//        sunCountDisplay.setText("2000");
-//        hash=new HashMap<GameElements,ImageView>();
     }
 
     @FXML
     public void initData(int levelNumber, DataTable d) {
-        //System.out.println("initData");
         this.levelNumber = levelNumber;
         allPlants = d.getAllPlants();
         allZombies = d.getAllZombie();
@@ -115,6 +99,7 @@ public class GamePlayController {
         for (LawnMower l : allMowers){
             l.makeImage(GamePlayRoot);
         }
+        sunCount = 2000;
         sunCountDisplay.setText(String.valueOf(sunCount));
         this.d=d;
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
@@ -250,7 +235,7 @@ public class GamePlayController {
             }
             catch(IndexOutOfBoundsException e)
             {
-//                endZombieSpawner2();
+                endZombieSpawner2();
             }
         }));
 

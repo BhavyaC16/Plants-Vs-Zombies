@@ -46,6 +46,8 @@ public abstract class Zombie extends GameElements implements Serializable {
                 if(this==GamePlayController.allZombies.get(i))
                 {
                     GamePlayController.allZombies.remove(i);
+                    System.out.println("removed");
+                    break;
                 }
             }
         }
@@ -58,7 +60,8 @@ public abstract class Zombie extends GameElements implements Serializable {
 
     public void roastZombie(){
         img.setImage(new Image("file:src/sample/assets/burntZombie.gif", (double) 68,(double) 118,false,false));
-        //add code here to stop zombie animation
+        this.dx=0;
+        this.hp = 0;
         Thread t = new Thread(() -> {
             try {
                 Thread.sleep(4000);
@@ -113,7 +116,7 @@ public abstract class Zombie extends GameElements implements Serializable {
                 if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=50)
                 {
                     this.dx = 0;
-                    GamePlayController.allPlants.get(i).setHp(GamePlayController.allPlants.get(i).getHp()-1);
+                    GamePlayController.allPlants.get(i).setHp(GamePlayController.allPlants.get(i).getHp()-this.attackPower);
                     if(GamePlayController.allPlants.get(i).getHp()==0)
                     {
                         GamePlayController.allPlants.get(i).img.setVisible(false);

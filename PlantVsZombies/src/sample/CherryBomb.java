@@ -5,7 +5,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+
 public class CherryBomb extends Plant{
+    private ArrayList<Zombie> roastedZombies;
     ImageView powie=new ImageView(new Image("file:src/sample/assets/powie.gif",180,160,false,false));
     public CherryBomb(int x, int y,int row,int col) {
         super(x, y, "file:src/sample/assets/anim_cherrybomb.gif", 4,90,68,row,col);
@@ -13,12 +17,9 @@ public class CherryBomb extends Plant{
         powie.setY(y-20);
         powie.setVisible(false);
         powie.setDisable(true);
-
+        this.roastedZombies = new ArrayList<Zombie>();
     }
 
-//    public void addPowie(){
-//
-//    }
     @Override
     public void attack(Pane pane) {
         pane.getChildren().add(powie);
@@ -31,7 +32,35 @@ public class CherryBomb extends Plant{
             img.setVisible(false);
             img.setDisable(true);
             powie.setVisible(true);
-            //roast zombies
+            System.out.println("attacking");
+            for(int i = 0; i<GamePlayController.allZombies.size(); i++)
+            {
+                if(GamePlayController.allZombies.get(i).getX()<=(getX()+250) && GamePlayController.allZombies.get(i).getX()>=(getX()-150))
+                {
+                    if(GamePlayController.allZombies.get(i).getY()<=(getY()+250) && GamePlayController.allZombies.get(i).getY()>=(getY()-150)) {
+                        roastedZombies.add(GamePlayController.allZombies.get(i));
+                        GamePlayController.allZombies.get(i).roastZombie();
+                    }
+                }
+            }
+            for(int j = 0; j<GamePlayController.allPlants.size(); j++)
+            {
+                if(this==GamePlayController.allPlants.get(j))
+                {
+                    GamePlayController.allPlants.remove(j);
+                    break;
+                }
+            }
+            for(int k = 0; k<roastedZombies.size(); k++)
+            {
+                for(int m = 0; m<GamePlayController.allZombies.size(); m++)
+                {
+                    if(this.roastedZombies.get(k)==GamePlayController.allZombies.get(m))
+                    {
+                        GamePlayController.allZombies.remove(m);
+                    }
+                }
+            }
             removepowie();
         });
         t.start();
