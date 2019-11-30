@@ -38,7 +38,7 @@ public class MainPageController implements Initializable {
     @FXML
     void exitGame(MouseEvent event) {
         try{
-            Database.getInstance().serialize();
+            Database.serialize();
         }
         catch(IOException e){
             System.out.println("Could not save the progress :(");
@@ -52,8 +52,10 @@ public class MainPageController implements Initializable {
         ArrayList<Plant> p = new ArrayList<Plant>();
         ArrayList<Zombie> z = new ArrayList<Zombie>();
         DataTable d=new DataTable(3,50,p,z,new ArrayList<LawnMower>(),1200);
+        DataTable d1=new DataTable(4,50,p,z,new ArrayList<LawnMower>(),1200);
         Database.getInstance().setMaxLevel(3);
         d.saveGame();
+        d1.saveGame();
     }
 
     @FXML
@@ -70,7 +72,10 @@ public class MainPageController implements Initializable {
 
     @FXML
     void startGame(MouseEvent event) throws Exception{
-        AnchorPane pane= FXMLLoader.load(getClass().getResource("GamePlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        GamePlayController controller = fxmlLoader.<GamePlayController>getController();
+        controller.initData(Database.getInstance().getMaxLevel());
         mainRoot.getChildren().setAll(pane);
     }
 

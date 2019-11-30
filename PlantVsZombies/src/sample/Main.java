@@ -37,44 +37,6 @@ public class Main extends Application {
         mediaPlayer.setStopTime(Duration.seconds(50));
         mediaPlayer.play();
     }
-    public static void serialize() throws IOException {
-        ObjectOutputStream out=null;
-        try {
-            out = new ObjectOutputStream (new FileOutputStream("database.txt"));
-            out.writeObject(Database.getInstance());
-            System.out.println("Saved!");
-        }
-        catch (FileNotFoundException f){
-            System.out.println("cant find file");
-        }
-        catch(IOException e){
-            System.out.println("Not able to save");
-        }
-        finally {
-            out.close();
-        }
-    }
-    public static void deserialize() throws ClassNotFoundException, IOException{
-        ObjectInputStream in = null;
-        try {
-            in=new ObjectInputStream (new FileInputStream("database.txt"));
-            d=(Database) in.readObject();
-            in.close();
-        }
-        catch (NullPointerException e) {
-            System.out.println("No database exists, creating new");
-            d=new Database();
-        }
-        catch (FileNotFoundException f){
-            System.out.println("cant find file");
-        }
-        catch(IOException e){
-            System.out.println("Not able to save");
-        }
-        finally {
-            in.close();
-        }
-    }
 
 
     public static void main(String[] args) {
