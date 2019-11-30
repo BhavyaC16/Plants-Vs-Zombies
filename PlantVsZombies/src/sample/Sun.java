@@ -56,4 +56,6 @@ public class Sun extends GameElements{
         animation.setCycleCount(550);
         animation.play();
     }
+
+
 }

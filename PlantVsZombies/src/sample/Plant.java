@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.Timeline;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -42,6 +43,11 @@ public abstract class Plant extends GameElements implements Serializable {
             //disappear
             //remove from list
         }
+    }
+
+    public void endAnimation(Timeline t)
+    {
+        t.stop();
     }
 
 }

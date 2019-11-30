@@ -36,13 +36,11 @@ public class LawnMower extends GameElements implements Serializable {
                             {
                                 activate();
                                 GamePlayController.allZombies.get(i).setHp(0);
-                                System.out.println("Killed first zombie");
                                 activated = true;
                             }
                             else
                             {
                                 GamePlayController.allZombies.get(i).setHp(0);
-                                System.out.println("killed another zombie");
                             }
                         }
                     }

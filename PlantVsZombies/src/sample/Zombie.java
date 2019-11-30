@@ -16,6 +16,7 @@ public abstract class Zombie extends GameElements implements Serializable {
     protected int attackPower;
     protected int lane;
     protected int dx;
+    protected Timeline zombieAnimation;
 
     public Zombie(int hp, int ap, String p, int x, int y, Pane pane, int width, int height, int lane) {
         super(x, y, p, pane, width, height);
@@ -36,14 +37,23 @@ public abstract class Zombie extends GameElements implements Serializable {
 
     public void setHp(int hp) {
         this.hp = hp;
-        if (hp<=5) {
+        if(hp<=0){
+            this.img.setVisible(false);
+            this.img.setDisable(true);
+            this.zombieAnimation.stop();
+            for(int i = 0; i<GamePlayController.allZombies.size(); i++)
+            {
+                if(this==GamePlayController.allZombies.get(i))
+                {
+                    GamePlayController.allZombies.remove(i);
+                }
+            }
+        }
+        if (hp<=7) {
             img.setImage(new Image("file:src/sample/assets/normalzombie.gif", (double) 68,(double) 118,false,false));
             this.width=68;
             this.height=118;
         }
-        if(hp<=0){
-        }
-
     }
 
     public void roastZombie(){
@@ -82,15 +92,16 @@ public abstract class Zombie extends GameElements implements Serializable {
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(50), e -> zombieWalk()));
         animation.setCycleCount(1000);
         animation.play();
+        this.zombieAnimation = animation;
     }
 
     public void zombieWalk()
     {
-        if(getX()>=240)
+        if(getX()>=240 && this.hp>0)
         {
             setX(getX()+this.dx);
+            eatPlant();
         }
-        eatPlant();
     }
 
     public void eatPlant()
@@ -99,9 +110,19 @@ public abstract class Zombie extends GameElements implements Serializable {
         {
             if(GamePlayController.allPlants.get(i).row == getLane())
             {
-                if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=35)
+                System.out.println("wallnut detected in lane");
+                if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=50)
                 {
+                    System.out.println("wallnut stopped me");
                     this.dx = 0;
+                    GamePlayController.allPlants.get(i).setHp(GamePlayController.allPlants.get(i).getHp()-1);
+                    if(GamePlayController.allPlants.get(i).getHp()==0)
+                    {
+                        GamePlayController.allPlants.get(i).img.setVisible(false);
+                        GamePlayController.allPlants.get(i).img.setDisable(true);
+                        GamePlayController.allPlants.remove(i);
+                        this.dx = -1;
+                    }
                 }
                 else
                 {

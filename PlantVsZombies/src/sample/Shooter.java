@@ -30,8 +30,9 @@ public class Shooter extends Plant {
                     if (GamePlayController.allZombies.get(i).getLane() == getShooterLane() && getX()<=GamePlayController.allZombies.get(i).getX()) {
                         int peaStartX = getX() + 50;
                         int peaStartY = getY() + 25;
-                        Pea p = new Pea(peaStartX, peaStartY, pane, getX() + 50);
+                        Pea p = new Pea(peaStartX, peaStartY, pane, getX() + 50, row);
                         p.shootPea();
+                        checkHp();
                     }
                 }
             }
@@ -48,5 +49,13 @@ public class Shooter extends Plant {
     public int getShooterLane()
     {
         return(this.lane);
+    }
+
+    public void checkHp()
+    {
+        if(getHp()<=0)
+        {
+            endAnimation(this.shooterTimeline);
+        }
     }
 }

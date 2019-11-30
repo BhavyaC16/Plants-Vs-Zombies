@@ -10,7 +10,7 @@ import javafx.util.Duration;
 
 public class Repeater extends Shooter {
     public Repeater(int x, int y, Pane pane, GridPane grid,int row,int col) {
-        super(x, y, "file:src/sample/assets/repeater.gif", pane, 8,60,62,grid,row,col);
+        super(x, y, "file:src/sample/assets/repeater.gif", pane, 150,60,62,grid,row,col);
 
     }
     @Override
@@ -23,8 +23,8 @@ public class Repeater extends Shooter {
                             int pea1StartX = getX() + 50;
                             int pea2StartX = getX() - 20;
                             int peaStartY = getY() + 26;
-                            Pea p1 = new Pea(pea1StartX, peaStartY, pane, getX() + 50);
-                            Pea p2 = new Pea(pea2StartX, peaStartY, pane, getX() + 50);
+                            Pea p1 = new Pea(pea1StartX, peaStartY, pane, getX() + 50, row);
+                            Pea p2 = new Pea(pea2StartX, peaStartY, pane, getX() + 50, row);
                             p1.shootPea();
                             p2.shootPea();
                         }

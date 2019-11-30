@@ -4,7 +4,7 @@ import javafx.scene.layout.Pane;
 
 public class ConeZombie extends Zombie {
     public ConeZombie(int x, int y, Pane pane, int lane) {
-        super(6, 1, "file:src/sample/assets/coneheadzombie.gif", x, y, pane, 133, 122, lane);
+        super(14, 1, "file:src/sample/assets/coneheadzombie.gif", x, y, pane, 133, 122, lane);
     }
     @Override
     public void eatPlant()
@@ -13,8 +13,7 @@ public class ConeZombie extends Zombie {
         {
             if(GamePlayController.allPlants.get(i).row == getLane())
             {
-                System.out.println(img.getBoundsInParent());
-                if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=15)
+                if (Math.abs(GamePlayController.allPlants.get(i).getX()-img.getX())<=25)
                 {
                     this.dx = 0;
                 }
