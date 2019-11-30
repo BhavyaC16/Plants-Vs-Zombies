@@ -31,7 +31,7 @@ import java.util.Random;
 public class GamePlayController {
 
     @FXML
-    private AnchorPane GamePlayRoot;
+    public static AnchorPane GamePlayRoot;
     @FXML
     private ImageView peaShooterBuy;
     @FXML
@@ -58,11 +58,11 @@ public class GamePlayController {
     public static ArrayList<Plant> allPlants;
     private static ArrayList<LawnMower> allMowers;
     private static int sunCount;
-    private static final int LANE1=50;
-    private static final int LANE2=150;
-    private static final int LANE3=250;
-    private static final int LANE4=350;
-    private static final int LANE5=450;
+    public static final int LANE1=50;
+    public static final int LANE2=150;
+    public static final int LANE3=250;
+    public static final int LANE4=350;
+    public static final int LANE5=450;
     public static boolean gameStatus;
     public static Timeline sunTimeline;
     public static Timeline spZ1;
@@ -70,6 +70,7 @@ public class GamePlayController {
     private static Label sunCountDisplay;
     private static Level l;
     public static ArrayList<Zombie> allZombies = new ArrayList<Zombie>();
+    private static DataTable d;
 
 
 //    public GamePlayController() {
@@ -81,12 +82,12 @@ public class GamePlayController {
 
 
     public void initialize() throws Exception {
-        allPlants = new ArrayList<Plant>();
-        allZombies = new ArrayList<Zombie>();
-        allMowers=new ArrayList<LawnMower>();
+//        allPlants = new ArrayList<Plant>();
+//        allZombies = new ArrayList<Zombie>();
+//        allMowers=new ArrayList<LawnMower>();
         l = null;
         gameStatus = true;
-        sunCount = 2000;
+//        sunCount = 2000;
         sunCountDisplay = sunCountLabel;
         sunCountDisplay.setText("2000");
         Random rand = new Random();
@@ -96,15 +97,15 @@ public class GamePlayController {
     }
 
     @FXML
-    public void initData(int levelNumber) {
+    public void initData(int levelNumber, DataTable d) {
         //System.out.println("initData");
         this.levelNumber = levelNumber;
+        allPlants = d.getAllPlants();
+        allZombies = d.getAllZombie();
+        allMowers=d.getAllLawnMowers();
+        sunCount=d.getSunCount();
+        this.d=d;
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
-        allMowers.add(new LawnMower(249,LANE1+20,GamePlayRoot,0));
-        allMowers.add(new LawnMower(249,LANE2+20,GamePlayRoot,1));
-        allMowers.add(new LawnMower(249,LANE3+20,GamePlayRoot,2));
-        allMowers.add(new LawnMower(243,LANE4+20,GamePlayRoot,3));
-        allMowers.add(new LawnMower(236,LANE5+20,GamePlayRoot,4));
         Level l = new Level(this.levelNumber);
         this.l = l;
     }

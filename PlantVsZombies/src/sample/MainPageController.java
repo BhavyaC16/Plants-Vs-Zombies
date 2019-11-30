@@ -51,8 +51,8 @@ public class MainPageController implements Initializable {
         System.out.println("Main launched");
         ArrayList<Plant> p = new ArrayList<Plant>();
         ArrayList<Zombie> z = new ArrayList<Zombie>();
-        DataTable d=new DataTable(3,50,p,z,new ArrayList<LawnMower>(),1200);
-        DataTable d1=new DataTable(4,50,p,z,new ArrayList<LawnMower>(),1200);
+        DataTable d=new DataTable(3);
+        DataTable d1=new DataTable(4);
         Database.getInstance().setMaxLevel(3);
         d.saveGame();
         d1.saveGame();
@@ -75,7 +75,7 @@ public class MainPageController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(Database.getInstance().getMaxLevel());
+        controller.initData(Database.getInstance().getMaxLevel(),new DataTable(Database.getInstance().getMaxLevel()));
         mainRoot.getChildren().setAll(pane);
     }
 

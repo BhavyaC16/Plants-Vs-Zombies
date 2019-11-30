@@ -55,7 +55,7 @@ public class LoadGameController {
         AnchorPane pane=fxmlLoader.load();
         DataTable d= (DataTable) gameStateList.getSelectionModel().getSelectedItem();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(d.getLevelNumber());
+        controller.initData(d.getLevelNumber(),d);
         loadGameRoot.getChildren().setAll(pane);
 
     }

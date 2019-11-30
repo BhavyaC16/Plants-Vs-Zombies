@@ -54,7 +54,7 @@ public class LevelMenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(1);
+        controller.initData(1, new DataTable(1));
         levelRoot.getChildren().setAll(pane);
 
     }
@@ -64,7 +64,7 @@ public class LevelMenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(2);
+        controller.initData(2, new DataTable(2));
         levelRoot.getChildren().setAll(pane);
 
     }
@@ -74,7 +74,7 @@ public class LevelMenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(3);
+        controller.initData(3, new DataTable(3));
         levelRoot.getChildren().setAll(pane);
 
     }
@@ -84,7 +84,7 @@ public class LevelMenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(4);
+        controller.initData(4, new DataTable(4));
         levelRoot.getChildren().setAll(pane);
 
     }
@@ -94,7 +94,7 @@ public class LevelMenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(5);
+        controller.initData(5, new DataTable(5));
         levelRoot.getChildren().setAll(pane);
     }
 

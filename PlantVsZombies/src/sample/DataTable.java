@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.layout.Pane;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -17,7 +19,24 @@ public class DataTable implements Serializable {
     private ArrayList<LawnMower> allLawnMowers;
     private int levelNumber;
     private String savingTimeStamp;
+    public static final int LANE1=50;
+    public static final int LANE2=150;
+    public static final int LANE3=250;
+    public static final int LANE4=350;
+    public static final int LANE5=450;
 //    private String filename;
+    public DataTable(int levelNumber){
+        this.sunCount=50;
+        this.allPlants=new ArrayList<Plant>();
+        this.allZombie= new ArrayList<Zombie>();
+        this.allLawnMowers=new ArrayList<LawnMower>();
+        allLawnMowers.add(new LawnMower(249,LANE1+20,GamePlayController.GamePlayRoot,0));
+        allLawnMowers.add(new LawnMower(249,LANE2+20,GamePlayController.GamePlayRoot,1));
+        allLawnMowers.add(new LawnMower(249,LANE3+20,GamePlayController.GamePlayRoot,2));
+        allLawnMowers.add(new LawnMower(243,LANE4+20,GamePlayController.GamePlayRoot,3));
+        allLawnMowers.add(new LawnMower(236,LANE5+20,GamePlayController.GamePlayRoot,4));
+
+    }
     public DataTable(int levelNumber,int sunCount,ArrayList<Plant> allPlants,ArrayList<Zombie> allZombie,ArrayList<LawnMower> allLawnMowers, int timeElapsed){
         this.sunCount=sunCount;
         this.allPlants=allPlants;
@@ -28,6 +47,7 @@ public class DataTable implements Serializable {
 //        this.filename="";
         setNewDate();
     }
+
     public void setNewDate(){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date date = new Date();
@@ -36,6 +56,7 @@ public class DataTable implements Serializable {
 //        filename="Level: "+String.valueOf(levelNumber)+" "+String.valueOf(dateFormat.format(date));
     }
     public void saveGame(){
+        this.setNewDate();
         Database.getInstance().getDatabaseFiles().add(this);
         try{
             Database.serialize();
