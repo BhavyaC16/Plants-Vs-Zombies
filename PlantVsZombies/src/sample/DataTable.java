@@ -28,6 +28,7 @@ public class DataTable implements Serializable {
     public static final int LANE3=250;
     public static final int LANE4=350;
     public static final int LANE5=450;
+
 //    private String filename;
     public DataTable(int levelNumber){
         id++;
@@ -43,6 +44,9 @@ public class DataTable implements Serializable {
         allLawnMowers.add(new LawnMower(249,LANE3+20,2));
         allLawnMowers.add(new LawnMower(243,LANE4+20,3));
         allLawnMowers.add(new LawnMower(236,LANE5+20,4));
+        Level l = new Level(levelNumber);
+        zombieList1 = l.getZombieList1();
+        zombieList2 = l.getZombieList2();
 
     }
 
@@ -108,6 +112,14 @@ public class DataTable implements Serializable {
     public String toString()
     {
         return ("Level: "+String.valueOf(levelNumber)+"                                                             Game"+String.valueOf(gameId));
+    }
+    public ArrayList<Integer> getZombieList1()
+    {
+        return this.zombieList1;
+    }
+    public ArrayList<Integer> getZombieList2()
+    {
+        return this.zombieList2;
     }
     
 }

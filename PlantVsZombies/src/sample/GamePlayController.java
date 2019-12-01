@@ -71,6 +71,8 @@ public class GamePlayController {
     public static List allZombies;
     public static List allPlants;
     public static List allMowers;
+    public static ArrayList<Integer> zombieList1;
+    public static ArrayList<Integer> zombieList2;
     //public static ArrayList<Zombie> allZombies = new ArrayList<Zombie>();
     private static DataTable d;
     public static int wonGame = 0;
@@ -91,38 +93,20 @@ public class GamePlayController {
 
     @FXML
     public void initData(int levelNumber, DataTable d) {
+
+        Random rand = new Random();
         this.levelNumber = levelNumber;
+        Level l = new Level(levelNumber);
+        this.l = l;
+        zombieList1 = d.getZombieList1();
+        zombieList2 = d.getZombieList2();
         allPlants = d.getAllPlants();
-//        System.out.println("WITHIN SAME GAME");
-//        synchronized (allPlants) {
-//            Iterator<Plant> i = allPlants.iterator();
-//            while (i.hasNext()) {
-//                Plant p = i.next();
-//                System.out.print(p.row);
-//                System.out.println(" " + p.col);
-//            }
-//        }
         allZombies = d.getAllZombie();
         allMowers=d.getAllLawnMowers();
         sunCount=d.getSunCount();
         animationTimelines = new ArrayList<Timeline>();
-        synchronized (allPlants)
-        {
-            Iterator<Plant> i = allPlants.iterator();
-            while(i.hasNext())
-            {
-                i.next().makeImage(GamePlayRoot);
-                i.next().attack(GamePlayRoot);
-            }
-        }
-        synchronized (allZombies)
-        {
-            Iterator<Zombie> i = allZombies.iterator();
-            while(i.hasNext())
-            {
-                i.next().makeImage(GamePlayRoot);
-            }
-        }
+        startAnimations(rand);
+
         synchronized (allMowers)
         {
             Iterator<LawnMower> i = allMowers.iterator();
@@ -131,20 +115,43 @@ public class GamePlayController {
                 i.next().makeImage(GamePlayRoot);
             }
         }
-        sunCount = 2000;
         shovel=Shovel.getInstance();
         shovel.makeImage(GamePlayRoot);
         sunCountDisplay.setText(String.valueOf(sunCount));
         this.d=d;
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
-        Level l = new Level(this.levelNumber);
-        this.l = l;
-        Random rand = new Random();
+
         gameProgress();
         fallingSuns(rand);
+    }
+
+    public void startAnimations(Random rand)
+    {
+        synchronized (allPlants) {
+            Iterator<Plant> i = allPlants.iterator();
+            while (i.hasNext()) {
+                Plant p = i.next();
+                p.makeImage(lawn_grid);
+                p.attack(GamePlayRoot);
+                System.out.print(p.row);
+                System.out.println(" "+p.col);
+            }
+        }
+        synchronized (allZombies)
+        {
+            Iterator<Zombie> i = allZombies.iterator();
+            while(i.hasNext())
+            {
+                Zombie z = i.next();
+                z.makeImage(GamePlayRoot);
+                z.moveZombie();
+            }
+        }
         zombieSpawner1(rand);
         zombieSpawner2(rand);
-
+        System.out.println(zombieList1);
+        System.out.println(zombieList2);
+        //progressBar.setProgress(d.getTimeElapsed());
     }
 
     public void gameProgress()
@@ -248,21 +255,21 @@ public class GamePlayController {
                 lane = LANE5;
             try
             {
-                if(l.getZombieList1().get(0)==0) {
-                    l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
-                    l.getZombieList1().remove(0);
+                if(zombieList1.get(0)==0) {
+                    Level.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
+                    zombieList1.remove(0);
                     updateSpawnedZombies();
                 }
-                else if(l.getZombieList1().get(0)==1)
+                else if(zombieList1.get(0)==1)
                 {
-                    l.spawnConeZombie(GamePlayRoot, lane, laneNumber);
-                    l.getZombieList1().remove(0);
+                    Level.spawnConeZombie(GamePlayRoot, lane, laneNumber);
+                    zombieList1.remove(0);
                     updateSpawnedZombies();
                 }
-                else if(l.getZombieList1().get(0)==2)
+                else if(zombieList1.get(0)==2)
                 {
-                    l.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
-                    l.getZombieList1().remove(0);
+                    Level.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
+                    zombieList1.remove(0);
                     updateSpawnedZombies();
                 }
             }
@@ -294,21 +301,21 @@ public class GamePlayController {
                 lane = LANE5;
             try
             {
-                if(l.getZombieList2().get(0)==0) {
-                    l.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
-                    l.getZombieList2().remove(0);
+                if(zombieList2.get(0)==0) {
+                    Level.spawnNormalZombie(GamePlayRoot, lane, laneNumber);
+                    zombieList2.remove(0);
                     updateSpawnedZombies();
                 }
-                else if(l.getZombieList2().get(0)==1)
+                else if(zombieList2.get(0)==1)
                 {
-                    l.spawnConeZombie(GamePlayRoot, lane, laneNumber);
-                    l.getZombieList2().remove(0);
+                    Level.spawnConeZombie(GamePlayRoot, lane, laneNumber);
+                    zombieList2.remove(0);
                     updateSpawnedZombies();
                 }
-                else if(l.getZombieList2().get(0)==2)
+                else if(zombieList2.get(0)==2)
                 {
-                    l.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
-                    l.getZombieList2().remove(0);
+                    Level.spawnBucketZombie(GamePlayRoot, lane, laneNumber);
+                    zombieList2.remove(0);
                     updateSpawnedZombies();
                 }
             }
