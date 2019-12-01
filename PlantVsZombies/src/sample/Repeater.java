@@ -13,6 +13,7 @@ import java.util.Iterator;
 public class Repeater extends Shooter {
     public Repeater(int x, int y,int row,int col) {
         super(x, y, "file:src/sample/assets/repeater.gif", 150,60,62,row,col);
+        this.path="file:src/sample/assets/repeater.gif";
 
     }
     @Override

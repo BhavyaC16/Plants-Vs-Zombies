@@ -16,7 +16,7 @@ public class CherryBomb extends Plant{
 
     public CherryBomb(int x, int y,int row,int col) {
         super(x, y, "file:src/sample/assets/anim_cherrybomb.gif", 4,90,68,row,col);
-
+        this.path = "file:src/sample/assets/anim_cherrybomb.gif";
     }
 
     @Override

@@ -18,12 +18,7 @@ public class Sun extends GameElements{
     public Sun(int x, int y, boolean fallingSun)
     {
         super(x, y, "file:src/sample/assets/sun.png", 50, 50);
-//        super.makeImage();
-        this.img.setOnMouseClicked(e->{
-            this.img.setVisible(false);
-            this.img.setDisable(true);
-            GamePlayController.updateSunCount(25);
-        });
+//      super.makeImage();
 
         if(fallingSun) timeouttime=14000;
         else timeouttime=5000;
@@ -40,6 +35,18 @@ public class Sun extends GameElements{
             img.setDisable(true);
         });
         t.start();
+    }
+
+    @Override
+    public void makeImage(Pane p)
+    {
+        super.makeImage(p);
+        this.img.setOnMouseClicked(e->{
+            this.img.setVisible(false);
+            this.img.setDisable(true);
+            GamePlayController.updateSunCount(25);
+        });
+
     }
 
     public void moveSun()

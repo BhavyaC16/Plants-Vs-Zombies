@@ -20,12 +20,13 @@ public abstract class GameElements implements Serializable{
 //        this.pane=p;
         this.width=width;
         this.height=height;
-        img = new ImageView();
-        Image im=new Image(path,(double) width,(double) height,false,false);
-        img.setImage(im);
+
     }
 
     public void makeImage(Pane pane){
+        img = new ImageView();
+        Image im=new Image(path,(double) width,(double) height,false,false);
+        img.setImage(im);
         img.setX(x);
         img.setY(y);
         pane.getChildren().add(img);

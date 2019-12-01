@@ -132,6 +132,7 @@ public class GamePlayController {
             while (i.hasNext()) {
                 Plant p = i.next();
                 p.makeImage(lawn_grid);
+                System.out.println(lawn_grid);
                 p.attack(GamePlayRoot);
                 System.out.print(p.row);
                 System.out.println(" "+p.col);
@@ -144,6 +145,7 @@ public class GamePlayController {
             {
                 Zombie z = i.next();
                 z.makeImage(GamePlayRoot);
+                System.out.println(GamePlayRoot);
                 z.moveZombie();
             }
         }
@@ -402,6 +404,7 @@ public class GamePlayController {
             case 1:
                 p=new Sunflower(x, y,row,col);
                 allPlants.add(p);
+                //System.out.println(lawn_grid);
                 p.makeImage(lawn_grid);
                 p.attack(GamePlayRoot);
                 break;

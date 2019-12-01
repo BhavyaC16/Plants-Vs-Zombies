@@ -22,13 +22,20 @@ public class Shovel extends GameElements{
     public static Shovel getInstance(){
         if (shovel==null){
             shovel=new Shovel();
-            shovel.img.setOnMouseClicked(e-> {
-                shovel.isDisabled = false;
-                shovel.enable();
-                SidebarElement.setCardSelectedToNull();
-            });
+
         }
         return shovel;
+    }
+
+    @Override
+    public void makeImage(Pane p)
+    {
+        super.makeImage(p);
+        shovel.img.setOnMouseClicked(e-> {
+            shovel.isDisabled = false;
+            shovel.enable();
+            SidebarElement.setCardSelectedToNull();
+        });
     }
 
     public void enable(){
