@@ -65,7 +65,7 @@ public class EndGameController {
     }
     @FXML
     public void initData(int levelNumber, boolean gameWin,DataTable d){
-        Database.getInstance().removeData(d);
+        Main.getDatabase().removeData(d);
         if (gameWin==false){
             zombiesAteYourBrains.setVisible(true);
         }
@@ -74,7 +74,7 @@ public class EndGameController {
                 youAteZombiesBrains.setVisible(true);
             }
             else{
-                Database.getInstance().setMaxLevel(levelNumber+1);
+                Main.getDatabase().setMaxLevel(levelNumber+1);
                 plantName.setVisible(true);
                 plantImage.setVisible(true);
                 youWon.setVisible(true);

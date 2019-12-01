@@ -46,7 +46,7 @@ public class LevelMenuController {
     private ImageView backbutton;
 
     public void initialize(){
-        int l=Database.getInstance().getMaxLevel();
+        int l=Main.getDatabase().getMaxLevel();
         level2button.setDisable(true);
         level3button.setDisable(true);
         level4button.setDisable(true);

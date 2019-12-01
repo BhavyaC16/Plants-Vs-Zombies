@@ -39,19 +39,19 @@ public class MainPageController implements Initializable {
 
     @FXML
     void exitGame(MouseEvent event) {
-//        try{
-//            Database.serialize();
-//        }
-//        catch(IOException e){
-//            System.out.println("Could not save the progress :(");
-//        }
-//        System.exit(0);
+        try{
+            Main.serialize();
+        }
+        catch(IOException e){
+            System.out.println("Could not save the progress :(");
+        }
+        System.exit(0);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
 //        try {
-//            Database.deserialize();
+//            Main.deserialize();
 //        } catch (ClassNotFoundException e) {
 //            e.printStackTrace();
 //        } catch (IOException e) {
@@ -82,7 +82,7 @@ public class MainPageController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePlay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         GamePlayController controller = fxmlLoader.<GamePlayController>getController();
-        controller.initData(Database.getInstance().getMaxLevel(),new DataTable(Database.getInstance().getMaxLevel()));
+        controller.initData(Main.getDatabase().getMaxLevel(),new DataTable(Main.getDatabase().getMaxLevel()));
         mainRoot.getChildren().setAll(pane);
     }
 

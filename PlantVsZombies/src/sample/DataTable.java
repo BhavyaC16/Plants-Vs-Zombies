@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class DataTable implements Serializable {
+    private static final long serialVersionUID=42L;
     private static int id=0;
     private int gameId;
     private int sunCount;
@@ -67,13 +68,13 @@ public class DataTable implements Serializable {
     }
 
     public void saveGame(){
-        Database.getInstance().getDatabaseFiles().add(this);
-//        try{
-//            Main.serialize();
-//        }
-//        catch (IOException e){
-//            System.out.println("Cant close stream");
-//        }
+        Main.getDatabase().getDatabaseFiles().add(this);
+        try{
+            Main.serialize();
+        }
+        catch (IOException e){
+            System.out.println("Cant close stream");
+        }
     }
 
     public List<LawnMower> getAllLawnMowers() {
