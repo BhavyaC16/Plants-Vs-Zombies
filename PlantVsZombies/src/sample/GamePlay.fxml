@@ -39,11 +39,6 @@
          </image>
       </ImageView>
       <ProgressBar fx:id="progressBar" layoutX="178.0" layoutY="25.0" prefHeight="20.0" prefWidth="277.0" progress="0.38" />
-      <ImageView fx:id="zombieHead" fitHeight="35.0" fitWidth="32.0" layoutX="174.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/zombieHead.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="436.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/Flag.png" />

@@ -59,16 +59,6 @@ public class DataTable implements Serializable {
         this.timeElapsed = timeElapsed;
         this.zombieList1 = zombieList1;
         this.zombieList2 = zombieList2;
-//        System.out.println("SERIALIZING");
-//        synchronized (allPlants) {
-//            Iterator<Plant> i = allPlants.iterator();
-//            while (i.hasNext()) {
-//                Plant p = i.next();
-//                System.out.print(p.row);
-//                System.out.println(" " + p.col);
-//            }
-//        }
-//        System.out.println("=======================");
     }
 
     public void saveGame(){
@@ -106,7 +96,8 @@ public class DataTable implements Serializable {
     }
 
     public double getTimeElapsed() {
-        return timeElapsed;
+        System.out.println(this.timeElapsed);
+        return this.timeElapsed;
     }
 
     public String toString()

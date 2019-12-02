@@ -77,7 +77,7 @@ public class GamePlayController {
     private static DataTable d;
     public static int wonGame = 0;
     private volatile int spawnedZombies = 0;
-    public static int numZombiesKilled = 0;
+    public static double numZombiesKilled = 0;
     public static ArrayList<Timeline> animationTimelines;
     private Shovel shovel;
 
@@ -89,6 +89,7 @@ public class GamePlayController {
         allZombies = Collections.synchronizedList(new ArrayList<Zombie>());
         allPlants = Collections.synchronizedList(new ArrayList<Plant>());
         allMowers = Collections.synchronizedList(new ArrayList<LawnMower>());
+        //progressBar.setProgress(0);
     }
 
     @FXML
@@ -104,6 +105,8 @@ public class GamePlayController {
         allZombies = d.getAllZombie();
         allMowers=d.getAllLawnMowers();
         sunCount=d.getSunCount();
+        timeElapsed = d.getTimeElapsed();
+        System.out.println("timeElapsed"+timeElapsed);
         animationTimelines = new ArrayList<Timeline>();
         startAnimations(rand);
 
@@ -145,15 +148,13 @@ public class GamePlayController {
             {
                 Zombie z = i.next();
                 z.makeImage(GamePlayRoot);
-                System.out.println(GamePlayRoot);
                 z.moveZombie();
             }
         }
+        numZombiesKilled = l.getTotalZombies()*timeElapsed;
+        progressBar.setProgress(timeElapsed);
         zombieSpawner1(rand);
         zombieSpawner2(rand);
-        System.out.println(zombieList1);
-        System.out.println(zombieList2);
-        //progressBar.setProgress(d.getTimeElapsed());
     }
 
     public void gameProgress()
@@ -162,7 +163,7 @@ public class GamePlayController {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    timeElapsed = ((double) numZombiesKilled / l.getTotalZombies());
+                    timeElapsed = ( numZombiesKilled / l.getTotalZombies());
                     progressBar.setProgress(timeElapsed);
                     if (wonGame == (-1)) {
                         System.out.println("LostGame :(");
@@ -175,9 +176,17 @@ public class GamePlayController {
                         endAnimations();
                         gameWon();
                     }
+                    else if(progressBar.getProgress()>=1)
+                    {
+                        spZ1.stop();
+                        spZ2.stop();
+                            endAnimations();
+                            gameWon();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                System.out.println("PROGRESS"+progressBar.getProgress());
             }
         }));
         gameStatus.setCycleCount(Timeline.INDEFINITE);
@@ -345,7 +354,6 @@ public class GamePlayController {
 
     @FXML
     void getGridPosition(MouseEvent event) throws IOException {
-        System.out.println(allPlants.size());
         Node source = (Node) event.getSource();
         Integer colIndex = lawn_grid.getColumnIndex(source);
         Integer rowIndex = lawn_grid.getRowIndex(source);

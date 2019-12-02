@@ -51,7 +51,7 @@ public class MainPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         //To unlock all the 5 levels uncomment this line
-        Main.getDatabase().setMaxLevel(5);
+        //Main.getDatabase().setMaxLevel(5);
     }
 
     @FXML

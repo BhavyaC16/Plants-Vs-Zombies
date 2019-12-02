@@ -10,8 +10,5 @@ public class Wallnut extends Plant{
         this.path="file:src/sample/assets/walnut_full_life.gif";
 
     }
-    @Override
-    public void setHp(int hp){
-        super.setHp(hp);
-    }
+
 }
