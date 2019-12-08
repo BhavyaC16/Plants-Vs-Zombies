@@ -6,8 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Iterator;
 
@@ -24,7 +27,7 @@ public class LawnMower extends GameElements{
 
     public void checkZombie()
     {
-        Timeline findZombie = new Timeline(new KeyFrame(Duration.millis(500), new EventHandler<ActionEvent>() {
+        Timeline findZombie = new Timeline(new KeyFrame(Duration.millis(50), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 synchronized (GamePlayController.allZombies) {
@@ -33,7 +36,7 @@ public class LawnMower extends GameElements{
                         Zombie z = i.next();
                         if(z.getLane()==lane)
                         {
-                            if(Math.abs(z.getX()-getX())<=100)
+                            if(Math.abs(z.getX()-getX())<=30)
                             {
                                 if(activated==false)
                                 {
@@ -61,6 +64,12 @@ public class LawnMower extends GameElements{
 
     public void activate(){
         img.setImage(new Image(activatedPath, 81, 77, false, false));
+        String lawnMowerFile = "src/sample/assets/sounds/lawnmower.wav";
+        Media lawnmower = new Media(new File(lawnMowerFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(lawnmower);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setVolume(1000);
+        mediaPlayer.play();
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(5), e -> moveMower()));
         animation.setCycleCount(1100);
         animation.play();

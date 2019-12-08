@@ -3,8 +3,11 @@ package sample;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.util.Iterator;
 
 public class Pea extends GameElements{
@@ -55,13 +58,18 @@ public class Pea extends GameElements{
                 Zombie z = i.next();
                 if(z.getLane() == lane && !flag)
                 {
-                    if(Math.abs(z.getX()-getX())<=1 && !flag)
+                    if(Math.abs(z.getX()-getX())<=3 && !flag)
                     {
                         this.flag = true;
                         z.setHp(z.getHp()-1);
                         img.setVisible(false);
                         img.setDisable(true);
                         peaAnimation.stop();
+                        String splatFile = "src/sample/assets/sounds/splat3.wav";
+                        Media splat = new Media(new File(splatFile).toURI().toString());
+                        MediaPlayer mediaPlayer = new MediaPlayer(splat);
+                        mediaPlayer.setAutoPlay(true);
+                        mediaPlayer.play();
                     }
                 }
             }

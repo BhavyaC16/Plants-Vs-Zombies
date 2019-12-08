@@ -5,7 +5,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -41,6 +44,11 @@ public class Jalapeno extends Plant {
             }
             img.setVisible(false);
             img.setDisable(true);
+            String jalapenoFile = "src/sample/assets/sounds/jalapeno.wav";
+            Media explode = new Media(new File(jalapenoFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(explode);
+            mediaPlayer.setAutoPlay(true);
+            mediaPlayer.play();
             for(int i=0;i<9;i++){
                 fireViews[i].setVisible(true);
             }

@@ -4,7 +4,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicReferenceArray;
@@ -39,10 +42,15 @@ public class CherryBomb extends Plant{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            String cherryBombFile = "src/sample/assets/sounds/cherrybomb.wav";
+            Media explode = new Media(new File(cherryBombFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(explode);
+            mediaPlayer.setAutoPlay(true);
+            mediaPlayer.play();
             img.setVisible(false);
             img.setDisable(true);
             powie.setVisible(true);
-            System.out.println("attacking");
+            //System.out.println("attacking");
             synchronized (GamePlayController.allZombies)
             {
                 Iterator<Zombie> i = GamePlayController.allZombies.iterator();

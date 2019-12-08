@@ -1,11 +1,16 @@
 package sample;
 
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+
+import java.io.File;
 import java.io.Serializable;
 import java.util.Iterator;
 
@@ -18,6 +23,9 @@ public abstract class Zombie extends GameElements {
     protected int lane;
     protected int dx;
     transient protected Timeline zombieAnimation;
+    protected boolean reachedPlant = false;
+    protected boolean isEating = false;
+    protected Timeline chomping;
 
     public Zombie(int hp, int ap, String p, int x, int y, int width, int height, int lane) {
         super(x, y, p, width, height);
@@ -48,7 +56,12 @@ public abstract class Zombie extends GameElements {
                 if(this==GamePlayController.allZombies.get(i))
                 {
                     GamePlayController.allZombies.remove(i);
-                    System.out.println("removed");
+                    String yuckFile = "src/sample/assets/sounds/yuck.wav";
+                    Media yuck = new Media(new File(yuckFile).toURI().toString());
+                    MediaPlayer mediaPlayer = new MediaPlayer(yuck);
+                    mediaPlayer.setAutoPlay(true);
+                    mediaPlayer.play();
+                    //System.out.println("removed");
                     break;
                 }
             }
@@ -64,9 +77,10 @@ public abstract class Zombie extends GameElements {
         img.setImage(new Image("file:src/sample/assets/burntZombie.gif", (double) 68,(double) 118,false,false));
         this.dx=0;
         this.hp = 0;
+        GamePlayController.numZombiesKilled+=1;
         Thread t = new Thread(() -> {
             try {
-                Thread.sleep(4000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -84,6 +98,11 @@ public abstract class Zombie extends GameElements {
     public void checkReachedHouse() {
         if (img.getX() <= 220) {
             GamePlayController.wonGame = -1;
+            String brainzFile = "src/sample/assets/sounds/brainz.wav";
+            Media brainz = new Media(new File(brainzFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(brainz);
+            mediaPlayer.setAutoPlay(true);
+            mediaPlayer.play();
         }
     }
 
@@ -110,6 +129,18 @@ public abstract class Zombie extends GameElements {
         return this.zombieAnimation;
     }
 
+    public void chompPlant()
+    {
+        String chompFile = "src/sample/assets/sounds/chomp.wav";
+        Media chomp = new Media(new File(chompFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(chomp);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setStartTime(Duration.seconds(0));
+        mediaPlayer.setStopTime(Duration.seconds(1));
+        mediaPlayer.setCycleCount(1);
+        mediaPlayer.play();
+    }
+
     public void eatPlant()
     {
         synchronized (GamePlayController.allPlants)
@@ -122,6 +153,19 @@ public abstract class Zombie extends GameElements {
                 {
                     if (Math.abs(p.getX()-img.getX())<=50)
                     {
+                        if(reachedPlant==false)
+                        {
+                            reachedPlant = true;
+                            isEating = true;
+                        }
+                        if(isEating)
+                        {
+                            Timeline chomp = new Timeline(new KeyFrame(Duration.millis(1000), e -> chompPlant()));
+                            chomp.setCycleCount(1000);
+                            chomp.play();
+                            this.chomping = chomp;
+                            isEating = false;
+                        }
                         this.dx = 0;
                         p.setHp(p.getHp()-this.attackPower);
                         if(p.getHp()<=0)
@@ -130,11 +174,15 @@ public abstract class Zombie extends GameElements {
                             p.img.setDisable(true);
                             GamePlayController.allPlants.remove(p);
                             this.dx = -1;
+                            this.reachedPlant = false;
+                            this.chomping.stop();
                         }
                     }
                     else
                     {
                         this.dx = -1;
+                        this.reachedPlant = false;
+                        this.chomping.stop();
                     }
                 }
             }

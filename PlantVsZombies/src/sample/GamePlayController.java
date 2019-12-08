@@ -20,6 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -361,6 +363,11 @@ public class GamePlayController {
             shovel.disable();
             if (colIndex != null && rowIndex != null) {
                 System.out.println("shovelling"+colIndex+" "+rowIndex);
+                String shoveFile = "src/sample/assets/sounds/plant.wav";
+                Media shove = new Media(new File(shoveFile).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(shove);
+                mediaPlayer.setAutoPlay(true);
+                mediaPlayer.play();
                 synchronized (allPlants) {
                     Iterator<Plant> i = allPlants.iterator();
                     while (i.hasNext()) {
@@ -408,11 +415,15 @@ public class GamePlayController {
 
     public void placePlant(int val, int x, int y,int row,int col) {
         Plant p;
+        String plantFile = "src/sample/assets/sounds/plant.wav";
+        Media plant = new Media(new File(plantFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(plant);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.play();
         switch (val) {
             case 1:
                 p=new Sunflower(x, y,row,col);
                 allPlants.add(p);
-                //System.out.println(lawn_grid);
                 p.makeImage(lawn_grid);
                 p.attack(GamePlayRoot);
                 break;
