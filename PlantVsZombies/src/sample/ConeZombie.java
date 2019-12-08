@@ -1,6 +1,9 @@
 package sample;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 import java.util.Iterator;
 
@@ -22,6 +25,20 @@ public class ConeZombie extends Zombie {
                 {
                     if (Math.abs(p.getX()-img.getX())<=25)
                     {
+                        if(reachedPlant==false)
+                        {
+                            reachedPlant = true;
+                            isEating = true;
+                        }
+                        if(isEating)
+                        {
+                            Timeline chomp = new Timeline(new KeyFrame(Duration.millis(1000), e -> chompPlant()));
+                            chomp.setCycleCount(1000);
+                            chomp.play();
+                            this.chomping = chomp;
+                            GamePlayController.animationTimelines.add(chomp);
+                            isEating = false;
+                        }
                         this.dx = 0;
                         p.setHp(p.getHp()-this.attackPower);
                         if(p.getHp()==0)
@@ -30,13 +47,21 @@ public class ConeZombie extends Zombie {
                             p.img.setDisable(true);
                             GamePlayController.allPlants.remove(p);
                             this.dx = -1;
+                            this.reachedPlant = false;
+                            this.chomping.stop();
                         }
                     }
                     else
                     {
                         this.dx = -1;
+                        this.reachedPlant = false;
+                        this.chomping.stop();
                     }
                 }
+            }
+            if(reachedPlant==false)
+            {
+                this.dx = -1;
             }
         }
     }

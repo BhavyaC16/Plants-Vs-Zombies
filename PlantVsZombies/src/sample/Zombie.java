@@ -164,6 +164,7 @@ public abstract class Zombie extends GameElements {
                             chomp.setCycleCount(1000);
                             chomp.play();
                             this.chomping = chomp;
+                            GamePlayController.animationTimelines.add(chomp);
                             isEating = false;
                         }
                         this.dx = 0;
@@ -185,6 +186,10 @@ public abstract class Zombie extends GameElements {
                         this.chomping.stop();
                     }
                 }
+            }
+            if(reachedPlant==false)
+            {
+                this.dx = -1;
             }
         }
 
