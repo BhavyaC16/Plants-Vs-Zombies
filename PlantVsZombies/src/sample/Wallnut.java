@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 
 public class Wallnut extends Plant{
     public Wallnut(int x, int y,int row,int col) {
-        super(x, y, "file:src/sample/assets/walnut_full_life.gif", 1500,60,75,row,col);
+        super(x, y, "file:src/sample/assets/walnut_full_life.gif", 400,60,75,row,col);
         this.path="file:src/sample/assets/walnut_full_life.gif";
     }
     public void checkHp()
@@ -14,6 +14,9 @@ public class Wallnut extends Plant{
         if(getHp()<=0)
         {
             setHp(0);
+            GamePlayController.allPlants.remove(this);
+            img.setVisible(false);
+            img.setDisable(true);
         }
     }
 

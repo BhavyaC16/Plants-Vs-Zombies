@@ -179,6 +179,9 @@ public abstract class Zombie extends GameElements {
                             if(p.getHp()<=0)
                             {
                                 p.setHp(0);
+                                GamePlayController.allPlants.remove(p);
+                                p.img.setVisible(false);
+                                p.img.setDisable(true);
                                 this.dx = -1;
                                 this.reachedPlant = false;
                                 this.chomping.stop();
@@ -204,6 +207,5 @@ public abstract class Zombie extends GameElements {
             this.chomping.stop();
             this.reachedPlant=false;
         }
-        System.out.println(foundPlant);
     }
 }
