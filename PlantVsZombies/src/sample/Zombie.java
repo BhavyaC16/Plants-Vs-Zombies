@@ -31,9 +31,9 @@ public abstract class Zombie extends GameElements {
         super(x, y, p, width, height);
         this.hp = hp;
         this.attackPower = ap;
-//        super.makeImage();
         this.lane = lane;
         this.dx = -1;
+        this.chomping = new Timeline();
     }
 
     public int getHp() {
@@ -51,6 +51,7 @@ public abstract class Zombie extends GameElements {
             this.img.setVisible(false);
             this.img.setDisable(true);
             this.zombieAnimation.stop();
+            this.chomping.stop();
             for(int i = 0; i<GamePlayController.allZombies.size(); i++)
             {
                 if(this==GamePlayController.allZombies.get(i))
@@ -77,6 +78,7 @@ public abstract class Zombie extends GameElements {
         img.setImage(new Image("file:src/sample/assets/burntZombie.gif", (double) 68,(double) 118,false,false));
         this.dx=0;
         this.hp = 0;
+        this.chomping.stop();
         GamePlayController.numZombiesKilled+=1;
         Thread t = new Thread(() -> {
             try {
@@ -143,6 +145,7 @@ public abstract class Zombie extends GameElements {
 
     public void eatPlant()
     {
+        int foundPlant = 0;
         synchronized (GamePlayController.allPlants)
         {
             Iterator<Plant> i = GamePlayController.allPlants.iterator();
@@ -153,6 +156,8 @@ public abstract class Zombie extends GameElements {
                 {
                     if (Math.abs(p.getX()-img.getX())<=50)
                     {
+                        foundPlant=1;
+
                         if(reachedPlant==false)
                         {
                             reachedPlant = true;
@@ -167,16 +172,17 @@ public abstract class Zombie extends GameElements {
                             GamePlayController.animationTimelines.add(chomp);
                             isEating = false;
                         }
-                        this.dx = 0;
-                        p.setHp(p.getHp()-this.attackPower);
-                        if(p.getHp()<=0)
+                        if(foundPlant==1)
                         {
-                            p.img.setVisible(false);
-                            p.img.setDisable(true);
-                            GamePlayController.allPlants.remove(p);
-                            this.dx = -1;
-                            this.reachedPlant = false;
-                            this.chomping.stop();
+                            this.dx = 0;
+                            p.setHp(p.getHp()-this.attackPower);
+                            if(p.getHp()<=0)
+                            {
+                                p.setHp(0);
+                                this.dx = -1;
+                                this.reachedPlant = false;
+                                this.chomping.stop();
+                            }
                         }
                     }
                     else
@@ -186,12 +192,18 @@ public abstract class Zombie extends GameElements {
                         this.chomping.stop();
                     }
                 }
-            }
-            if(reachedPlant==false)
-            {
-                this.dx = -1;
+                else
+                {
+                    this.dx = -1;
+                }
             }
         }
-
+        if(foundPlant==0)
+        {
+            this.dx = -1;
+            this.chomping.stop();
+            this.reachedPlant=false;
+        }
+        System.out.println(foundPlant);
     }
 }

@@ -35,6 +35,7 @@ public class Repeater extends Shooter {
                             p2.makeImage(pane);
                             p1.shootPea();
                             p2.shootPea();
+                            checkHp();
                         }
                     }
                 }

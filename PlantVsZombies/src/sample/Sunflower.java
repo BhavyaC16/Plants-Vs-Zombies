@@ -24,7 +24,7 @@ public class Sunflower extends Plant{
     }
 
     public void produceSun(Pane pane){
-        Timeline stopGlow = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
+        Timeline stopGlow = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 Glow glow=new Glow();
@@ -33,13 +33,10 @@ public class Sunflower extends Plant{
             }
         }));
 
-        Timeline sunProducer = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
+        Timeline sunProducer = new Timeline(new KeyFrame(Duration.seconds(2), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 checkHp();
-                Glow glow=new Glow();
-                img.setEffect(glow);
-                glow.setLevel(0.6);
                 if(getHp()>0)
                 {
                     Sun s = new Sun(getX()+20, getY()+40, false);
@@ -48,11 +45,21 @@ public class Sunflower extends Plant{
                 stopGlow.play();
             }
         }));
-
-        sunProducer.setCycleCount(Timeline.INDEFINITE);
-        sunProducer.play();
+        Timeline startGlow = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Glow glow=new Glow();
+                img.setEffect(glow);
+                glow.setLevel(0.5);
+                sunProducer.play();
+            }
+        }));
+        startGlow.setCycleCount(Timeline.INDEFINITE);
+        startGlow.play();
         this.sunProducer = sunProducer;
         GamePlayController.animationTimelines.add(sunProducer);
+        GamePlayController.animationTimelines.add(startGlow);
+        GamePlayController.animationTimelines.add(stopGlow);
     }
     public Timeline getTimeline()
     {

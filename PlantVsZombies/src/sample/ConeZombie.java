@@ -15,6 +15,7 @@ public class ConeZombie extends Zombie {
     @Override
     public void eatPlant()
     {
+        int foundPlant = 0;
         synchronized (GamePlayController.allPlants)
         {
             Iterator<Plant> i = GamePlayController.allPlants.iterator();
@@ -25,6 +26,8 @@ public class ConeZombie extends Zombie {
                 {
                     if (Math.abs(p.getX()-img.getX())<=25)
                     {
+                        foundPlant=1;
+
                         if(reachedPlant==false)
                         {
                             reachedPlant = true;
@@ -39,16 +42,17 @@ public class ConeZombie extends Zombie {
                             GamePlayController.animationTimelines.add(chomp);
                             isEating = false;
                         }
-                        this.dx = 0;
-                        p.setHp(p.getHp()-this.attackPower);
-                        if(p.getHp()==0)
+                        if(foundPlant==1)
                         {
-                            p.img.setVisible(false);
-                            p.img.setDisable(true);
-                            GamePlayController.allPlants.remove(p);
-                            this.dx = -1;
-                            this.reachedPlant = false;
-                            this.chomping.stop();
+                            this.dx = 0;
+                            p.setHp(p.getHp()-this.attackPower);
+                            if(p.getHp()<=0)
+                            {
+                                p.setHp(0);
+                                this.dx = -1;
+                                this.reachedPlant = false;
+                                this.chomping.stop();
+                            }
                         }
                     }
                     else
@@ -58,11 +62,18 @@ public class ConeZombie extends Zombie {
                         this.chomping.stop();
                     }
                 }
-            }
-            if(reachedPlant==false)
-            {
-                this.dx = -1;
+                else
+                {
+                    this.dx = -1;
+                }
             }
         }
+        if(foundPlant==0)
+        {
+            this.dx = -1;
+            this.chomping.stop();
+            this.reachedPlant=false;
+        }
+        System.out.println(foundPlant);
     }
 }

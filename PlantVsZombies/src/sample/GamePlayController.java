@@ -86,12 +86,19 @@ public class GamePlayController {
 
     public void initialize() throws Exception {
         l = null;
+        String waveFile = "src/sample/assets/sounds/zombies_are_coming.wav";
+        Media wave = new Media(new File(waveFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(wave);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setStartTime(Duration.seconds(0));
+        mediaPlayer.setStopTime(Duration.seconds(5));
+        mediaPlayer.play();
+
         gameStatus = true;
         sunCountDisplay = sunCountLabel;
         allZombies = Collections.synchronizedList(new ArrayList<Zombie>());
         allPlants = Collections.synchronizedList(new ArrayList<Plant>());
         allMowers = Collections.synchronizedList(new ArrayList<LawnMower>());
-        //progressBar.setProgress(0);
     }
 
     @FXML
@@ -108,7 +115,6 @@ public class GamePlayController {
         allMowers=d.getAllLawnMowers();
         sunCount=d.getSunCount();
         timeElapsed = d.getTimeElapsed();
-        System.out.println("timeElapsed"+timeElapsed);
         animationTimelines = new ArrayList<Timeline>();
         startAnimations(rand);
 
@@ -137,10 +143,7 @@ public class GamePlayController {
             while (i.hasNext()) {
                 Plant p = i.next();
                 p.makeImage(lawn_grid);
-                System.out.println(lawn_grid);
                 p.attack(GamePlayRoot);
-                System.out.print(p.row);
-                System.out.println(" "+p.col);
             }
         }
         synchronized (allZombies)
@@ -188,7 +191,6 @@ public class GamePlayController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("PROGRESS"+progressBar.getProgress());
             }
         }));
         gameStatus.setCycleCount(Timeline.INDEFINITE);
@@ -381,6 +383,7 @@ public class GamePlayController {
                             p.setHp(0);
                             ((Shooter)p).checkHp();
                             ((Sunflower)p).checkHp();
+                            ((Wallnut)p).checkHp();
                             break;
                         }
                     }

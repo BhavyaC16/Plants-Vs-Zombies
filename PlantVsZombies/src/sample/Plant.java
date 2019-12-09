@@ -26,7 +26,6 @@ public abstract class Plant extends GameElements{
 
     public void makeImage(GridPane lawn){
         img = new ImageView();
-        System.out.println(path);
         Image im=new Image(path,(double) width,(double) height,false,false);
         img.setImage(im);
         lawn.add(img,col,row,1,1);
