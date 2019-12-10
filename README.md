@@ -4,19 +4,21 @@
 [Bhavya Chopra](https://www.github.com/BhavyaC16) and [Sonali Singhal](https://www.github.com/SonaliSinghal)**
 
 This is a clone of the strategy video game, [Plants vs. Zombies](https://en.wikipedia.org/wiki/Plants_vs._Zombies), originally developed by PopCap Games.
-Made as a part of project in Advanced Programming course at IIIT-Delhi. 
+
+Made as a part of project in Advanced Programming course at IIIT-Delhi.
+
 Uses Java and JavaFx.
 
 ## Features
-1. 5 Levels with increasing difficulties
-2. 2 Themes (Night Mode and Day Mode)
-3. Plants Available: Sunflower, Pea Shooter, Cherry Bomb, Walnut, Repeater, Jalapeno
-4. Zombies Avalable: Normal Zombie, Conehead Zombie and Buckethead Zombie
-5. Almanac: Displays details and attack methods and power of each zombie and plant
-6. Shovel: Tool to shovel plants out of the grid
-7. Save Game and Restart Game options: User can save multiple game states, and reload them, or delete game progress
-8. Cool sound effects for all lawn interactions
-9. Lots of fun :P
+- 5 Levels with increasing difficulties
+- 2 Themes (Night Mode and Day Mode)
+- Plants Available: Sunflower, Pea Shooter, Cherry Bomb, Walnut, Repeater, Jalapeno
+- Zombies Avalable: Normal Zombie, Conehead Zombie and Buckethead Zombie
+- Almanac: Displays details and attack methods and power of each zombie and plant
+- Shovel: Tool to shovel plants out of the grid
+- Save Game and Restart Game options: User can save multiple game states, and reload them, or delete game progress
+- Cool sound effects for all lawn interactions
+- Lots of fun :P
 
 ## Screenshots from the game
 ![alt_text](https://github.com/BhavyaC16/Plants-Vs-Zombies/blob/master/GameplayScreenshots/1.png)
