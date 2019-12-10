@@ -120,7 +120,7 @@ public class GamePlayController {
         animationTimelines = new ArrayList<Timeline>();
         LevelMenuController.status = d.getStatus();
         startAnimations(rand);
-
+        
         synchronized (allMowers)
         {
             Iterator<LawnMower> i = allMowers.iterator();
@@ -161,6 +161,14 @@ public class GamePlayController {
                 Plant p = i.next();
                 p.makeImage(lawn_grid);
                 p.attack(GamePlayRoot);
+            }
+        }
+        synchronized (allMowers) {
+            Iterator<LawnMower> i = allMowers.iterator();
+            while (i.hasNext()) {
+                LawnMower l = i.next();
+                l.makeImage(GamePlayRoot);
+                l.checkZombie();
             }
         }
         synchronized (allZombies)

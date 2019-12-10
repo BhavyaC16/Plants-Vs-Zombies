@@ -4,13 +4,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="levelRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelMenuController">
+<AnchorPane fx:id="levelRoot" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelMenuController">
     <children>
         <ImageView fx:id="themeButton" fitHeight="600.0" fitWidth="1024.0" layoutX="87.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
                 <Image url="@assets/menu3-01.png" />
             </image>
         </ImageView>
+      <ImageView fx:id="nightTheme" fitHeight="600.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/menu_dark_mode.png" />
+         </image>
+      </ImageView>
         <ImageView fx:id="level1button" fitHeight="177.0" fitWidth="162.0" layoutX="59.0" layoutY="151.0" onMouseClicked="#launchLevel1" onMouseEntered="#glowImage" onMouseExited="#stopGlowing" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@assets/L1.png" />
