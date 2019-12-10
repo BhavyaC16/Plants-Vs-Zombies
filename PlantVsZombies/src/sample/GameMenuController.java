@@ -75,7 +75,7 @@ public class GameMenuController {
     void saveGame(MouseEvent event) throws IOException {
         GamePlayController.gameStatus = false;
         GameMenuMessage.setText("Game Saved!");
-        data.update(levelNumber,sunCount, allPlants,allZombies,allMowers, time, zombieList1, zombieList2);
+        data.update(levelNumber,sunCount, allPlants,allZombies,allMowers, time, zombieList1, zombieList2, LevelMenuController.status);
         Main.getDatabase().removeData(data);
         data.saveGame();
         Main.getDatabase().setMaxLevel(levelNumber);

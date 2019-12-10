@@ -118,6 +118,7 @@ public class GamePlayController {
         sunCount=d.getSunCount();
         timeElapsed = d.getTimeElapsed();
         animationTimelines = new ArrayList<Timeline>();
+        LevelMenuController.status = d.getStatus();
         startAnimations(rand);
 
         synchronized (allMowers)

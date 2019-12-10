@@ -20,6 +20,7 @@ public class DataTable implements Serializable {
     private ArrayList<Integer> zombieList1;
     private ArrayList<Integer> zombieList2;
     private double timeElapsed;
+    private boolean status = LevelMenuController.status;
     private List<LawnMower> allLawnMowers;
     private int levelNumber;
     private String savingTimeStamp;
@@ -47,10 +48,11 @@ public class DataTable implements Serializable {
         Level l = new Level(levelNumber);
         zombieList1 = l.getZombieList1();
         zombieList2 = l.getZombieList2();
+        status = LevelMenuController.status;
 
     }
 
-    public void update(int levelNumber, int sunCount, List<Plant> allPlants, List<Zombie> allZombie, List<LawnMower> allLawnMowers, double timeElapsed, ArrayList<Integer> zombieList1, ArrayList<Integer> zombieList2) {
+    public void update(int levelNumber, int sunCount, List<Plant> allPlants, List<Zombie> allZombie, List<LawnMower> allLawnMowers, double timeElapsed, ArrayList<Integer> zombieList1, ArrayList<Integer> zombieList2, boolean status) {
         this.sunCount = sunCount;
         this.allPlants = allPlants;
         this.allZombie = allZombie;
@@ -59,6 +61,7 @@ public class DataTable implements Serializable {
         this.timeElapsed = timeElapsed;
         this.zombieList1 = zombieList1;
         this.zombieList2 = zombieList2;
+        this.status = status;
     }
 
     public void saveGame(){
@@ -112,5 +115,6 @@ public class DataTable implements Serializable {
     {
         return this.zombieList2;
     }
+    public boolean getStatus() {return this.status;}
     
 }
