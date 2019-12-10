@@ -22,7 +22,6 @@ public class LawnMower extends GameElements{
         super(x, y, "file:src/sample/assets/lawnmowerIdle.gif", 81, 77);
         this.path="file:src/sample/assets/lawnmowerIdle.gif";
         this.lane=lane;
-        checkZombie();
     }
 
     public void checkZombie()

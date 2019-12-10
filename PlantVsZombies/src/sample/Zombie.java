@@ -25,7 +25,7 @@ public abstract class Zombie extends GameElements {
     transient protected Timeline zombieAnimation;
     protected boolean reachedPlant = false;
     protected boolean isEating = false;
-    protected Timeline chomping;
+    protected transient Timeline chomping;
 
     public Zombie(int hp, int ap, String p, int x, int y, int width, int height, int lane) {
         super(x, y, p, width, height);
@@ -51,7 +51,10 @@ public abstract class Zombie extends GameElements {
             this.img.setVisible(false);
             this.img.setDisable(true);
             this.zombieAnimation.stop();
-            this.chomping.stop();
+            if(this.chomping!=null)
+            {
+                this.chomping.stop();
+            }
             for(int i = 0; i<GamePlayController.allZombies.size(); i++)
             {
                 if(this==GamePlayController.allZombies.get(i))
@@ -193,7 +196,10 @@ public abstract class Zombie extends GameElements {
                     {
                         this.dx = -1;
                         this.reachedPlant = false;
-                        this.chomping.stop();
+                        if(this.chomping!=null)
+                        {
+                            this.chomping.stop();
+                        }
                     }
                 }
                 else
@@ -205,7 +211,10 @@ public abstract class Zombie extends GameElements {
         if(foundPlant==0)
         {
             this.dx = -1;
-            this.chomping.stop();
+            if(this.chomping!=null)
+            {
+                this.chomping.stop();
+            }
             this.reachedPlant=false;
         }
     }

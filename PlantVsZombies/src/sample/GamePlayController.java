@@ -125,7 +125,9 @@ public class GamePlayController {
             Iterator<LawnMower> i = allMowers.iterator();
             while(i.hasNext())
             {
-                i.next().makeImage(GamePlayRoot);
+                LawnMower x = i.next();
+                x.makeImage(GamePlayRoot);
+                x.checkZombie();
             }
         }
         shovel=Shovel.getInstance();
@@ -138,12 +140,15 @@ public class GamePlayController {
         if(LevelMenuController.status)
         {
             fallingSuns(rand);
-
+            zombieSpawner1(rand, 15);
+            zombieSpawner2(rand, 30);
         }
         else
         {
             Image lawn = new Image("file:src/sample/assets/lawn_night.png", 1024, 600, false, false);
             lawnImage.setImage(lawn);
+            zombieSpawner1(rand, 25);
+            zombieSpawner2(rand, 40);
         }
     }
 
@@ -169,8 +174,6 @@ public class GamePlayController {
         }
         numZombiesKilled = l.getTotalZombies()*timeElapsed;
         progressBar.setProgress(timeElapsed);
-        zombieSpawner1(rand);
-        zombieSpawner2(rand);
     }
 
     public void gameProgress()
@@ -265,8 +268,8 @@ public class GamePlayController {
         animationTimelines.add(sunDropper);
     }
 
-    public void zombieSpawner1(Random rand){
-        Timeline spawnZombie1 = new Timeline(new KeyFrame(Duration.seconds(15), event -> {
+    public void zombieSpawner1(Random rand, double t){
+        Timeline spawnZombie1 = new Timeline(new KeyFrame(Duration.seconds(t), event -> {
             int lane;
             int laneNumber = rand.nextInt(5);
             if(laneNumber==0)
@@ -311,8 +314,8 @@ public class GamePlayController {
         animationTimelines.add(spawnZombie1);
     }
 
-    public void zombieSpawner2(Random rand){
-        Timeline spawnZombie2 = new Timeline(new KeyFrame(Duration.seconds(30), event -> {
+    public void zombieSpawner2(Random rand, double t){
+        Timeline spawnZombie2 = new Timeline(new KeyFrame(Duration.seconds(t), event -> {
             int lane;
             int laneNumber = rand.nextInt(5);
             if(laneNumber==0)
