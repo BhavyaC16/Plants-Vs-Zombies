@@ -13,6 +13,12 @@ import java.io.IOException;
 public class LevelMenuController {
 
     @FXML
+    private ImageView nightMode;
+
+    @FXML
+    private ImageView dayMode;
+
+    @FXML
     private AnchorPane levelRoot;
 
     @FXML
@@ -142,6 +148,24 @@ public class LevelMenuController {
     void loadPrevMenu(MouseEvent event) throws IOException{
         AnchorPane pane= FXMLLoader.load(getClass().getResource("MainPage.fxml"));
         levelRoot.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void changeGameTheme(MouseEvent event) throws IOException{
+        if(dayMode.isVisible()==false)
+        {
+            nightMode.setVisible(false);
+            nightMode.setDisable(true);
+            dayMode.setVisible(true);
+            dayMode.setDisable(false);
+        }
+        else if(nightMode.isVisible()==false)
+        {
+            dayMode.setVisible(false);
+            dayMode.setDisable(true);
+            nightMode.setVisible(true);
+            nightMode.setDisable(false);
+        }
     }
 
 }

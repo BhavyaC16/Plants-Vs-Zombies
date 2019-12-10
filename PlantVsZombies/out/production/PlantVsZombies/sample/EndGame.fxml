@@ -16,27 +16,27 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" width="1024.0" />
-      <ImageView fx:id="zombiesAteYourBrains" fitHeight="385.0" fitWidth="674.0" layoutX="210.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="50.0">
+      <ImageView fx:id="zombiesAteYourBrains" fitHeight="338.0" fitWidth="427.0" layoutX="407.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="97.0">
          <image>
             <Image url="@assets/ZombiesAteYourBrains.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="plantImage" fitHeight="286.0" fitWidth="286.0" layoutX="305.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="210.025634765625" AnchorPane.topAnchor="110.0" />
-      <Label fx:id="plantName" layoutX="328.0" layoutY="243.0" prefHeight="58.0" prefWidth="157.0" text="Label" textFill="#f7ff09" visible="false" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="380.0">
+      <ImageView fx:id="plantImage" fitHeight="286.0" fitWidth="286.0" layoutX="305.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="210.025634765625" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="plantName" layoutX="328.0" layoutY="243.0" prefHeight="58.0" prefWidth="227.0" text="Label" textFill="#f7ff09" visible="false" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="380.0">
          <font>
             <Font name="Comic Sans MS Bold" size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="youWon" fitHeight="96.0" fitWidth="293.0" layoutX="255.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="475.0" AnchorPane.topAnchor="5.0">
+      <ImageView fx:id="youWon" fitHeight="103.0" fitWidth="306.0" layoutX="255.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="475.0" AnchorPane.topAnchor="5.0">
          <image>
             <Image url="@assets/YouUnlocked.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="nextLevelButton" fitHeight="125.0" fitWidth="220.0" layoutX="483.0" layoutY="271.0" onMouseClicked="#goToNextLevel" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="420.0">
+      <ImageView fx:id="nextLevelButton" fitHeight="125.0" fitWidth="220.0" layoutX="483.0" layoutY="271.0" onMouseClicked="#goToNextLevel" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="720.0" AnchorPane.topAnchor="420.0">
          <image>
             <Image url="@assets/nextLevel.png" />
          </image></ImageView>
-      <Button fx:id="mainMenuButton" layoutX="499.0" layoutY="475.0" mnemonicParsing="false" onMouseClicked="#goToMainMenu" prefHeight="33.0" prefWidth="157.0" text="Main Menu" textFill="#046f22">
+      <Button fx:id="mainMenuButton" layoutX="535.0" layoutY="475.0" mnemonicParsing="false" onMouseClicked="#goToMainMenu" prefHeight="33.0" prefWidth="157.0" text="Main Menu" textFill="#046f22">
          <font>
             <Font size="18.0" />
          </font>
