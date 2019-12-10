@@ -120,17 +120,7 @@ public class GamePlayController {
         animationTimelines = new ArrayList<Timeline>();
         LevelMenuController.status = d.getStatus();
         startAnimations(rand);
-        
-        synchronized (allMowers)
-        {
-            Iterator<LawnMower> i = allMowers.iterator();
-            while(i.hasNext())
-            {
-                LawnMower x = i.next();
-                x.makeImage(GamePlayRoot);
-                x.checkZombie();
-            }
-        }
+
         shovel=Shovel.getInstance();
         shovel.makeImage(GamePlayRoot);
         sunCountDisplay.setText(String.valueOf(sunCount));
