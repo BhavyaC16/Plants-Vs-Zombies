@@ -13,10 +13,12 @@ import java.io.IOException;
 public class LevelMenuController {
 
     @FXML
-    private ImageView nightMode;
+    public ImageView nightMode;
 
     @FXML
-    private ImageView dayMode;
+    public ImageView dayMode;
+
+    public static boolean status = true;
 
     @FXML
     private AnchorPane levelRoot;
@@ -52,6 +54,21 @@ public class LevelMenuController {
     private ImageView backbutton;
 
     public void initialize(){
+        if(status==true)
+        {
+            dayMode.setVisible(true);
+            dayMode.setDisable(false);
+            nightMode.setVisible(false);
+            nightMode.setDisable(true);
+        }
+        else
+        {
+            nightMode.setVisible(true);
+            nightMode.setDisable(false);
+            dayMode.setVisible(false);
+            dayMode.setDisable(true);
+            GamePlayController.theme = "night";
+        }
         int l=Main.getDatabase().getMaxLevel();
         level2button.setDisable(true);
         level3button.setDisable(true);
@@ -158,6 +175,7 @@ public class LevelMenuController {
             nightMode.setDisable(true);
             dayMode.setVisible(true);
             dayMode.setDisable(false);
+            status = true;
         }
         else if(nightMode.isVisible()==false)
         {
@@ -165,7 +183,13 @@ public class LevelMenuController {
             dayMode.setDisable(true);
             nightMode.setVisible(true);
             nightMode.setDisable(false);
+            status = false;
         }
+    }
+
+    public static boolean getDayMode()
+    {
+        return(status);
     }
 
 }

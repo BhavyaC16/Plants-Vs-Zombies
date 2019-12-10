@@ -34,6 +34,8 @@ public class GamePlayController {
     @FXML
     private AnchorPane GamePlayRoot;
     @FXML
+    private ImageView lawnImage;
+    @FXML
     private ImageView peaShooterBuy;
     @FXML
     private ImageView repeaterBuy;
@@ -81,6 +83,7 @@ public class GamePlayController {
     private volatile int spawnedZombies = 0;
     public static double numZombiesKilled = 0;
     public static ArrayList<Timeline> animationTimelines;
+    public static String theme = "day";
     private Shovel shovel;
 
 
@@ -103,7 +106,6 @@ public class GamePlayController {
 
     @FXML
     public void initData(int levelNumber, DataTable d) {
-
         Random rand = new Random();
         this.levelNumber = levelNumber;
         Level l = new Level(levelNumber);
@@ -133,7 +135,16 @@ public class GamePlayController {
         SidebarElement.getSideBarElements(levelNumber, GamePlayRoot);
 
         gameProgress();
-        fallingSuns(rand);
+        if(LevelMenuController.status)
+        {
+            fallingSuns(rand);
+
+        }
+        else
+        {
+            Image lawn = new Image("file:src/sample/assets/lawn_night.png", 1024, 600, false, false);
+            lawnImage.setImage(lawn);
+        }
     }
 
     public void startAnimations(Random rand)

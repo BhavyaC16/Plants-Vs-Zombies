@@ -38,6 +38,7 @@ public class ConeZombie extends Zombie {
                             Timeline chomp = new Timeline(new KeyFrame(Duration.millis(1000), e -> chompPlant()));
                             chomp.setCycleCount(1000);
                             chomp.play();
+                            this.dx = 0;
                             this.chomping = chomp;
                             GamePlayController.animationTimelines.add(chomp);
                             isEating = false;
