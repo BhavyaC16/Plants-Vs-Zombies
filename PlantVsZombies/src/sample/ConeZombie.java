@@ -9,8 +9,8 @@ import java.util.Iterator;
 
 public class ConeZombie extends Zombie {
     public ConeZombie(int x, int y, int lane) {
-        super(14, 1, "file:src/sample/assets/coneheadzombie.gif", x, y, 133, 122, lane);
-        this.path = "file:src/sample/assets/coneheadzombie.gif";
+        super(14, 1, "file:assets/coneheadzombie.gif", x, y, 133, 122, lane);
+        this.path = "file:assets/coneheadzombie.gif";
     }
     @Override
     public void eatPlant()

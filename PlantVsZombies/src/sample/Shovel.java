@@ -13,7 +13,7 @@ public class Shovel extends GameElements{
     private static Shovel shovel;
 
     private Shovel(){
-        super(500,10,"file:src/sample/assets/Shovel.png",60,60);
+        super(500,10,"file:assets/Shovel.png",60,60);
     }
     public boolean isIsDisabled(){
         return isDisabled;

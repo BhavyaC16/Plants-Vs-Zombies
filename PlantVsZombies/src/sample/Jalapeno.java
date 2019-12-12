@@ -17,8 +17,8 @@ public class Jalapeno extends Plant {
     transient private ImageView[] fireViews;
 
     public Jalapeno(int x, int y,int row,int col) {
-        super(x, y, "file:src/sample/assets/jalapeno.gif", 4,100,100,row,col);
-        this.path="file:src/sample/assets/jalapeno.gif";
+        super(x, y, "file:assets/jalapeno.gif", 4,100,100,row,col);
+        this.path="file:assets/jalapeno.gif";
         System.out.println("Placed plant");
         fireViews=new ImageView[9];;
     }
@@ -26,7 +26,7 @@ public class Jalapeno extends Plant {
     public void makeImage(GridPane lawn){
         super.makeImage(lawn);
         for(int i=0;i<9;i++){
-            fireViews[i]=new ImageView(new Image("file:src/sample/assets/jalapenoFire.gif",(double) 100, (double) 100, false,false));
+            fireViews[i]=new ImageView(new Image("file:assets/jalapenoFire.gif",(double) 100, (double) 100, false,false));
             fireViews[i].setDisable(true);
             fireViews[i].setVisible(false);
             lawn.add(fireViews[i],i,this.row,1,1);
@@ -44,7 +44,7 @@ public class Jalapeno extends Plant {
             }
             img.setVisible(false);
             img.setDisable(true);
-            String jalapenoFile = "src/sample/assets/sounds/jalapeno.wav";
+            String jalapenoFile = "assets/sounds/jalapeno.wav";
             Media explode = new Media(new File(jalapenoFile).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(explode);
             mediaPlayer.setAutoPlay(true);

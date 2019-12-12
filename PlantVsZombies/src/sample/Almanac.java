@@ -20,52 +20,52 @@ public class Almanac {
 
     @FXML
     void bucketalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/buc.png"));
+        entry.setImage(new Image("file:assets/almanac/buc.png"));
 
     }
 
     @FXML
     void cherryalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/cher.png"));
+        entry.setImage(new Image("file:assets/almanac/cher.png"));
 
     }
 
 
     @FXML
     void sunalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/su.png"));
+        entry.setImage(new Image("file:assets/almanac/su.png"));
 
     }
 
     @FXML
     void walnutalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/wal.png"));
+        entry.setImage(new Image("file:assets/almanac/wal.png"));
 
     }
     @FXML
     void jalapenoalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/jal.png"));
+        entry.setImage(new Image("file:assets/almanac/jal.png"));
 
     }
 
     @FXML
     void normalAlmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/nor.png"));
+        entry.setImage(new Image("file:assets/almanac/nor.png"));
 
     }
 
     @FXML
     void peaalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/pee.png"));
+        entry.setImage(new Image("file:assets/almanac/pee.png"));
 
     }
     @FXML
     void repeateralmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/rep.png"));
+        entry.setImage(new Image("file:assets/almanac/rep.png"));
     }
     @FXML
     void conealmanac(MouseEvent event) {
-        entry.setImage(new Image("file:src/sample/assets/almanac/con.png"));
+        entry.setImage(new Image("file:assets/almanac/con.png"));
     }
 
 

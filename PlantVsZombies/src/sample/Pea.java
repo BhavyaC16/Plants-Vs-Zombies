@@ -18,7 +18,7 @@ public class Pea extends GameElements{
     private boolean flag;
     private int thispea;
     public Pea(int x, int y, int plantPosition, int lane) {
-        super(x, y, "file:src/sample/assets/pea.png",20,20);
+        super(x, y, "file:assets/pea.png",20,20);
 //        super.makeImage();
         this.plantPosition = plantPosition;
         this.lane = lane;
@@ -65,7 +65,7 @@ public class Pea extends GameElements{
                         img.setVisible(false);
                         img.setDisable(true);
                         peaAnimation.stop();
-                        String splatFile = "src/sample/assets/sounds/splat3.wav";
+                        String splatFile = "assets/sounds/splat3.wav";
                         Media splat = new Media(new File(splatFile).toURI().toString());
                         MediaPlayer mediaPlayer = new MediaPlayer(splat);
                         mediaPlayer.setAutoPlay(true);

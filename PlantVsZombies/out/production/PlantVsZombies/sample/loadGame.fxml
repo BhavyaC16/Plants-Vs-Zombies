@@ -12,12 +12,12 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="-11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@assets/menu3-01.png" />
+            <Image url="@../assets/menu3-01.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backButton" fitHeight="51.0" fitWidth="48.0" layoutX="925.0" layoutY="29.0" onMouseClicked="#loadPrevMenu" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/backbutton.png" />
+            <Image url="@../assets/backbutton.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="399.0" layoutY="38.0" prefHeight="107.0" prefWidth="330.0" text="Load Game" textAlignment="RIGHT" textFill="#00863cf5">

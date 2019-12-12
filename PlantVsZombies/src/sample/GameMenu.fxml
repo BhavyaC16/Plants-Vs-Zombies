@@ -10,22 +10,22 @@
    <children>
       <ImageView fitHeight="296.0" fitWidth="386.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/GameMenu.png" />
+            <Image url="@../assets/GameMenu.png" />
          </image>
       </ImageView>
       <ImageView fx:id="returnToMainMenuButton" fitHeight="92.0" fitWidth="175.0" layoutX="195.0" layoutY="36.0" onMouseClicked="#showMainMenu" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/returnTomainMenu.png" />
+            <Image url="@../assets/returnTomainMenu.png" />
          </image>
       </ImageView>
       <ImageView fx:id="saveGameButton" fitHeight="92.0" fitWidth="175.0" layoutX="12.0" layoutY="34.0" onMouseClicked="#saveGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/saveGame.png" />
+            <Image url="@../assets/saveGame.png" />
          </image>
       </ImageView>
       <ImageView fx:id="restartGameButton" fitHeight="92.0" fitWidth="175.0" layoutX="14.0" layoutY="127.0" onMouseClicked="#restartGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/restartGame.png" />
+            <Image url="@../assets/restartGame.png" />
          </image>
       </ImageView>
       <Label fx:id="GameMenuMessage" layoutX="34.0" layoutY="208.0" prefHeight="51.0" prefWidth="246.0" textFill="#f5881a">

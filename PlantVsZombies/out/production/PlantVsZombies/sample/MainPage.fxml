@@ -8,32 +8,32 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="133.0" layoutY="150.0" onMouseClicked="#showAlmanac" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@assets/mainmenu-01.png" />
+            <Image url="@../assets/mainmenu-01.png" />
          </image>
       </ImageView>
       <ImageView fx:id="startgame" fitHeight="109.0" fitWidth="241.0" layoutX="44.0" layoutY="460.0" onMouseClicked="#startGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/startgame.png" />
+            <Image url="@../assets/startgame.png" />
          </image>
       </ImageView>
       <ImageView fx:id="exitGame" fitHeight="109.0" fitWidth="241.0" layoutX="750.0" layoutY="460.0" onMouseClicked="#exitGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/exit.png" />
+            <Image url="@../assets/exit.png" />
          </image>
       </ImageView>
       <ImageView fx:id="selectLevel" fitHeight="109.0" fitWidth="241.0" layoutX="520.0" layoutY="460.0" onMouseClicked="#showLevelMenu" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/selectlevel.png" />
+            <Image url="@../assets/selectlevel.png" />
          </image>
       </ImageView>
       <ImageView fx:id="loadGame" fitHeight="109.0" fitWidth="241.0" layoutX="279.0" layoutY="460.0" onMouseClicked="#showSavedGames" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/loadgame.png" />
+            <Image url="@../assets/loadgame.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="93.0" fitWidth="92.0" layoutX="896.0" layoutY="40.0" onMouseClicked="#showAlmanac" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/Almanac_ion.png" />
+            <Image url="@../assets/Almanac_ion.png" />
          </image>
       </ImageView>
    </children>

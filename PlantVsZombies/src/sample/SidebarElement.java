@@ -30,11 +30,11 @@ public class SidebarElement extends GameElements{
         int width=97;
         int height=58;
         allElements=new HashMap<Integer, SidebarElement>();
-        path="file:src/sample/assets/sunflowerCard.png";
+        path="file:assets/sunflowerCard.png";
         x=24;
         y=79;
         if(level>=1){
-            path="file:src/sample/assets/sunflowerCard.png";
+            path="file:assets/sunflowerCard.png";
             x=24;
             y=79;
             SidebarElement sunflowerCard=new SidebarElement(x,y,path,width,height,50);
@@ -49,7 +49,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if(level>=1){
-            path="file:src/sample/assets/peashooterCard.png";
+            path="file:assets/peashooterCard.png";
             x=22;
             y=147;
             SidebarElement peashooterCard=new SidebarElement(x,y,path,width,height,100);
@@ -64,7 +64,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if (level>=2){
-            path="file:src/sample/assets/wallnutCard.png";
+            path="file:assets/wallnutCard.png";
             x=22;
             y=217;
             SidebarElement wallnutCard=new SidebarElement(x,y,path,width,height,50);
@@ -79,7 +79,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if (level>=3) {
-            path="file:src/sample/assets/cherrybombCard.png";
+            path="file:assets/cherrybombCard.png";
             x=22;
             y=284;
             SidebarElement cherrybombCard=new SidebarElement(x,y,path,width,height,150);
@@ -94,7 +94,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if(level>=4) {
-            path="file:src/sample/assets/repeaterCard.png";
+            path="file:assets/repeaterCard.png";
             x=23;
             y=352;
             SidebarElement repeaterCard=new SidebarElement(x,y,path,width,height,200);
@@ -109,7 +109,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if (level>=5) {
-            path="file:src/sample/assets/jalapenoCard.png";
+            path="file:assets/jalapenoCard.png";
             x=24;
             y=420;
             SidebarElement jalapenoCard=new SidebarElement(x,y,path,width,height,125);
@@ -124,7 +124,7 @@ public class SidebarElement extends GameElements{
             });
 
         }
-        selectedBorder =new ImageView(new Image("file:src/sample/assets/selectedCardBorder.png",110.0,72.0,false,false));
+        selectedBorder =new ImageView(new Image("file:assets/selectedCardBorder.png",110.0,72.0,false,false));
         pane.getChildren().add(selectedBorder);
         selectedBorder.setVisible(false);
         selectedBorder.setDisable(true);
@@ -151,7 +151,7 @@ public class SidebarElement extends GameElements{
 
     public void setDisabledOn(Pane pane){
         this.isDisabled=true;
-        ImageView im =new ImageView(new Image("file:src/sample/assets/lock.png",50.0,50.0,false,false));
+        ImageView im =new ImageView(new Image("file:assets/lock.png",50.0,50.0,false,false));
         im.setX(this.getX()+20);
         im.setY(this.getY());
         pane.getChildren().add(im);

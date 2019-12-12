@@ -89,7 +89,7 @@ public class GamePlayController {
 
     public void initialize() throws Exception {
         l = null;
-        String waveFile = "src/sample/assets/sounds/zombies_are_coming.wav";
+        String waveFile = "assets/sounds/zombies_are_coming.wav";
         Media wave = new Media(new File(waveFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(wave);
         mediaPlayer.setAutoPlay(true);
@@ -136,7 +136,7 @@ public class GamePlayController {
         }
         else
         {
-            Image lawn = new Image("file:src/sample/assets/lawn_night.png", 1024, 600, false, false);
+            Image lawn = new Image("file:assets/lawn_night.png", 1024, 600, false, false);
             lawnImage.setImage(lawn);
             zombieSpawner1(rand, 25);
             zombieSpawner2(rand, 40);
@@ -378,7 +378,7 @@ public class GamePlayController {
             shovel.disable();
             if (colIndex != null && rowIndex != null) {
                 System.out.println("shovelling"+colIndex+" "+rowIndex);
-                String shoveFile = "src/sample/assets/sounds/plant.wav";
+                String shoveFile = "assets/sounds/plant.wav";
                 Media shove = new Media(new File(shoveFile).toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(shove);
                 mediaPlayer.setAutoPlay(true);
@@ -431,7 +431,7 @@ public class GamePlayController {
 
     public void placePlant(int val, int x, int y,int row,int col) {
         Plant p;
-        String plantFile = "src/sample/assets/sounds/plant.wav";
+        String plantFile = "assets/sounds/plant.wav";
         Media plant = new Media(new File(plantFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(plant);
         mediaPlayer.setAutoPlay(true);

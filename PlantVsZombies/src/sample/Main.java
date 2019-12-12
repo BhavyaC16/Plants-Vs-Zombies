@@ -7,16 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
-import sample.view.viewManager;
-
 import java.io.*;
-import java.util.ArrayList;
+import java.net.URL;
 
 public class Main extends Application {
     public static MediaPlayer mediaPlayer;
     private static Database currentd;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         deserialize();
@@ -30,8 +28,8 @@ public class Main extends Application {
 
 
     public void addMusic() {
-        String musicFile = "src/sample/assets/background.wav";
-        Media sound = new Media(new File(musicFile).toURI().toString());
+        String documentBase = getHostServices().getDocumentBase();
+        Media sound = new Media(documentBase+ "PlantVsZombies.jar!/assets/background.wav");
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -69,22 +67,9 @@ public class Main extends Application {
             currentd=new Database();
             System.out.println("This user does not exist in the database");
         }
-//        finally {
-//            try{
-//                in.close();
-//            }
-//            catch (Exception e){
-//                System.out.println("wierd");
-//                e.printStackTrace();
-//            }
-//
-//        }
     }
-
-
 
     public static void main(String[] args) {
         launch(args);
-
     }
 }

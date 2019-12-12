@@ -15,12 +15,12 @@
    <children>
       <ImageView fx:id="lawnImage" fitHeight="600.0" fitWidth="1024.0" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@assets/lawn.png" />
+            <Image url="@../assets/lawn.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="58.0" fitWidth="77.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/sun.png" />
+            <Image url="@../assets/sun.png" />
          </image>
       </ImageView>
       <Label fx:id="sunCountLabel" layoutX="58.0" layoutY="3.0" prefHeight="73.0" prefWidth="104.0" text="50" textFill="WHITE">
@@ -30,18 +30,18 @@
       </Label>
       <ImageView fx:id="GameMenuLoaderButton" fitHeight="91.0" fitWidth="150.0" layoutX="2.0" layoutY="505.0" onMouseClicked="#loadGameMenu" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/gamemenuLoader.png" />
+            <Image url="@../assets/gamemenuLoader.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="298.0" layoutX="166.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/progressbar.png" />
+            <Image url="@../assets/progressbar.png" />
          </image>
       </ImageView>
       <ProgressBar fx:id="progressBar" layoutX="178.0" layoutY="25.0" prefHeight="20.0" prefWidth="277.0" progress="0.38" />
       <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="436.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/Flag.png" />
+            <Image url="@../assets/Flag.png" />
          </image></ImageView>
 
       <GridPane fx:id="lawn_grid" layoutX="322.0" layoutY="83.0" prefHeight="489.0" prefWidth="694.0">

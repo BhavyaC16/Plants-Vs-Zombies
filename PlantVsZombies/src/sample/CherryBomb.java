@@ -6,11 +6,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class CherryBomb extends Plant{
 
@@ -18,14 +16,14 @@ public class CherryBomb extends Plant{
     transient ImageView powie;
 
     public CherryBomb(int x, int y,int row,int col) {
-        super(x, y, "file:src/sample/assets/anim_cherrybomb.gif", 4,90,68,row,col);
-        this.path = "file:src/sample/assets/anim_cherrybomb.gif";
+        super(x, y, "file:assets/anim_cherrybomb.gif", 4,90,68,row,col);
+        this.path = "file:assets/anim_cherrybomb.gif";
     }
 
     @Override
     public void makeImage(GridPane lawn){
         super.makeImage(lawn);
-        powie=new ImageView(new Image("file:src/sample/assets/powie.gif",180,160,false,false));
+        powie=new ImageView(new Image("file:assets/powie.gif",180,160,false,false));
         powie.setX(x-40);
         powie.setY(y-20);
         powie.setVisible(false);
@@ -42,7 +40,7 @@ public class CherryBomb extends Plant{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            String cherryBombFile = "src/sample/assets/sounds/cherrybomb.wav";
+            String cherryBombFile = "assets/sounds/cherrybomb.wav";
             Media explode = new Media(new File(cherryBombFile).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(explode);
             mediaPlayer.setAutoPlay(true);
@@ -95,7 +93,6 @@ public class CherryBomb extends Plant{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("ee");
             powie.setVisible(false);
         });
         t.start();

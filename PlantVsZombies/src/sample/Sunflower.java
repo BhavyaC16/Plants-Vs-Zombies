@@ -14,8 +14,8 @@ import javafx.util.Duration;
 public class Sunflower extends Plant{
     transient private Timeline sunProducer;
     public Sunflower(int x, int y,int row,int col){
-        super(x,y,"file:src/sample/assets/sunflower.gif",100,73,74,row,col);
-        this.path = "file:src/sample/assets/sunflower.gif";
+        super(x,y,"file:assets/sunflower.gif",100,73,74,row,col);
+        this.path = "file:assets/sunflower.gif";
     }
 
     @Override
