@@ -5,6 +5,8 @@
 
 This is a clone of the strategy video game, [Plants vs. Zombies](https://en.wikipedia.org/wiki/Plants_vs._Zombies), originally developed by PopCap Games.
 
+A working demo of the game can be seen [here](https://www.youtube.com/watch?v=AgMRkRLPeFU).
+
 Made as a part of project in Advanced Programming course at IIIT-Delhi.
 
 Uses Java and JavaFx.
@@ -13,7 +15,7 @@ Uses Java and JavaFx.
 - 5 Levels with increasing difficulties
 - 2 Themes (Night Mode and Day Mode)
 - Plants Available: Sunflower, Pea Shooter, Cherry Bomb, Walnut, Repeater, Jalapeno
-- Zombies Avalable: Normal Zombie, Conehead Zombie and Buckethead Zombie
+- Zombies Available: Normal Zombie, Conehead Zombie and Buckethead Zombie
 - Almanac: Displays details and attack methods and power of each zombie and plant
 - Shovel: Tool to shovel plants out of the grid
 - Save Game and Restart Game options: User can save multiple game states, and reload them, or delete game progress
@@ -30,8 +32,11 @@ Uses Java and JavaFx.
 
 
 ## How To play
-Instructions to execute the .jar file //add here
-Gameplay: Same as the original game
+### Executing the JAR File
+`
+java --module-path <PATH_TO_JAVAFX_SDK_11_LIB_FOLDER> --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.base,javafx.web,javafx.swing -jar PlantVsZombies.jar
+`
+### GamePlay
 
 ## Requirements
 
