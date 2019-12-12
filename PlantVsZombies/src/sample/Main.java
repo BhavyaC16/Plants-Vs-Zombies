@@ -29,7 +29,7 @@ public class Main extends Application {
 
     public void addMusic() {
         String documentBase = getHostServices().getDocumentBase();
-        Media sound = new Media(documentBase+ "PlantVsZombies.jar!/assets/background.wav");
+        Media sound = new Media(documentBase+ "assets/background.wav");
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
