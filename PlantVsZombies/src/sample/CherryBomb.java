@@ -16,14 +16,14 @@ public class CherryBomb extends Plant{
     transient ImageView powie;
 
     public CherryBomb(int x, int y,int row,int col) {
-        super(x, y, "file:assets/anim_cherrybomb.gif", 4,90,68,row,col);
-        this.path = "file:assets/anim_cherrybomb.gif";
+        super(x, y, "/assets/anim_cherrybomb.gif", 4,90,68,row,col);
+        this.path = getClass().getResource("/assets/anim_cherrybomb.gif").toString();
     }
 
     @Override
     public void makeImage(GridPane lawn){
         super.makeImage(lawn);
-        powie=new ImageView(new Image("file:assets/powie.gif",180,160,false,false));
+        powie=new ImageView(new Image(getClass().getResource("/assets/powie.gif").toString(),180,160,false,false));
         powie.setX(x-40);
         powie.setY(y-20);
         powie.setVisible(false);
@@ -40,8 +40,7 @@ public class CherryBomb extends Plant{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            String cherryBombFile = "assets/sounds/cherrybomb.wav";
-            Media explode = new Media(new File(cherryBombFile).toURI().toString());
+            Media explode = new Media(getClass().getResource("/assets/sounds/cherrybomb.wav").toString());
             MediaPlayer mediaPlayer = new MediaPlayer(explode);
             mediaPlayer.setAutoPlay(true);
             mediaPlayer.play();

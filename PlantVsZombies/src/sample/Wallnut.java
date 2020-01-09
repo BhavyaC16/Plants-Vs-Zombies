@@ -6,8 +6,8 @@ import javafx.scene.layout.Pane;
 
 public class Wallnut extends Plant{
     public Wallnut(int x, int y,int row,int col) {
-        super(x, y, "file:assets/walnut_full_life.gif", 400,60,75,row,col);
-        this.path="file:assets/walnut_full_life.gif";
+        super(x, y, "/assets/walnut_full_life.gif", 400,60,75,row,col);
+        this.path=getClass().getResource("/assets/walnut_full_life.gif").toString();
     }
     public void checkHp()
     {

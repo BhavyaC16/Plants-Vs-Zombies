@@ -17,10 +17,10 @@ import java.util.Iterator;
 public class LawnMower extends GameElements{
     int lane;
     boolean activated = false;
-    String activatedPath="file:assets/lawnmowerActivated.gif";
+    String activatedPath=getClass().getResource("/assets/lawnmowerActivated.gif").toString();
     public LawnMower(int x, int y, int lane){
-        super(x, y, "file:assets/lawnmowerIdle.gif", 81, 77);
-        this.path="file:assets/lawnmowerIdle.gif";
+        super(x, y, "/assets/lawnmowerIdle.gif", 81, 77);
+        this.path=getClass().getResource("/assets/lawnmowerIdle.gif").toString();
         this.lane=lane;
     }
 
@@ -63,8 +63,7 @@ public class LawnMower extends GameElements{
 
     public void activate(){
         img.setImage(new Image(activatedPath, 81, 77, false, false));
-        String lawnMowerFile = "assets/sounds/lawnmower.wav";
-        Media lawnmower = new Media(new File(lawnMowerFile).toURI().toString());
+        Media lawnmower = new Media(getClass().getResource("/assets/sounds/lawnmower.wav").toString());
         MediaPlayer mediaPlayer = new MediaPlayer(lawnmower);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setVolume(1000);

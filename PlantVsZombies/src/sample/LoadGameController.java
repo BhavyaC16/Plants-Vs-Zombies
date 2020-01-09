@@ -64,7 +64,7 @@ public class LoadGameController {
 
     @FXML
     void deleteAllProgress(MouseEvent event) throws Exception{
-        File file = new File("database.txt");
+        File file = new File(getClass().getResource("database.txt").toString());
         if(file.delete()){
             System.out.println("database.txt File deleted");
             Database.deleteAllProgress();

@@ -89,8 +89,7 @@ public class GamePlayController {
 
     public void initialize() throws Exception {
         l = null;
-        String waveFile = "assets/sounds/zombies_are_coming.wav";
-        Media wave = new Media(new File(waveFile).toURI().toString());
+        Media wave = new Media(getClass().getResource("/assets/sounds/zombies_are_coming.wav").toString());
         MediaPlayer mediaPlayer = new MediaPlayer(wave);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setStartTime(Duration.seconds(0));
@@ -136,7 +135,8 @@ public class GamePlayController {
         }
         else
         {
-            Image lawn = new Image("file:assets/lawn_night.png", 1024, 600, false, false);
+            String lawn_path = getClass().getResource("/assets/lawn_night.png").toString();
+            Image lawn = new Image(lawn_path, 1024, 600, false, false);
             lawnImage.setImage(lawn);
             zombieSpawner1(rand, 25);
             zombieSpawner2(rand, 40);
@@ -378,8 +378,7 @@ public class GamePlayController {
             shovel.disable();
             if (colIndex != null && rowIndex != null) {
                 System.out.println("shovelling"+colIndex+" "+rowIndex);
-                String shoveFile = "assets/sounds/plant.wav";
-                Media shove = new Media(new File(shoveFile).toURI().toString());
+                Media shove = new Media(getClass().getResource("/assets/sounds/plant.wav").toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(shove);
                 mediaPlayer.setAutoPlay(true);
                 mediaPlayer.play();
@@ -431,8 +430,7 @@ public class GamePlayController {
 
     public void placePlant(int val, int x, int y,int row,int col) {
         Plant p;
-        String plantFile = "assets/sounds/plant.wav";
-        Media plant = new Media(new File(plantFile).toURI().toString());
+        Media plant = new Media(getClass().getResource("/assets/sounds/plant.wav").toString());
         MediaPlayer mediaPlayer = new MediaPlayer(plant);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.play();

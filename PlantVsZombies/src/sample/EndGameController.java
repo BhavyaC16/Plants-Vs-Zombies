@@ -82,19 +82,19 @@ public class EndGameController {
                 nextLevelButton.setDisable(false);
                 if(levelNumber==1){
                     plantName.setText("Walnut");
-                    plantImage.setImage(new Image("file:assets/L2.png"));
+                    plantImage.setImage(new Image(getClass().getResource("/assets/L2.png").toString()));
                 }
                 else if(levelNumber==2){
                     plantName.setText("Cherry Bomb");
-                    plantImage.setImage(new Image("file:assets/L3.png"));
+                    plantImage.setImage(new Image(getClass().getResource("/assets/L3.png").toString()));
                 }
                 else if(levelNumber==3){
                     plantName.setText("Repeater");
-                    plantImage.setImage(new Image("file:assets/L4.png"));
+                    plantImage.setImage(new Image(getClass().getResource("/assets/L4.png").toString()));
                 }
                 else if(levelNumber==4){
                     plantName.setText("Jalapeno");
-                    plantImage.setImage(new Image("file:assets/L5.png"));
+                    plantImage.setImage(new Image(getClass().getResource("/assets/L5.png").toString()));
                 }
             }
 

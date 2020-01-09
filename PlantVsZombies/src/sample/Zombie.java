@@ -60,8 +60,7 @@ public abstract class Zombie extends GameElements {
                 if(this==GamePlayController.allZombies.get(i))
                 {
                     GamePlayController.allZombies.remove(i);
-                    String yuckFile = "assets/sounds/yuck.wav";
-                    Media yuck = new Media(new File(yuckFile).toURI().toString());
+                    Media yuck = new Media(getClass().getResource("/assets/sounds/yuck.wav").toString());
                     MediaPlayer mediaPlayer = new MediaPlayer(yuck);
                     mediaPlayer.setAutoPlay(true);
                     mediaPlayer.play();
@@ -71,14 +70,14 @@ public abstract class Zombie extends GameElements {
             }
         }
         if (hp<=7) {
-            img.setImage(new Image("file:assets/normalzombie.gif", (double) 68,(double) 118,false,false));
+            img.setImage(new Image(getClass().getResource("/assets/normalzombie.gif").toString(), (double) 68,(double) 118,false,false));
             this.width=68;
             this.height=118;
         }
     }
 
     public void roastZombie(){
-        img.setImage(new Image("file:assets/burntZombie.gif", (double) 68,(double) 118,false,false));
+        img.setImage(new Image(getClass().getResource("/assets/burntZombie.gif").toString(), (double) 68,(double) 118,false,false));
         this.dx=0;
         this.hp = 0;
         this.chomping.stop();
@@ -103,8 +102,7 @@ public abstract class Zombie extends GameElements {
     public void checkReachedHouse() {
         if (img.getX() <= 220) {
             GamePlayController.wonGame = -1;
-            String brainzFile = "assets/sounds/brainz.wav";
-            Media brainz = new Media(new File(brainzFile).toURI().toString());
+            Media brainz = new Media(getClass().getResource("/assets/sounds/brainz.wav").toString());
             MediaPlayer mediaPlayer = new MediaPlayer(brainz);
             mediaPlayer.setAutoPlay(true);
             mediaPlayer.play();
@@ -136,8 +134,7 @@ public abstract class Zombie extends GameElements {
 
     public void chompPlant()
     {
-        String chompFile = "assets/sounds/chomp.wav";
-        Media chomp = new Media(new File(chompFile).toURI().toString());
+        Media chomp = new Media(getClass().getResource("/assets/sounds/chomp.wav").toString());
         MediaPlayer mediaPlayer = new MediaPlayer(chomp);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setStartTime(Duration.seconds(0));

@@ -34,7 +34,7 @@ public class SidebarElement extends GameElements{
         x=24;
         y=79;
         if(level>=1){
-            path="file:assets/sunflowerCard.png";
+            path="/assets/sunflowerCard.png";
             x=24;
             y=79;
             SidebarElement sunflowerCard=new SidebarElement(x,y,path,width,height,50);
@@ -49,7 +49,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if(level>=1){
-            path="file:assets/peashooterCard.png";
+            path="/assets/peashooterCard.png";
             x=22;
             y=147;
             SidebarElement peashooterCard=new SidebarElement(x,y,path,width,height,100);
@@ -64,7 +64,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if (level>=2){
-            path="file:assets/wallnutCard.png";
+            path="/assets/wallnutCard.png";
             x=22;
             y=217;
             SidebarElement wallnutCard=new SidebarElement(x,y,path,width,height,50);
@@ -79,7 +79,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if (level>=3) {
-            path="file:assets/cherrybombCard.png";
+            path="/assets/cherrybombCard.png";
             x=22;
             y=284;
             SidebarElement cherrybombCard=new SidebarElement(x,y,path,width,height,150);
@@ -94,7 +94,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if(level>=4) {
-            path="file:assets/repeaterCard.png";
+            path="/assets/repeaterCard.png";
             x=23;
             y=352;
             SidebarElement repeaterCard=new SidebarElement(x,y,path,width,height,200);
@@ -109,7 +109,7 @@ public class SidebarElement extends GameElements{
             });
         }
         if (level>=5) {
-            path="file:assets/jalapenoCard.png";
+            path="/assets/jalapenoCard.png";
             x=24;
             y=420;
             SidebarElement jalapenoCard=new SidebarElement(x,y,path,width,height,125);
@@ -151,7 +151,7 @@ public class SidebarElement extends GameElements{
 
     public void setDisabledOn(Pane pane){
         this.isDisabled=true;
-        ImageView im =new ImageView(new Image("file:assets/lock.png",50.0,50.0,false,false));
+        ImageView im =new ImageView(new Image(getClass().getResource("/assets/lock.png").toString(),50.0,50.0,false,false));
         im.setX(this.getX()+20);
         im.setY(this.getY());
         pane.getChildren().add(im);

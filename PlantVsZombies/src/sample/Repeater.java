@@ -12,8 +12,8 @@ import java.util.Iterator;
 
 public class Repeater extends Shooter {
     public Repeater(int x, int y,int row,int col) {
-        super(x, y, "file:assets/repeater.gif", 150,60,62,row,col);
-        this.path="file:assets/repeater.gif";
+        super(x, y, "/assets/repeater.gif", 150,60,62,row,col);
+        this.path=getClass().getResource("/assets/repeater.gif").toString();
 
     }
     @Override

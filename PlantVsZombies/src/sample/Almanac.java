@@ -20,52 +20,52 @@ public class Almanac {
 
     @FXML
     void bucketalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/buc.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/buc.png").toString()));
 
     }
 
     @FXML
     void cherryalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/cher.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/cher.png").toString()));
 
     }
 
 
     @FXML
     void sunalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/su.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/su.png").toString()));
 
     }
 
     @FXML
     void walnutalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/wal.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/wal.png").toString()));
 
     }
     @FXML
     void jalapenoalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/jal.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/jal.png").toString()));
 
     }
 
     @FXML
     void normalAlmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/nor.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/nor.png").toString()));
 
     }
 
     @FXML
     void peaalmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/pee.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/pee.png").toString()));
 
     }
     @FXML
     void repeateralmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/rep.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/rep.png").toString()));
     }
     @FXML
     void conealmanac(MouseEvent event) {
-        entry.setImage(new Image("file:assets/almanac/con.png"));
+        entry.setImage(new Image(getClass().getResource("/assets/almanac/con.png").toString()));
     }
 
 
