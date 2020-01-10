@@ -27,6 +27,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class GamePlayController {
@@ -105,6 +106,7 @@ public class GamePlayController {
 
     @FXML
     public void initData(int levelNumber, DataTable d) {
+        wonGame = 0;
         Random rand = new Random();
         this.levelNumber = levelNumber;
         Level l = new Level(levelNumber);
@@ -150,7 +152,13 @@ public class GamePlayController {
             while (i.hasNext()) {
                 Plant p = i.next();
                 p.makeImage(lawn_grid);
-                p.attack(GamePlayRoot);
+                try{
+                    p.attack(GamePlayRoot);}
+                catch(java.util.ConcurrentModificationException e)
+                {
+                    //System.out.println("Killed/removed Plant");
+                }
+
             }
         }
         synchronized (allMowers) {
@@ -158,7 +166,14 @@ public class GamePlayController {
             while (i.hasNext()) {
                 LawnMower l = i.next();
                 l.makeImage(GamePlayRoot);
-                l.checkZombie();
+                try
+                {
+                    l.checkZombie();
+                }
+               catch(java.util.ConcurrentModificationException e)
+               {
+                   //System.out.println("lawnmover activated");
+               }
             }
         }
         synchronized (allZombies)
@@ -168,7 +183,13 @@ public class GamePlayController {
             {
                 Zombie z = i.next();
                 z.makeImage(GamePlayRoot);
-                z.moveZombie();
+                try {
+                    z.moveZombie();
+                }
+                catch(java.util.ConcurrentModificationException e)
+                {
+                    //System.out.println("Zombie killed");
+                }
             }
         }
         numZombiesKilled = l.getTotalZombies()*timeElapsed;
@@ -184,12 +205,12 @@ public class GamePlayController {
                     timeElapsed = ( numZombiesKilled / l.getTotalZombies());
                     progressBar.setProgress(timeElapsed);
                     if (wonGame == (-1)) {
-                        System.out.println("LostGame :(");
+                        //System.out.println("LostGame :(");
                         numZombiesKilled = 0;
                         endAnimations();
                         gameLost();
                     } else if (wonGame == 0 && allZombies.size() == 0 && l.getTotalZombies() == spawnedZombies) {
-                        System.out.println("GAME WON!!");
+                        //System.out.println("GAME WON!!");
                         numZombiesKilled = 0;
                         endAnimations();
                         gameWon();
@@ -377,7 +398,7 @@ public class GamePlayController {
         if (!shovel.isIsDisabled()) {
             shovel.disable();
             if (colIndex != null && rowIndex != null) {
-                System.out.println("shovelling"+colIndex+" "+rowIndex);
+                //System.out.println("shovelling"+colIndex+" "+rowIndex);
                 Media shove = new Media(getClass().getResource("/assets/sounds/plant.wav").toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(shove);
                 mediaPlayer.setAutoPlay(true);
@@ -386,12 +407,12 @@ public class GamePlayController {
                     Iterator<Plant> i = allPlants.iterator();
                     while (i.hasNext()) {
                         Plant p = i.next();
-                        System.out.println("plant"+p.col+" "+p.row);
+                        //System.out.println("plant"+p.col+" "+p.row);
                         if (p.col == colIndex && p.row == rowIndex) {
                             p.img.setVisible(false);
                             p.img.setDisable(true);
                             allPlants.remove(p);
-                            System.out.println(p.getClass());
+                            //System.out.println(p.getClass());
                             p.setHp(0);
                             ((Shooter)p).checkHp();
                             ((Sunflower)p).checkHp();
@@ -419,8 +440,10 @@ public class GamePlayController {
                         placePlant(SidebarElement.getCardSelected(), (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()), colIndex, rowIndex);
                         updateSunCount((-1) * SidebarElement.getElement(SidebarElement.getCardSelected()).getCost());
                         SidebarElement.getElement(SidebarElement.getCardSelected()).setDisabledOn(GamePlayRoot);
-                    } else System.out.println("Not enough sun score");
-                } else System.out.println("Cant place more than one plant on cell");
+                    }
+                    //else System.out.println("Not enough sun score");
+                }
+                //else System.out.println("Cant place more than one plant on cell");
 
             }
             SidebarElement.setCardSelectedToNull();
@@ -472,7 +495,7 @@ public class GamePlayController {
                 p.attack(GamePlayRoot);
                 break;
             default:
-                System.out.println("No case match" + val);
+                //System.out.println("No case match" + val);
         }
     }
 

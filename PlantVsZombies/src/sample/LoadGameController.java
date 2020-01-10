@@ -39,7 +39,7 @@ public class LoadGameController {
     {
 //        ObservableList<DataTable> d= FXCollections.observableArrayList(Database.getInstance().getDatabaseFiles());
         deleteProgress.setStyle("-fx-background-color: #fcd432");
-        System.out.println(Main.getDatabase().getDatabaseFiles().size());
+        //System.out.println(Main.getDatabase().getDatabaseFiles().size());
         gameStateList.setItems(d);
     }
 
@@ -64,14 +64,15 @@ public class LoadGameController {
 
     @FXML
     void deleteAllProgress(MouseEvent event) throws Exception{
-        File file = new File(getClass().getResource("database.txt").toString());
+        File file = new File("database.txt");
         if(file.delete()){
-            System.out.println("database.txt File deleted");
+            //System.out.println("database.txt File deleted");
             Database.deleteAllProgress();
-            System.out.println("Size is "+Main.getDatabase().getDatabaseFiles().size());
+            //System.out.println("Size is "+Main.getDatabase().getDatabaseFiles().size());
             gameStateList.getItems().clear();
 //            gameStateList.setItems(d);
-        }else System.out.println("database.txt doesn't exist");
+        }
+        //else System.out.println("database.txt doesn't exist");
 
     }
 }

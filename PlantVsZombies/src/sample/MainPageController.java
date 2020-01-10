@@ -43,7 +43,7 @@ public class MainPageController implements Initializable {
             Main.serialize();
         }
         catch(IOException e){
-            System.out.println("Could not save the progress :(");
+            //System.out.println("Could not save the progress :(");
         }
         System.exit(0);
     }

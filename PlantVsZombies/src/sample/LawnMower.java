@@ -32,27 +32,22 @@ public class LawnMower extends GameElements{
                 synchronized (GamePlayController.allZombies) {
                     Iterator<Zombie> i = GamePlayController.allZombies.iterator();
                     while (i.hasNext()) {
-                        Zombie z = i.next();
-                        if(z.getLane()==lane)
-                        {
-                            if(Math.abs(z.getX()-getX())<=30)
-                            {
-                                if(activated==false)
-                                {
-                                    activate();
-                                    z.setHp(0);
-                                    activated = true;
-                                    z.getZombieAnimation().stop();
+                        Zombie z;
+                            z = i.next();
+                            if (z.getLane() == lane) {
+                                if (Math.abs(z.getX() - getX()) <= 30) {
+                                    if (activated == false) {
+                                        activate();
+                                        z.setHp(0);
+                                        activated = true;
+                                        z.getZombieAnimation().stop();
+                                    } else {
+                                        z.setHp(0);
+                                        z.getZombieAnimation().stop();
+                                    }
                                 }
-                                else
-                                {
-                                    z.setHp(0);
-                                    z.getZombieAnimation().stop();
-                                }
+                                GamePlayController.allMowers.remove(this);
                             }
-                            GamePlayController.allMowers.remove(this);
-                        }
-
                     }
                 }
             }

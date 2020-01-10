@@ -111,7 +111,7 @@ public abstract class Zombie extends GameElements {
 
     public void moveZombie() {
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(70), e -> zombieWalk()));
-        animation.setCycleCount(10000);
+        animation.setCycleCount(100000);
         animation.play();
         this.zombieAnimation = animation;
         GamePlayController.animationTimelines.add(animation);
@@ -122,7 +122,13 @@ public abstract class Zombie extends GameElements {
         if(getX()>220 && this.hp>0)
         {
             setX(getX()+this.dx);
-            eatPlant();
+            try{
+                eatPlant();
+            }
+            catch(java.util.ConcurrentModificationException e)
+            {
+                //System.out.println("killed plant");
+            }
             checkReachedHouse();
         }
     }

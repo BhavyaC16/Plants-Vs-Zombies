@@ -70,7 +70,7 @@ public class DataTable implements Serializable {
             Main.serialize();
         }
         catch (IOException e){
-            System.out.println("Cant close stream");
+            //System.out.println("Cant close stream");
         }
     }
 
@@ -99,7 +99,7 @@ public class DataTable implements Serializable {
     }
 
     public double getTimeElapsed() {
-        System.out.println(this.timeElapsed);
+        //System.out.println(this.timeElapsed);
         return this.timeElapsed;
     }
 
