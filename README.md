@@ -48,20 +48,18 @@ Uses Java and JavaFx.
 ![alt_text](https://github.com/BhavyaC16/Plants-Vs-Zombies/blob/master/GameplayScreenshots/2.png)
 ![alt_text](https://github.com/BhavyaC16/Plants-Vs-Zombies/blob/master/GameplayScreenshots/5.png)
 ![alt_text](https://github.com/BhavyaC16/Plants-Vs-Zombies/blob/master/GameplayScreenshots/3.png)
-![alt text](https://github.com/BhavyaC16/Plants-Vs-Zombies/blob/master/GameplayScreenshots/6.png)
-
 
 ## How To play
 ### Executing the JAR File
 To play the game, the following steps can be followed:
 1. Clone this repository using the command: `git clone https://github.com/BhavyaC16/Plants-Vs-Zombies.git`
 2. cd into the directory `PlantVsZombies_jar` using: `cd PlantsVsZombies/PlantVsZombies/out/artifacts/PlantVsZombies_jar`
-3. Execute the command `java --module-path ~/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media -jar PlantVsZombies.jar`
+3. Execute the command `java --module-path ~/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media -jar PlantVsZombies.jar` <br>
 (Note: `--module-path` specifies the path to your JavaFX SDK 11 lib folder)
 
 ## Code and assets
-Path to code: PlantVsZombies/src/sample <br>
-Path to Images and sounds: PlantVsZombies/src/sample/assets
+Path to code: `PlantVsZombies/src/sample` <br>
+Path to Images and sounds: `PlantVsZombies/src/sample/assets`
 
 ## License
 ### GNU General Public License v3.0
