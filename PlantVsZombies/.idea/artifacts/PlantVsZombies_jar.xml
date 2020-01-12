@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/PlantVsZombies_jar</output-path>
     <root id="archive" name="PlantVsZombies.jar">
       <element id="module-output" name="PlantVsZombies" />
+      <element id="library" level="project" name="openjfx-11.0.2_osx-x64_bin-sdk" />
       <element id="extracted-dir" path="$USER_HOME$/javafx-sdk-11.0.2/lib/javafx-swt.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/javafx-sdk-11.0.2/lib/javafx.base.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/javafx-sdk-11.0.2/lib/javafx.controls.jar" path-in-jar="/" />
@@ -11,7 +12,6 @@
       <element id="extracted-dir" path="$USER_HOME$/javafx-sdk-11.0.2/lib/javafx.media.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/javafx-sdk-11.0.2/lib/javafx.swing.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/javafx-sdk-11.0.2/lib/javafx.web.jar" path-in-jar="/" />
-      <element id="library" level="project" name="openjfx-11.0.2_osx-x64_bin-sdk" />
     </root>
   </artifact>
 </component>

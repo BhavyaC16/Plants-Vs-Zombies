@@ -152,13 +152,7 @@ public class GamePlayController {
             while (i.hasNext()) {
                 Plant p = i.next();
                 p.makeImage(lawn_grid);
-                try{
-                    p.attack(GamePlayRoot);}
-                catch(java.util.ConcurrentModificationException e)
-                {
-                    //System.out.println("Killed/removed Plant");
-                }
-
+                p.attack(GamePlayRoot);
             }
         }
         synchronized (allMowers) {
@@ -166,14 +160,7 @@ public class GamePlayController {
             while (i.hasNext()) {
                 LawnMower l = i.next();
                 l.makeImage(GamePlayRoot);
-                try
-                {
-                    l.checkZombie();
-                }
-               catch(java.util.ConcurrentModificationException e)
-               {
-                   //System.out.println("lawnmover activated");
-               }
+                l.checkZombie();
             }
         }
         synchronized (allZombies)
@@ -183,13 +170,7 @@ public class GamePlayController {
             {
                 Zombie z = i.next();
                 z.makeImage(GamePlayRoot);
-                try {
-                    z.moveZombie();
-                }
-                catch(java.util.ConcurrentModificationException e)
-                {
-                    //System.out.println("Zombie killed");
-                }
+                z.moveZombie();
             }
         }
         numZombiesKilled = l.getTotalZombies()*timeElapsed;

@@ -63,7 +63,10 @@ public class ConeZombie extends Zombie {
                     {
                         this.dx = -1;
                         this.reachedPlant = false;
-                        this.chomping.stop();
+                        if(this.chomping!=null)
+                        {
+                            this.chomping.stop();
+                        }
                     }
                 }
                 else
@@ -75,7 +78,10 @@ public class ConeZombie extends Zombie {
         if(foundPlant==0)
         {
             this.dx = -1;
-            this.chomping.stop();
+            if(this.chomping!=null)
+            {
+                this.chomping.stop();
+            }
             this.reachedPlant=false;
         }
     }

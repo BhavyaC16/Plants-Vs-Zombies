@@ -111,7 +111,7 @@ public abstract class Zombie extends GameElements {
 
     public void moveZombie() {
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(70), e -> zombieWalk()));
-        animation.setCycleCount(100000);
+        animation.setCycleCount(Animation.INDEFINITE);
         animation.play();
         this.zombieAnimation = animation;
         GamePlayController.animationTimelines.add(animation);
