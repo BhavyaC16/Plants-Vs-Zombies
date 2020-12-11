@@ -1,4 +1,4 @@
-# Plants-Vs-Zombies
+# Plants-Vs-Zombies 🌱🌵 Vs 🧟‍♂️🧟‍♀️
 ## Details
 **Created by:
 [Bhavya Chopra](https://www.github.com/BhavyaC16) and [Sonali Singhal](https://www.github.com/SonaliSinghal)**
